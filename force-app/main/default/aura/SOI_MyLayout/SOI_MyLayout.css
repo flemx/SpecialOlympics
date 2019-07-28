@@ -11,12 +11,12 @@
     width: 100vw;
 }
 .THIS .centerheader {
+    background-color: #efeeee;
     width: 100%;
     background-color: white;
     position: fixed;
     height: 85px;
     border: 1.5px solid #eaeaea;
-    background-color: rgb(239,238,238);
 }
 .THIS .menu {
     margin: 0;
