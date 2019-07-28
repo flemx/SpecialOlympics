@@ -1,10 +1,10 @@
 <template>
 
-            <template if:true={contacts}>
+            <template if:true={data}>
                     <div style="height: 300px;">
                             <lightning-datatable
                                     key-field="id"
-                                    data={contacts}
+                                    data={data}
                                     columns={columns}
                                     onrowaction={handleRowAction}
                                     onsort={updateColumnSorting}

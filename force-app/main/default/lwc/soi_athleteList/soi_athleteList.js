@@ -10,8 +10,12 @@ const actions = [
 const columns = [
     { label: 'ID', fieldName: 'SOI_ConsID__c', type: 'text' },
     { label: 'Name', fieldName: 'Name', type: 'text', sortable : 'true' },
-    { label: 'Birthdate', fieldName: 'Birthdate', type: 'date' },
-    { label: 'Medical Expiry', fieldName: 'SOI_Medical_Expiry__c', type: 'date' },
+    { label: 'Birthdate', fieldName: 'Birthdate', type: 'date', sortable : 'true'  },
+    { label: 'Medical Expiry', fieldName: 'SOI_Medical_Expiry__c', type: 'date', sortable : 'true'  },
+    { label: 'Sports', fieldName: 'mySports', type: 'text'},
+    {label: 'Action', type: 'button', initialWidth: 150, typeAttributes:
+                { label: { fieldName: 'actionLabel'}, title: 'Click to Edit', name: 'delete-record', class: 'btn_next'}
+            },
     { label: 'View', type: 'button', initialWidth: 135, typeAttributes: { label: 'View Details', name: 'view_details', title: 'Click to View Details'}},
     {
         type: 'action',
@@ -22,26 +26,13 @@ const columns = [
 export default class Soi_athleteList extends LightningElement {
 
 
-    @track contacts;
+    @track rawContacts;
     @track error;
     @track sortedBy;
     @track sortedDirection;
 
     isRendered = false;
 
-    /*
-    @wire(athleteList)
-    wiredContacts({ error, data }) {
-        if (data) {
-            this.contacts = data;
-            console.log(this.contacts);
-            this.error = undefined;
-        } else if (error) {
-            this.error = error;
-            this.contacts = undefined;
-        }
-    }
-    */
 
     @track data = [];
     @track columns = columns;
@@ -53,10 +44,7 @@ export default class Soi_athleteList extends LightningElement {
         }
         athleteList()
             .then(result => {
-                let myData = result;
-                //debugger;
-                this.contacts = result;
-                console.log(result);
+                this.renderSports(result);
                 this.isRendered = true;
             })
             .catch(error => {
@@ -64,6 +52,40 @@ export default class Soi_athleteList extends LightningElement {
             });
     }
 
+    /**
+     *  Format the array of related sports into a single text field seperated by comma's
+     * @param {*} result 
+     */
+    renderSports(result){
+        this.rawContacts = result;
+        let newList = [];
+        for(let con of result){
+            if(con.Sports__r){
+                let mySports;
+                for(let i = 0; i < con.Sports__r.length; i++){
+                    let name = con.Sports__r[i].Name;
+                    if(i === 0){
+                        mySports = name
+                    }else{
+                        mySports = `${mySports}, ${name}`;
+                    }
+                }
+                con.mySports = mySports;   
+            }
+            if(con.SOI_Status__c === 'Deleted'){
+                con.actionLabel = 'Undelete';
+            }else{
+                con.actionLabel = 'Delete';
+            }
+            newList.push(con);
+        }
+        this.data = newList;
+    }
+
+    /**
+     *  Event listener for table action buttons
+     * @param {*} event 
+     */
     handleRowAction(event) {
         const actionName = event.detail.action.name;
         const row = event.detail.row;
@@ -71,11 +93,37 @@ export default class Soi_athleteList extends LightningElement {
             case 'delete':
                 this.deleteRow(row);
                 break;
+            case 'delete-record':
+                this.deleteHandler(event,row);
+                break;
             case 'view_details':
                 this.showRowDetails(row);
                 break;
             default:
         }
+    }
+
+    deleteHandler(event,row){
+        //Add modal to confirm deletion
+
+        let myData = this.data;
+        myData = myData.map(function(rowData) {
+            if (rowData.SOI_ConsID__c === row.SOI_ConsID__c) {
+                switch(row.actionLabel) {
+                    case 'Delete':
+                        rowData.actionLabel = 'Undelete';
+                        break;
+                    case 'Undelete':
+                        rowData.actionLabel = 'Delete';
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return rowData;
+        });
+        this.data = myData;
+        
     }
 
     deleteRow(row) {
@@ -126,7 +174,7 @@ export default class Soi_athleteList extends LightningElement {
      * @param {*} sortDirection 
      */
     sortData(fieldName, sortDirection){
-        var data = JSON.parse(JSON.stringify(this.contacts));
+        var data = JSON.parse(JSON.stringify(this.data));
         //function to return the value stored in the field
         var key =(a) => a[fieldName]; 
         var reverse = sortDirection === 'asc' ? 1: -1;
@@ -137,7 +185,7 @@ export default class Soi_athleteList extends LightningElement {
         });
 
         //set sorted data to contacts attribute
-        this.contacts = data;
+        this.data = data;
     }
 
 }
