@@ -1,0 +1,11 @@
+{
+  "orgName": "Special Olympics - Enterprise",
+  "edition": "Enterprise",
+  "features": ["Communities"],
+  "settings": {
+      "orgPreferenceSettings" : {
+          "s1DesktopEnabled": true,
+          "networksEnabled": true
+      }
+  }
+}

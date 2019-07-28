@@ -1,0 +1,29 @@
+<template>
+    <div class="navbar-container" >
+        
+        <div class="navbar-item home" onclick={openPage} data-page='home'>
+            <img src={myIcons.home}/>
+            <p>Welcome</p>
+        </div>
+        <div class="navbar-item athletes" onclick={openPage} data-page='athletes'>
+            <img src={myIcons.athletes}/>
+            <p>Athletes</p>
+        </div>
+        <div class="navbar-item volunteers" onclick={openPage} data-page='volunteers'>
+            <img src={myIcons.volunteers}/>
+            <p>Volunteers</p>
+        </div>
+        <div class="navbar-item venues" onclick={openPage} data-page='venues'>
+            <img src={myIcons.venues}/>
+            <p>Venues</p>
+        </div>
+        <div class="navbar-item club" onclick={openPage} data-page='club'>
+            <img src={myIcons.club}/>
+            <p>Club info</p>
+        </div>
+        <div class="navbar-item submit" onclick={openPage} data-page='submit'>
+            <img src={myIcons.submit}/>
+            <p>Submit</p>
+        </div>
+    </div>    
+</template>

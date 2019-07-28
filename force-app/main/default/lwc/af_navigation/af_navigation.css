@@ -1,0 +1,23 @@
+.navbar-item{
+    display: flex;
+    padding: 10%;
+    margin: 0;
+}
+
+.navbar-item img{
+    margin-right: 8%;
+}
+
+.selected{
+    background-color: #ff00001a;
+    border-left: 6px solid red;
+}
+
+.navbar-container{
+    height: 100%;
+}
+
+.navbar-item:hover{
+    background-color: #ff00001a;
+    cursor: pointer;
+}

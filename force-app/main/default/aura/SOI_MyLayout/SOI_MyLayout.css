@@ -1,0 +1,100 @@
+.THIS .contentPanel:before,
+.THIS .contentPanel:after {
+    content: " ";
+    display: table;
+}
+.THIS .contentPanel:after {
+    clear: both;
+}
+.THIS .contentPanel {
+    height: 100vh;
+    width: 100vw;
+}
+.THIS .centerheader {
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    height: 85px;
+    border: 1.5px solid #eaeaea;
+    background-color: rgb(239,238,238);
+}
+.THIS .menu {
+    margin: 0;
+    width: 250px;
+    float: left;
+    height: 100%;
+    background-color: white;
+    -webkit-box-shadow: 2px 0px 5px -1px rgba(110,110,110,1);
+    -moz-box-shadow: 2px 0px 5px -1px rgba(110,110,110,1);
+    box-shadow: 2px 0px 5px -1px rgba(110, 110, 110, 0.25);
+}
+
+.THIS .content{
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    padding: 2%;
+    padding-left: 300px;
+    background-color: #F2F2F2;
+}
+
+.THIS .innercontent{
+    background-color: white;
+    height: 90%;
+    width: 95%;
+    margin-left: 2%;
+    padding: 2%;
+    -webkit-box-shadow: 0px 0px 6px 3px rgba(110, 110, 110, 0.13);
+    -moz-box-shadow: 0px 0px 6px 3px rgba(110, 110, 110, 0.13);
+    box-shadow: 0px 0px 6px 3px rgba(110, 110, 110, 0.13);
+    overflow: auto;
+}
+
+/*
+.THIS ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+  
+  .THIS  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  }
+
+  */
+.THIS .row{
+    height: 100%;
+    padding-top: 85px;
+}
+.THIS .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Test CSS */
+.THIS .navbar-item{
+    display: flex;
+    padding: 10%;
+    margin: 0;
+}
+
+.THIS .navbar-item img{
+    margin-right: 8%;
+}
+
+.THIS .selected{
+    background-color: red;
+    border-left: 6px solid red;
+}
+
+.THIS .navbar-container{
+    height: 100%;
+}
+
+.THIS .navbar-item:hover{
+    background-color:white;
+    cursor: pointer;
+}
