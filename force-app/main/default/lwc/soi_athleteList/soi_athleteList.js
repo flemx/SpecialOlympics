@@ -1,6 +1,6 @@
-import { LightningElement, track, wire } from 'lwc';
-import { refreshApex } from '@salesforce/apex';
+import { LightningElement, track } from 'lwc';
 import athleteList from '@salesforce/apex/SOI_AthleteController.getAthletes';
+import deleteAth from '@salesforce/apex/SOI_AthleteController.deleteAthlete';
 
 const actions = [
     { label: 'Show details', name: 'show_details' },
@@ -17,10 +17,7 @@ const columns = [
                 { label: { fieldName: 'actionLabel'}, title: 'Click to Edit', name: 'delete-record', class: 'btn_next'}
             },
     { label: 'View', type: 'button', initialWidth: 135, typeAttributes: { label: 'View Details', name: 'view_details', title: 'Click to View Details'}},
-    {
-        type: 'action',
-        typeAttributes: { rowActions: actions },
-    },
+    { label: 'Status', fieldName: 'SOI_Status__c', type: 'text' },
 ];
 
 export default class Soi_athleteList extends LightningElement {
@@ -103,18 +100,43 @@ export default class Soi_athleteList extends LightningElement {
         }
     }
 
+     // Add modal to confirm deletion
+     // Add logic to determine correct status
     deleteHandler(event,row){
-        //Add modal to confirm deletion
+        console.log(`actionLabel is: ${row.actionLabel}`);
+        if(row.actionLabel === 'Undelete'){
+            this.deleteAthlete(row, 'Edited');
+        }
+        if(row.actionLabel === 'Delete'){
+            this.deleteAthlete(row, 'Deleted');
+        }
+    }
 
+    // Add fucntion to get clubId
+    // Add error in UI
+    deleteAthlete(row, newStatus){
+        deleteAth({ consId: row.SOI_ConsID__c, status: newStatus, ClubId: '0011X00000MgYfkQAF'})
+            .then(result => {
+                console.log('deleteAthlete successful');
+                this.setDeleteButton(row,newStatus)
+            })
+            .catch(error => {
+                console.log('ERROR on deleteAthlete' + error);
+            });
+    }
+
+    setDeleteButton(row,newStatus){
         let myData = this.data;
         myData = myData.map(function(rowData) {
             if (rowData.SOI_ConsID__c === row.SOI_ConsID__c) {
                 switch(row.actionLabel) {
                     case 'Delete':
                         rowData.actionLabel = 'Undelete';
+                        rowData.SOI_Status__c = newStatus;
                         break;
                     case 'Undelete':
                         rowData.actionLabel = 'Delete';
+                        rowData.SOI_Status__c = newStatus;
                         break;
                     default:
                         break;
@@ -123,7 +145,6 @@ export default class Soi_athleteList extends LightningElement {
             return rowData;
         });
         this.data = myData;
-        
     }
 
     deleteRow(row) {
