@@ -22,6 +22,11 @@ export default class Soi_athleteList extends LightningElement {
     @track data = [];
     @track columns = athleteColumns;
 
+    //Track search filter
+    @track searchKey;
+
+    // Raw data
+    rawData;
 
     /**
      * Call the atheletes once after component is rendered
@@ -77,6 +82,7 @@ export default class Soi_athleteList extends LightningElement {
             newList.push(con);
         }
         this.data = newList;
+        this.rawData = newList;
         console.log(newList);
     }
 
@@ -184,6 +190,7 @@ export default class Soi_athleteList extends LightningElement {
             return rowData;
         });
         this.data = myData;
+        this.rawData = myData;
     }
 
 
@@ -222,5 +229,20 @@ export default class Soi_athleteList extends LightningElement {
         this.data = data;
     }
 
+
+    /**
+     *  Function to filter table based on name & SOI_ConsID__c input
+     * @param {*} event 
+     */
+    fiterData(event){
+        let newArray = this.rawData.filter(function (el) {
+            if(el.Name.toLowerCase().includes(event.target.value.toLowerCase()) ||
+            el.SOI_ConsID__c.toLowerCase().includes(event.target.value.toLowerCase())){
+                return true;
+            }
+            return false;
+          });
+          this.data = newArray;
+    }
 
 }

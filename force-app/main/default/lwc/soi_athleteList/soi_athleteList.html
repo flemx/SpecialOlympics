@@ -1,4 +1,11 @@
 <template>
+        <lightning-input
+            type="search"
+            onchange={fiterData}
+            class="searchbar"
+            label="Search"
+            value={searchKey}>
+        </lightning-input>
         <template if:true={data}>
                 <div style="height: 300px;">
                         <lightning-datatable
@@ -8,7 +15,8 @@
                                 onrowaction={handleRowAction}
                                 onsort={updateColumnSorting}
                                 sorted-by={sortedBy} 
-                                sorted-direction={sortedDirection}>
+                                sorted-direction={sortedDirection}
+                                hide-checkbox-column>
                         </lightning-datatable>
                     </div>
         </template>
