@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Athletes</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.BIRTHDATE</columns>
+    <columns>SOI_ConsID__c</columns>
+    <columns>SOI_Medical_Expiry__c</columns>
+    <columns>SOI_Membership_Card__c</columns>
+    <columns>SOI_Status__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.Athlete</value>
+    </filters>
+    <label>Athletes</label>
+</ListView>

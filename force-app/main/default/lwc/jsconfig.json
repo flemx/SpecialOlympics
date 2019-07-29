@@ -11,6 +11,9 @@
             ],
             "c/soi_athleteList": [
                 "soi_athleteList/soi_athleteList.js"
+            ],
+            "c/soi_configVariables": [
+                "soi_configVariables/soi_configVariables.js"
             ]
         }
     },

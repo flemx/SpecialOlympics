@@ -81,6 +81,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>SOI_AthleteController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SOI_User</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SiteLoginController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -99,6 +107,16 @@
     <custom>true</custom>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.SOI_ClubName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.SOI_ConsID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.SOI_Medical_Expiry__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -112,12 +130,20 @@
         <field>Contact.SOI_Status__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SOI_Sport__c.SOI_Athlete__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
         <recordType>Contact.Athlete</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>SOI_Sport__c-Sport Layout</layout>
     </layoutAssignments>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
@@ -212,6 +238,10 @@
         <recordType>Contact.Athlete</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
+    <tabVisibilities>
+        <tab>SOI_Sport__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
     <userLicense>Guest User License</userLicense>
     <userPermissions>
         <enabled>true</enabled>
