@@ -84,7 +84,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Not changed</fullName>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unchanged</fullName>
             <default>false</default>
         </values>
     </picklistValues>

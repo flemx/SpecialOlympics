@@ -12,9 +12,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Not changed</fullName>
+                <fullName>Unchanged</fullName>
                 <default>false</default>
-                <label>Not changed</label>
+                <label>Unchanged</label>
             </value>
             <value>
                 <fullName>Edited</fullName>
