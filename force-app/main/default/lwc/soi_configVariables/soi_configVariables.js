@@ -14,7 +14,7 @@ const athleteColumns = [
     { label: 'Card', fieldName: 'SOI_Membership_Card__c', type: 'boolean', initialWidth: 65 },
     { label: 'Sports', fieldName: 'mySports', type: 'text'},
     { label: 'Status', fieldName: 'SOI_Status__c', type: 'text' , sortable : 'true'},
-    { label: 'Club', fieldName: 'SOI_ClubName__c', type: 'text' , sortable : 'true'},
+    //{ label: 'Club', fieldName: 'SOI_ClubName__c', type: 'text' , sortable : 'true'},
     { label: 'Actions', type: 'button', initialWidth: 75, typeAttributes: { label: 'Edit', name: 'view_details', title: 'Click to View Details'}},
     {label: '', type: 'button', initialWidth: 110, typeAttributes:
                 { label: { fieldName: 'actionLabel'}, title: 'Click to Edit', name: 'delete-record', class: 'btn_next'}

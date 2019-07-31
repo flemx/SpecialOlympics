@@ -3,3 +3,22 @@
     width: 50%;
     margin-left: 22%;
 }
+
+.searchAndNew{
+    display: flex;
+    flex-direction: row;
+}
+
+.newAthlete{
+    margin-top: 1.6%;
+    margin-left: 10%;
+    width: 160px;
+    height: 40px;
+    font-size: medium;
+}
+
+@media only screen and (min-width: 2000px) {
+    .newAthlete{
+        margin-top: 1.2%;
+    }
+  }

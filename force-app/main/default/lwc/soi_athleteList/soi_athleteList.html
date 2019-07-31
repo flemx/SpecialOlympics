@@ -1,11 +1,15 @@
 <template>
-        <lightning-input
-            type="search"
-            onchange={fiterData}
-            class="searchbar"
-            label="Search"
-            value={searchKey}>
-        </lightning-input>
+        <div class="searchAndNew">
+                <lightning-input
+                        type="search"
+                        onchange={fiterData}
+                        class="searchbar"
+                        placeholder="Search  for  Name  or  ID"
+                        value={searchKey}>
+                 </lightning-input>
+                 <lightning-button variant="destructive" label="New Athlete" title="Brand action" onclick={newAthlete} class="newAthlete"></lightning-button>
+        </div>
+        
         <template if:true={data}>
                 <div style="height: 300px;">
                         <lightning-datatable

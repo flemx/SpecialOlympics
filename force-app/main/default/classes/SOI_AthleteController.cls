@@ -12,9 +12,6 @@ public with sharing class SOI_AthleteController {
     }
     @AuraEnabled
     public static void deleteAthlete(String consId, String status, String AccId){
-            //Id userId = UserInfo.getUserId();
-            //User usr = [select ContactId, Profile.Name from User where Id = :userId limit 1];
-            //Contact customerCon = [select AccountId from Contact where Id = :usr.ContactId limit 1];
             Contact con = [select SOI_Status__c from Contact where  SOI_ConsID__c = :consId and AccountId = :AccId limit 1];
             con.SOI_Status__c = status;
             update con;
