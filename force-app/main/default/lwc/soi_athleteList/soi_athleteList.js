@@ -238,7 +238,8 @@ export default class Soi_athleteList extends LightningElement {
     fiterData(event){
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(event.target.value.toLowerCase()) ||
-            el.SOI_ConsID__c.toLowerCase().includes(event.target.value.toLowerCase())){
+            el.SOI_ConsID__c.toLowerCase().includes(event.target.value.toLowerCase()) ||
+            el.SOI_Status__c.toLowerCase().includes(event.target.value.toLowerCase()) ){
                 return true;
             }
             return false;
