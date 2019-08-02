@@ -19,6 +19,5 @@
         <userField>Contact.Account</userField>
     </accessMappings>
     <name>Trial Portal Users</name>
-    <profiles>Trial Customer Portal User</profiles>
     <profiles>high volume customer portal user</profiles>
 </SharingSet>

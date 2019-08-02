@@ -8,11 +8,11 @@
     <columns>SOI_Medical_Expiry__c</columns>
     <columns>SOI_Membership_Card__c</columns>
     <columns>SOI_Status__c</columns>
-    <filterScope>Mine</filterScope>
+    <columns>CONTACT.RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
     <filters>
         <field>CONTACT.RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Contact.Athlete</value>
     </filters>
     <label>Athletes</label>
 </ListView>
