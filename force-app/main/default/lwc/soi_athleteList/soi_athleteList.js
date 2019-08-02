@@ -2,8 +2,8 @@ import { LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import athleteList from '@salesforce/apex/SOI_AthleteController.getAthletes';
 import deleteAth from '@salesforce/apex/SOI_AthleteController.deleteAthlete';
-import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
-import { profileSettings } from 'c/soi_configVariables';
+//import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
+//import { profileSettings } from 'c/soi_configVariables';
 import { athleteColumns } from 'c/soi_configVariables';
 
 

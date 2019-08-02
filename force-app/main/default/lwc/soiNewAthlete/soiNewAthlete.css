@@ -1,0 +1,10 @@
+
+.newAthlete{
+    width: 160px;
+    height: 40px;
+    font-size: medium;
+}
+
+.close-icon svg{
+    fill: white;
+}
