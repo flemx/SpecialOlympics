@@ -45,7 +45,7 @@ public with sharing class SOI_AthleteController {
      *  Updates the status of the athlete record
      */
     @AuraEnabled
-    public static void updateStatus(String Id, String status, String AccId){
+    public static void deleteAthlete(String Id, String status, String AccId){
             Contact con = [select SOI_Status__c from Contact where  Id = :Id and AccountId = :AccId limit 1];
             con.SOI_Status__c = status;
             update con;

@@ -1,12 +1,12 @@
 /**
  *  soi_athletelist
  *   @ Damien Fleminks
- *   28-07-2019
+ *  
  */
 import { LightningElement, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import athleteList from '@salesforce/apex/SOI_AthleteController.getAthletes';
-import deleteAth from '@salesforce/apex/SOI_AthleteController.updateStatus';
+import deleteAth from '@salesforce/apex/SOI_AthleteController.deleteAthlete';
 import { refreshApex } from '@salesforce/apex';
 //import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 //import { profileSettings } from 'c/soi_configVariables';
@@ -21,35 +21,42 @@ export default class Soi_athleteList extends LightningElement {
     @track sortedDirection;
 
     // Variableds used to store the data, columns and error message used for the data table
-    @track error;
     @track columns = athleteColumns;
+    @track data;
+    @track error;
 
     //Track search filter
     @track searchKey;
 
+    
     // Raw data for filtering
     rawData;
 
-    @wire(athleteList) wiredAthletes;
+    // Keep track of wiredAthletes result for refreshApex to work
+    wiredAthletesResult;
+
     /**
-     *  Wire function to get the atheletes list
-     * @param {*} param0 
-     
+     *  Wired function to get the athlete list and reset the search field
+     * @param {*} result 
+     */
     @wire(athleteList)
-    wiredAthletes({ error, data }) {
-        if (data) {
-            console.log(data);
+    wiredAthletes(result) {
+        this.wiredContactResult = result;
+        if(result.data) {
+            this.data = result.data;
+            this.rawData = result.data;
             this.error = undefined;
-            return data;
-        } else if(error) {
-            let myTitle = `Error loading athletes`;
-            let myMessage = `Please reload the page or contact the administrator `;
-            this.triggerToast(myTitle,myMessage,'error');
-            this.error = error;
-            return undefined;
+            this.template.querySelector('.searchbar').value = '';
         }
-        return undefined;
+        else{
+            console.log(' athleteList error');
+            let myTitle = `Error loading athletes`;
+            let myMessage = `Please reload or contact the administrator `;
+            this.triggerToast(myTitle,myMessage,'error');
+            this.error = result.error;
+        }
     }
+
 
     /**
      *  Function to trigger a toast pop-up message dynamically
@@ -117,7 +124,8 @@ export default class Soi_athleteList extends LightningElement {
             .then(result => {
                 console.log('deleteAthlete successful');
                 this.triggerToast(toastInfo);
-                return refreshApex(this.wiredAthletes);
+                //this.this = this.wiredAthletes;
+                return refreshApex(this.wiredContactResult);
                 //this.setDeleteButton(row,newStatus)
             })
             .catch(error => {
@@ -139,12 +147,14 @@ export default class Soi_athleteList extends LightningElement {
      */
     updateColumnSorting(event) {
         var fieldName = event.detail.fieldName;
-            var sortDirection = event.detail.sortDirection;
-            // assign the latest attribute with the sorted column fieldName and sorted direction
-            this.sortedBy = fieldName;
-            this.sortedDirection = sortDirection;
-            //this.data = this.sortData(fieldName, sortDirection);
-            this.sortData(fieldName, sortDirection);
+        var sortDirection = event.detail.sortDirection;
+        console.log(fieldName);
+        console.log(sortDirection);
+        // assign the latest attribute with the sorted column fieldName and sorted direction
+        this.sortedBy = fieldName;
+        this.sortedDirection = sortDirection;
+        //this.data = this.sortData(fieldName, sortDirection);
+        this.sortData(fieldName, sortDirection);
    }
 
     /**
@@ -153,29 +163,32 @@ export default class Soi_athleteList extends LightningElement {
      * @param {*} sortDirection 
      */
     sortData(fieldName, sortDirection){
-        var data = JSON.parse(JSON.stringify(this.data));
+        let data = JSON.parse(JSON.stringify(this.wiredAthletes));
+        console.log(data.data);
         //function to return the value stored in the field
-        var key =(a) => a[fieldName]; 
-        var reverse = sortDirection === 'asc' ? 1: -1;
-        data.sort((a,b) => {
+        let key =(a) => a[fieldName]; 
+        let reverse = sortDirection === 'asc' ? 1: -1;
+        data.data.sort((a,b) => {
             let valueA = key(a) ? key(a).toLowerCase() : '';
             let valueB = key(b) ? key(b).toLowerCase() : '';
             return reverse * ((valueA > valueB) - (valueB > valueA));
         });
 
         //set sorted data to contacts attribute
-        this.data = data;
+        this.wiredAthletes = data;
+        console.log(data.data);
     }
 
 
     /**
-     *  Function to filter table based on name & SOI_ConsID__c input
+     *  Function to filter table based on name & SOI_ConsID__c and SOI_mySports__c input
      * @param {*} event 
      */
     fiterData(event){
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(event.target.value.toLowerCase()) ||
             el.SOI_ConsID__c.toLowerCase().includes(event.target.value.toLowerCase()) ||
+            el.SOI_mySports__c.toLowerCase().includes(event.target.value.toLowerCase()) ||
             el.SOI_Status__c.toLowerCase().includes(event.target.value.toLowerCase()) ){
                 return true;
             }
