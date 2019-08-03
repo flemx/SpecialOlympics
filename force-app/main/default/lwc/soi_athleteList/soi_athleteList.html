@@ -11,11 +11,11 @@
                  <c-soi-new-athlete class="newAthlete"></c-soi-new-athlete>
         </div>
         
-        <template if:true={data}>
+        <template if:true={wiredAthletes.data}>
                 <div style="height: 300px;">
                         <lightning-datatable
                                 key-field="id"
-                                data={data}
+                                data={wiredAthletes.data}
                                 columns={columns}
                                 onrowaction={handleRowAction}
                                 onsort={updateColumnSorting}

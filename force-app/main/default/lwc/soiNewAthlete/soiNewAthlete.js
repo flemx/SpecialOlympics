@@ -2,7 +2,7 @@ import { LightningElement,track } from 'lwc';
 import { createRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import CONTACT_OBJECT from '@salesforce/schema/Contact';
-import NAME_FIELD from '@salesforce/schema/Contact.Name';
+import NAME_FIELD from '@salesforce/schema/Contact.LastName';
 
 export default class Soi_newAthlete extends LightningElement {
     
@@ -21,6 +21,8 @@ export default class Soi_newAthlete extends LightningElement {
         const fields = {};
         fields[NAME_FIELD.fieldApiName] = this.name;
         const recordInput = { apiName: CONTACT_OBJECT.objectApiName, fields };
+        console.log(recordInput);
+        
         createRecord(recordInput)
             .then(contact => {
                 console.log(`Contact Id: ${contact.Id}`);
@@ -33,6 +35,8 @@ export default class Soi_newAthlete extends LightningElement {
                 );
             })
             .catch(error => {
+                console.log('error');
+                console.log(error);
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Error creating record',
@@ -41,6 +45,7 @@ export default class Soi_newAthlete extends LightningElement {
                     }),
                 );
             });
+            
     }
 
     openmodal() {
