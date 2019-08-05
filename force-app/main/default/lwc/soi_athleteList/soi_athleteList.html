@@ -2,7 +2,7 @@
         <div class="searchAndNew">
                 <lightning-input
                         type="search"
-                        onchange={fiterData}
+                        onchange={searchKeyEvent}
                         class="searchbar"
                         placeholder="Filter  by  Name,  ID  or Status"
                         value={searchKey}>
@@ -12,7 +12,7 @@
         </div>
         
         <template if:true={data}>
-                <div style="height: 300px;">
+                <div style="height: 90%;">
                         <lightning-datatable
                                 key-field="id"
                                 data={data}

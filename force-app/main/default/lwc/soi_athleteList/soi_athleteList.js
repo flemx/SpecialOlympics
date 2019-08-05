@@ -28,6 +28,8 @@ export default class Soi_athleteList extends LightningElement {
     //Track search filter
     @track searchKey;
 
+    @track searchKey;
+
     // Track if renderedCallback was executed
     isRendered = false;
     
@@ -52,9 +54,13 @@ export default class Soi_athleteList extends LightningElement {
         this.wiredContactResult = result;
         if(result.data) {
             this.data = result.data;
-            this.rawData = result.data;
+            this.sortData('Name', 'asc');
+            this.rawData = this.data;
+            if(this.searchKey){
+                this.data = this.fiterData(this.searchKey);
+            }
             this.error = undefined;
-            this.template.querySelector('.searchbar').value = '';
+            //this.template.querySelector('.searchbar').value = '';
         }
         else{
             console.log(' athleteList error');
@@ -179,9 +185,7 @@ export default class Soi_athleteList extends LightningElement {
             .then(result => {
                 console.log('deleteAthlete successful');
                 this.triggerToast(toastInfo);
-                //this.this = this.wiredAthletes;
                 return refreshApex(this.wiredContactResult);
-                //this.setDeleteButton(row,newStatus)
             })
             .catch(error => {
                 let toastInfo = {
@@ -203,12 +207,11 @@ export default class Soi_athleteList extends LightningElement {
     updateColumnSorting(event) {
         var fieldName = event.detail.fieldName;
         var sortDirection = event.detail.sortDirection;
-        console.log(fieldName);
+        console.log(fieldName); 
         console.log(sortDirection);
         // assign the latest attribute with the sorted column fieldName and sorted direction
         this.sortedBy = fieldName;
         this.sortedDirection = sortDirection;
-        //this.data = this.sortData(fieldName, sortDirection);
         this.sortData(fieldName, sortDirection);
    }
 
@@ -217,21 +220,20 @@ export default class Soi_athleteList extends LightningElement {
      * @param {*} fieldName 
      * @param {*} sortDirection 
      */
-    sortData(fieldName, sortDirection){
-        let data = JSON.parse(JSON.stringify(this.wiredAthletes));
-        console.log(data.data);
+    sortData(fieldName, sortDirection){        
+        let data = JSON.parse(JSON.stringify(this.data));
         //function to return the value stored in the field
         let key =(a) => a[fieldName]; 
         let reverse = sortDirection === 'asc' ? 1: -1;
-        data.data.sort((a,b) => {
+        
+        data.sort((a,b) => {
             let valueA = key(a) ? key(a).toLowerCase() : '';
             let valueB = key(b) ? key(b).toLowerCase() : '';
             return reverse * ((valueA > valueB) - (valueB > valueA));
         });
 
         //set sorted data to contacts attribute
-        this.wiredAthletes = data;
-        console.log(data.data);
+        this.data = data;
     }
 
 
@@ -239,7 +241,26 @@ export default class Soi_athleteList extends LightningElement {
      *  Function to filter table based on name & SOI_ConsID__c and SOI_mySports__c input
      * @param {*} event 
      */
-    fiterData(event){
+    searchKeyEvent(event){
+        console.log('searchKeyEvent executed');
+        this.searchKey = event.target.value;
+        this.data = this.fiterData(this.searchKey);
+    }
+
+    fiterData(searchKey){
+        console.log('fiterData executed');
+        console.log('fValue is: ' + searchKey);
+        let newArray = this.rawData.filter(function (el) {
+            if(el.Name.toLowerCase().includes(searchKey.toLowerCase()) ||
+            el.SOI_ConsID__c.toLowerCase().includes(searchKey.toLowerCase()) ||
+            el.SOI_mySports__c.toLowerCase().includes(searchKey.toLowerCase()) ||
+            el.SOI_Status__c.toLowerCase().includes(searchKey.toLowerCase()) ){
+                return true;
+            }
+            return false;
+          });
+          return newArray;
+        /*
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(event.target.value.toLowerCase()) ||
             el.SOI_ConsID__c.toLowerCase().includes(event.target.value.toLowerCase()) ||
@@ -250,6 +271,7 @@ export default class Soi_athleteList extends LightningElement {
             return false;
           });
           this.data = newArray;
+          */
     }
 
 }

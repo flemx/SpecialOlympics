@@ -1,3 +1,8 @@
+/**
+ *   soiNewAthlete
+ *   04-08-2019
+ *   @ Damien Fleminks
+ */
 import { LightningElement,track,wire,api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import addSports from '@salesforce/apex/SOI_AthleteController.newSports';
@@ -53,13 +58,9 @@ export default class Soi_newAthlete extends LightningElement {
             { label: 'Running', value: 'Running' },
             { label: 'Golf', value: 'Golf' },
             { label: 'Boxing', value: 'Boxing' },
-            { label: 'Hockey', value: 'Boxing' },
-            { label: 'Rugbey', value: 'Boxing' }
+            { label: 'Hockey', value: 'Hockey' },
+            { label: 'Rugbey', value: 'Rugbey' }
         ];
-    }
-
-    getSelected(){ 
-        console.log(this.userAccountId);
     }
 
     get selected() {
@@ -79,6 +80,10 @@ export default class Soi_newAthlete extends LightningElement {
      }
 
 
+     /**
+      *  After form for new athlete is submitted, use the contactId of the newly created record to associate the assigned sports as related records 
+      * @param {*} event 
+      */
     successHandle(event){
         console.log('EXECUTE successHandle');
         console.log(event.detail.id);
