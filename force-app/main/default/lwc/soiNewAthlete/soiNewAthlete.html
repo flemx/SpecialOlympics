@@ -44,7 +44,22 @@
                                        </div>
 
                                        <div class="slds-grid fields-container sports-container">
-      
+
+                                          <div class="slds-col slds-size_1-of-1">
+                                              <lightning-dual-listbox name="languages"
+                                              label="Add sports"
+                                              source-label="Available"
+                                              selected-label="Assigned"
+                                              field-level-help="Assign the athlete's sports from the available sports"
+                                              options={options}
+                                              onchange={handleChange}
+                                              disable-reordering
+                                              value={selectedSports}
+                                              remove-button-label="Remove"
+                                              size=5
+                                              add-button-label="Assign"></lightning-dual-listbox>
+                                              <lightning-button label="Get selected" onclick={getSelected}></lightning-button>
+                                          </div>
                                       
                           
                                        </div>

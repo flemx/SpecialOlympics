@@ -28,11 +28,39 @@ export default class Soi_newAthlete extends LightningElement {
     @wire(getObjectInfo, { objectApiName: CONTACT_OBJECT })
     objectInfo;
 
+
     //Return the record type Id for 'Athlete'
     get recordTypeId() {
         // Returns a map of record type Ids 
         const rtis = this.objectInfo.data.recordTypeInfos;
         return Object.keys(rtis).find(rti => rtis[rti].name === 'Athlete');
+    }
+
+    @track _selected = [];
+
+    get options() {
+        return [
+            { label: 'Football', value: 'Football' },
+            { label: 'Swimming', value: 'Swimming' },
+            { label: 'Basketball', value: 'Basketball' },
+            { label: 'Running', value: 'Running' },
+            { label: 'Golf', value: 'Golf' },
+            { label: 'Boxing', value: 'Boxing' },
+            { label: 'Hockey', value: 'Boxing' },
+            { label: 'Rugbey', value: 'Boxing' }
+        ];
+    }
+
+    getSelected(){ 
+        console.log(this.selected);
+    }
+
+    get selected() {
+        return this._selected.length ? this._selected : false;
+    }
+
+    handleChange(e) {
+        this._selected = e.detail.value;
     }
 
 

@@ -17,6 +17,9 @@
             ],
             "c/soiNewAthlete": [
                 "soiNewAthlete/soiNewAthlete.js"
+            ],
+            "c/slimselect": [
+                "../staticresources/AF_assets/vendor/slimselect/slimselect.js"
             ]
         }
     },
