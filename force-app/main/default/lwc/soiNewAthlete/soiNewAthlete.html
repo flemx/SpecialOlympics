@@ -6,36 +6,68 @@
                 <div style="height:640px">
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
                           <div class="slds-modal__container">
-                            <header class="slds-modal__header">
-                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-                                    <lightning-icon icon-name="utility:close" size="medium" class="close-icon"></lightning-icon>
-                                <span class="slds-assistive-text">Close</span>
-                              </button>
-                              <h2 class="slds-text-heading_medium slds-hyphenate">Create new Athlete</h2>
-                            </header>
-                            <div class="slds-modal__content slds-p-around_medium">
-                              
-                                    <lightning-input label="Name" onchange={handleNameChange} class="slds-m-bottom_x-small"></lightning-input>
-                                    <lightning-button label="Create Contact" variant="brand" onclick={handleAthleteCreated}></lightning-button>
+
+
+                              <lightning-record-edit-form object-api-name={contactObject} onsuccess={testHandle} record-type-id={recordTypeId}>
+                                  <header class="slds-modal__header">
+                                      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                          <lightning-icon icon-name="utility:close" size="medium" class="close-icon"></lightning-icon>
+                                      <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 class="slds-text-heading_medium slds-hyphenate">Create new Athlete</h2>
+                                  </header>
+                                  <div class="slds-modal__content slds-p-around_medium">
+                                      <lightning-messages></lightning-messages>
+                                      <div class="slds-grid fields-container">
+                                          <div class="slds-col slds-size_1-of-2">
+                                              <lightning-input-field field-name={athleteId} ></lightning-input-field>
+                                          </div>
+                                         
+                                       </div>
+                                       <div class="slds-grid fields-container">
+                                          <div class="slds-col slds-size_1-of-2">
+                                              <lightning-input-field field-name={firstName} ></lightning-input-field>
+                                          </div>
+                                          <div class="slds-col slds-size_2-of-2">
+                                              <lightning-input-field field-name={lastName} ></lightning-input-field>
+                                          </div>
+                      
+                                       </div>
+                                       <div class="slds-grid fields-container add-border">
+                                          <div class="slds-col slds-size_1-of-2">
+                                              <lightning-input-field field-name={birthdate} ></lightning-input-field>
+                                          </div>
+                                          <div class="slds-col slds-size_2-of-2">
+                                              <lightning-input-field field-name={comments} ></lightning-input-field>
+                                          </div>
+                          
+                                       </div>
+
+                                       <div class="slds-grid fields-container sports-container">
+      
+                                      
+                          
+                                       </div>
+    
+                                    </div>
+
+
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <lightning-button  type="submit" label="Save" variant="brand" ></lightning-button>
+                        </footer>
+
+                               
+                              </lightning-record-edit-form>
+
                                 <!--
-                                    <lightning-record-edit-form object-api-name={contactObject} onsuccess={handleAthleteCreated}>
-                                            <lightning-messages></lightning-messages>
-                                            <div class="slds-grid">
-                                                <div class="slds-col slds-size_1-of-2">
-                                                    <lightning-input-field field-name={nameField}></lightning-input-field>
-                                                </div>
-                                                <div class="slds-col slds-size_1-of-2">
-                                                </div>
-                                             </div>
-                                            <lightning-button type="submit" variant="brand" label="Create Account"></lightning-button>
-                                        </lightning-record-edit-form>
+                                   <lightning-input label="First Name" onchange={handleFirstName} class="slds-m-bottom_x-small"></lightning-input>
+                              <lightning-input label="Surname" onchange={handleLastName} class="slds-m-bottom_x-small"></lightning-input>
+                          
                                     -->
 
-                            </div>
-                            <footer class="slds-modal__footer">
-                                    <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <lightning-button label="Save" variant="brand" onclick={saveMethod}></lightning-button>
-                            </footer>
+
+
                           </div>
                         </section>
                         <div class="slds-backdrop slds-backdrop_open"></div>
