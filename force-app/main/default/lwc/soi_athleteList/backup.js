@@ -248,3 +248,4 @@ export default class Soi_athleteList extends LightningElement {
     }
 
 }
+

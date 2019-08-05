@@ -13,6 +13,7 @@
     <filters>
         <field>CONTACT.RECORDTYPE</field>
         <operation>equals</operation>
+        <value>Contact.Athlete</value>
     </filters>
     <label>Athletes</label>
 </ListView>

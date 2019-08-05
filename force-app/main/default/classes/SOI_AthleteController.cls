@@ -10,7 +10,7 @@ public with sharing class SOI_AthleteController {
     @AuraEnabled
     public static User getUser(){
         Id userId = UserInfo.getUserId();
-        return [select ContactId,Name, Profile.Name from User where Id = :userId limit 1];
+        return [select ContactId, Contact.AccountId, Name, Profile.Name from User where Id = :userId limit 1];
     }
 
     /**
@@ -50,4 +50,22 @@ public with sharing class SOI_AthleteController {
             con.SOI_Status__c = status;
             update con;
     }
+
+     /**
+     *  newSports method
+     *  Add sports to newly created Athlete
+     */
+    @AuraEnabled
+    public static void newSports(List<String> sportList, String contactId){
+            List<SOI_Sport__c> newSports = new List<SOI_Sport__c>();
+            
+            for(String sport: sportList){
+                SOI_Sport__c newSport = new SOI_Sport__c();
+                newSport.Name = sport;
+                newSport.SOI_Athlete__c = contactId;
+                newSports.add(newSport);
+            }
+            insert newSports;
+    }
+
 }

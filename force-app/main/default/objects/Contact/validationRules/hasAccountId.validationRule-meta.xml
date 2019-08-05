@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hasAccountId</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISBLANK(AccountId)</errorConditionFormula>
+    <errorMessage>No Club has been specified, please try again or contact the administrator</errorMessage>
+</ValidationRule>

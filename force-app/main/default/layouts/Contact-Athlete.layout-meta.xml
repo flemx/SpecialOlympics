@@ -29,7 +29,7 @@
                 <field>SOI_Membership_Card__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>SOI_ConsID__c</field>
             </layoutItems>
             <layoutItems>
@@ -51,6 +51,18 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SOI_ClubName__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>SOI_ActionLabel__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_mySports__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_Comments__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>

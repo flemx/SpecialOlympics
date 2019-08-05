@@ -8,7 +8,7 @@
                         value={searchKey}>
                  </lightning-input>
                  <!--<lightning-button variant="destructive" label="New Athlete" title="Brand action" onclick={newAthlete} class="newAthlete"></lightning-button>-->
-                 <c-soi-new-athlete class="newAthlete"></c-soi-new-athlete>
+                 <c-soi-new-athlete class="newAthlete" user-account-id={userAccountId}></c-soi-new-athlete>
         </div>
         
         <template if:true={data}>

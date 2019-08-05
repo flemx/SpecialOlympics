@@ -8,7 +8,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import athleteList from '@salesforce/apex/SOI_AthleteController.getAthletes';
 import deleteAth from '@salesforce/apex/SOI_AthleteController.deleteAthlete';
 import { refreshApex } from '@salesforce/apex';
-//import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
+import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 //import { profileSettings } from 'c/soi_configVariables';
 import { athleteColumns } from 'c/soi_configVariables';
 
@@ -28,6 +28,8 @@ export default class Soi_athleteList extends LightningElement {
     //Track search filter
     @track searchKey;
 
+    // Track if renderedCallback was executed
+    isRendered = false;
     
     // Raw data for filtering
     rawData;
@@ -35,7 +37,13 @@ export default class Soi_athleteList extends LightningElement {
     // Keep track of wiredAthletes result for refreshApex to work
     wiredAthletesResult;
 
-    /**
+    // Store the user record
+    userRecord;
+
+    // Keep track of the user's accountId
+    @track userAccountId;
+    
+    /** 
      *  Wired function to get the athlete list and reset the search field
      * @param {*} result 
      */
@@ -50,13 +58,60 @@ export default class Soi_athleteList extends LightningElement {
         }
         else{
             console.log(' athleteList error');
-            let myTitle = `Error loading athletes`;
-            let myMessage = `Please reload or contact the administrator `;
-            this.triggerToast(myTitle,myMessage,'error');
-            this.error = result.error;
+            //console.log(result.error);
+            let toastInfo = {
+                "myTitle" : "Error loading athletes",
+                "myMessage" : `Please reload or contact the administrator.`,
+                "variant" : "error"
+            };
+            this.triggerToast(toastInfo);
+            this.error = "Error loading athletes, please try to load the page again or contact the administrator if that does not resolve the problem.";
         }
     }
 
+    /**
+     *  Get the current user record 
+     */
+    constructor(){
+        super();
+        theUser()
+            .then(result => {
+                console.log('User returned');
+                console.log(result);
+                if(result.Contact){
+                    this.userRecord = result;
+                    this.userAccountId = result.Contact.AccountId;
+                }
+            })
+            .catch(error => {
+                console.log('ERROR on theUser()');
+                console.log(error);
+                let toastInfo = {
+                    "myTitle" : "Error getting user details",
+                    "myMessage" : `Unbale to get user, please try to load again or contact the administrator. Error message: ${error}`,
+                    "variant" : "error"
+                };
+            });
+
+        
+
+    }
+
+    // Add event listeners after first render
+    renderedCallback(){
+        if(!this.isRendered){
+            this.isRendered = true;
+        }
+        const element = this.template.querySelector('.newAthlete');
+        element.addEventListener('refreshApexEvent', ()=>{
+            console.log('Received refreshApexEvent event');
+            console.log('Refreshing athelete list');
+            return refreshApex(this.wiredContactResult);
+        });
+
+    }
+
+ 
 
     /**
      *  Function to trigger a toast pop-up message dynamically

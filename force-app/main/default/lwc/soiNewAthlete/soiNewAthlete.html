@@ -8,7 +8,7 @@
                           <div class="slds-modal__container">
 
 
-                              <lightning-record-edit-form object-api-name={contactObject} onsuccess={testHandle} record-type-id={recordTypeId}>
+                              <lightning-record-edit-form object-api-name={contactObject} onsuccess={successHandle} record-type-id={recordTypeId} onsubmit={handleSubmit}>
                                   <header class="slds-modal__header">
                                       <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
                                           <lightning-icon icon-name="utility:close" size="medium" class="close-icon"></lightning-icon>
@@ -40,7 +40,6 @@
                                           <div class="slds-col slds-size_2-of-2">
                                               <lightning-input-field field-name={comments} ></lightning-input-field>
                                           </div>
-                          
                                        </div>
 
                                        <div class="slds-grid fields-container sports-container">
@@ -48,7 +47,7 @@
                                           <div class="slds-col slds-size_1-of-1">
                                               <lightning-dual-listbox name="languages"
                                               label="Add sports"
-                                              source-label="Available"
+                                              source-label="Available"]
                                               selected-label="Assigned"
                                               field-level-help="Assign the athlete's sports from the available sports"
                                               options={options}
@@ -58,7 +57,7 @@
                                               remove-button-label="Remove"
                                               size=5
                                               add-button-label="Assign"></lightning-dual-listbox>
-                                              <lightning-button label="Get selected" onclick={getSelected}></lightning-button>
+                                              <lightning-button label="Get selected" onclick={getSelected} disabled={submitDisabled}></lightning-button>
                                           </div>
                                       
                           

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SOI_ActionLabel__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( TEXT(SOI_Status__c) = &#39;Deleted&#39;, &#39;Undelete&#39;, &#39;Delete&#39;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>SOI_ActionLabel</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

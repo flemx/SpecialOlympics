@@ -1,4 +1,16 @@
-trigger ContactTrigger on Contact (after insert) {
+/**
+ * ContactTriggerHandler
+ * 05-08-2019
+ * @ Damien Fleminks
+ */
+ 
+trigger ContactTrigger on Contact (before insert) {
 
-  // ContactTriggerHandler.createContact();
+  
+    if(trigger.isInsert & trigger.isBefore){
+      	List<Contact> contacts = Trigger.New;
+        ContactTriggerHandler.changeOwner(contacts);
+    }
+
+
 }
