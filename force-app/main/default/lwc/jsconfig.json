@@ -9,17 +9,14 @@
             "c/af_navigation": [
                 "af_navigation/af_navigation.js"
             ],
+            "c/soiNewAthlete": [
+                "soiNewAthlete/soiNewAthlete.js"
+            ],
             "c/soi_athleteList": [
                 "soi_athleteList/soi_athleteList.js"
             ],
             "c/soi_configVariables": [
                 "soi_configVariables/soi_configVariables.js"
-            ],
-            "c/soiNewAthlete": [
-                "soiNewAthlete/soiNewAthlete.js"
-            ],
-            "c/slimselect": [
-                "../staticresources/AF_assets/vendor/slimselect/slimselect.js"
             ]
         }
     },

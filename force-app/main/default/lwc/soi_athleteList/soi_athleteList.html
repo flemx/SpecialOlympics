@@ -1,31 +1,35 @@
 <template>
-        <div class="searchAndNew">
-                <lightning-input
-                        type="search"
-                        onchange={searchKeyEvent}
-                        class="searchbar"
-                        placeholder="Filter  by  Name,  ID  or Status"
-                        value={searchKey}>
-                 </lightning-input>
-                 <!--<lightning-button variant="destructive" label="New Athlete" title="Brand action" onclick={newAthlete} class="newAthlete"></lightning-button>-->
-                 <c-soi-new-athlete class="newAthlete" user-account-id={userAccountId}></c-soi-new-athlete>
+        <div class="app-wrapper">
+
+                
+                <div class="searchAndNew">
+                        <lightning-input
+                                type="search"
+                                onchange={searchKeyEvent}
+                                class="searchbar"
+                                placeholder="Filter  by  Name,  ID  or Status"
+                                value={searchKey}>
+                        </lightning-input>
+                        <!--<lightning-button variant="destructive" label="New Athlete" title="Brand action" onclick={newAthlete} class="newAthlete"></lightning-button>-->
+                        <c-soi-new-athlete class="newAthlete" user-account-id={userAccountId}></c-soi-new-athlete>
+                </div>
+                
+                <template if:true={data}>
+                        <div class="table-container">
+                                <lightning-datatable
+                                        key-field="id"
+                                        data={data}
+                                        columns={columns}
+                                        onrowaction={handleRowAction}
+                                        onsort={updateColumnSorting}
+                                        sorted-by={sortedBy} 
+                                        sorted-direction={sortedDirection}
+                                        hide-checkbox-column>
+                                </lightning-datatable>
+                        </div>
+                </template>
+                <template if:true={error}>
+                <h1>{error}</h1>
+                </template>
         </div>
-        
-        <template if:true={data}>
-                <div style="height: 90%;">
-                        <lightning-datatable
-                                key-field="id"
-                                data={data}
-                                columns={columns}
-                                onrowaction={handleRowAction}
-                                onsort={updateColumnSorting}
-                                sorted-by={sortedBy} 
-                                sorted-direction={sortedDirection}
-                                hide-checkbox-column>
-                        </lightning-datatable>
-                    </div>
-        </template>
-        <template if:true={error}>
-            <h1>{error}</h1>
-        </template>
 </template>
