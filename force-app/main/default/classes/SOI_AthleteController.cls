@@ -39,7 +39,7 @@ public with sharing class SOI_AthleteController {
         }
         return newAthletes;
     }
-
+    
     /**
      *  updateStatus method
      *  Updates the status of the athlete record

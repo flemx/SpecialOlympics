@@ -3,14 +3,14 @@
  * @ Damien Fleminks
  * 18-08-2019
  */
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track, wire, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import athleteList from '@salesforce/apex/SOI_AthleteController.getAthletes';
-import deleteAth from '@salesforce/apex/SOI_AthleteController.deleteAthlete';
+import volunteerList from '@salesforce/apex/SOI_VolunteerController.getVolunteers';
+import deleteVol from '@salesforce/apex/SOI_VolunteerController.deleteVolunteer';
 import { refreshApex } from '@salesforce/apex';
 import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 //import { profileSettings } from 'c/soi_configVariables';
-import { athleteColumns } from 'c/soi_configVariables';
+import { volunteerColumns } from 'c/soi_configVariables';
 
 
 export default class SoiVolunteerList extends LightningElement {
@@ -20,9 +20,22 @@ export default class SoiVolunteerList extends LightningElement {
     @track sortedDirection;
 
     // Variableds used to store the data, columns and error message used for the data table
-    @track columns = athleteColumns;
+    @track columns = volunteerColumns;
     @track data;
     @track error;
+
+    //Type of volunteer
+    @api volunteerType;
+    /*
+    @api get volunteerType(){
+        return this.typeVolunteer;
+    }
+    set volunteerType(value){
+        //this.typeVolunteer = value;
+    }
+    */
+
+    typeVolunteer = 'general';
 
     //Track search filter
     @track searchKey;
@@ -38,7 +51,7 @@ export default class SoiVolunteerList extends LightningElement {
     rawData;
 
     // Keep track of wiredAthletes result for refreshApex to work
-    wiredAthletesResult;
+    wiredContactResult;
 
     // Store the user record
     userRecord;
@@ -50,8 +63,8 @@ export default class SoiVolunteerList extends LightningElement {
      *  Wired function to get the athlete list and reset the search field
      * @param {*} result 
      */
-    @wire(athleteList)
-    wiredAthletes(result) {
+    @wire(volunteerList, {volunteerType : '$volunteerType'})
+    wiredVolunteers(result) {
         this.wiredContactResult = result;
         if(result.data) {
             this.data = result.data;
@@ -62,17 +75,18 @@ export default class SoiVolunteerList extends LightningElement {
             }
             this.error = undefined;
             //this.template.querySelector('.searchbar').value = '';
+            console.log(this.data);
         }
         else{
-            console.log(' athleteList error');
+            console.log(' volunteerList error');
             //console.log(result.error);
             let toastInfo = {
-                "myTitle" : "Error loading athletes",
+                "myTitle" : "Error loading volunteers",
                 "myMessage" : `Please reload or contact the administrator.`,
                 "variant" : "error"
             };
             this.triggerToast(toastInfo);
-            this.error = "Error loading athletes, please try to load the page again or contact the administrator if that does not resolve the problem.";
+            this.error = "Error loading volunteers, please try to load the page again or contact the administrator if that does not resolve the problem.";
         }
     }
 
@@ -181,19 +195,19 @@ export default class SoiVolunteerList extends LightningElement {
         console.log(`actionLabel is: ${row.SOI_ActionLabel__c}`);
         if(row.SOI_ActionLabel__c === 'Undelete'){
             let toastInfo = {
-                "myTitle" : `Athlete succesfully Undeleted`,
-                "myMessage" : `Athlete is not marked to be deleted anymore`,
+                "myTitle" : `Volunteer succesfully Undeleted`,
+                "myMessage" : `Volunteer is not marked to be deleted anymore`,
                 "variant" : "success"
             };
-            this.deleteAthlete(row, 'Edited', toastInfo);
+            this.deleteVolunteer(row, 'Edited', toastInfo);
         }
         if(row.SOI_ActionLabel__c === 'Delete'){
             let toastInfo = {
-                "myTitle" : `Athlete succesfully Deleted`,
-                "myMessage" : `Athlete is marked as deleted, to undo this action, press the undelete buttton`,
+                "myTitle" : `Volunteer succesfully Deleted`,
+                "myMessage" : `Volunteer is marked as deleted, to undo this action, press the undelete buttton`,
                 "variant" : "success"
             };
-            this.deleteAthlete(row, 'Deleted',toastInfo);
+            this.deleteVolunteer(row, 'Deleted',toastInfo);
         }
     }
 
@@ -203,22 +217,22 @@ export default class SoiVolunteerList extends LightningElement {
      * @param {*} row 
      * @param {*} newStatus 
      */
-    deleteAthlete(row, newStatus, toastInfo){
+    deleteVolunteer(row, newStatus, toastInfo){
         //console.log(row.Id);
-        deleteAth({ Id: row.Id, status: newStatus, AccId: row.AccountId})
+        deleteVol({ Id: row.Id, status: newStatus, AccId: row.AccountId})
             .then(result => {
-                console.log('deleteAthlete successful');
+                console.log('deleteVolunteer successful');
                 this.triggerToast(toastInfo);
                 return refreshApex(this.wiredContactResult);
             })
             .catch(error => {
                 let toastInfo = {
-                    "myTitle" : `Error deleting athletes`,
-                    "myMessage" : `Unable to delete the athlete, please try again or contact the admin`,
+                    "myTitle" : `Error deleting volunteer`,
+                    "myMessage" : `Unable to delete the volunteer, please try again or contact the admin`,
                     "variant" : "error"
                 };
                 this.triggerToast(toastInfo);
-                console.log('ERROR on deleteAthlete' + error);
+                console.log('ERROR on deleteVolunteer' + error);
             });
     }
 
@@ -277,7 +291,7 @@ export default class SoiVolunteerList extends LightningElement {
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(searchKey.toLowerCase()) ||
             el.SOI_ConsID__c.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_mySports__c.toLowerCase().includes(searchKey.toLowerCase()) ||
+            el.SOI_myRoles__c.toLowerCase().includes(searchKey.toLowerCase()) ||
             el.SOI_Status__c.toLowerCase().includes(searchKey.toLowerCase()) ){
                 return true;
             }

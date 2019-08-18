@@ -21,6 +21,19 @@ const athleteColumns = [
             }
 ];
 
+const volunteerColumns = [
+    { label: 'ID', fieldName: 'SOI_ConsID__c', type: 'text', initialWidth: 75 },
+    { label: 'Name', fieldName: 'Name', type: 'text', sortable : 'true' },
+    { label: 'Card', fieldName: 'SOI_Membership_Card__c', type: 'boolean', initialWidth: 65 },
+    { label: 'Roles', fieldName: 'SOI_myRoles__c', type: 'text'},
+    { label: 'Safeguarding', fieldName: 'SOI_Certificate__c', type: 'text'},
+    { label: 'Status', fieldName: 'SOI_Status__c', type: 'text' , sortable : 'true', cellAttributes:{ class: {fieldName:"SOI_Status__c"} }},
+    //{ label: 'Club', fieldName: 'SOI_ClubName__c', type: 'text' , sortable : 'true'},
+    { label: 'Actions', type: 'button', initialWidth: 110, typeAttributes: { label: 'Edit', name: 'view_details', title: 'Click to View Details'}},
+    {label: '', type: 'button', initialWidth: 110, typeAttributes:
+                { label: { fieldName: 'SOI_ActionLabel__c'}, title: 'Click to Edit', name: 'delete-record', class: 'btn_next'}
+            }
+];
 
 
-export { profileSettings, athleteColumns };
+export { profileSettings, athleteColumns, volunteerColumns };
