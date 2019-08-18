@@ -9,6 +9,9 @@
             "c/af_navigation": [
                 "af_navigation/af_navigation.js"
             ],
+            "c/soiEditAthlete": [
+                "soiEditAthlete/soiEditAthlete.js"
+            ],
             "c/soiNewAthlete": [
                 "soiNewAthlete/soiNewAthlete.js"
             ],

@@ -28,7 +28,9 @@ export default class Soi_athleteList extends LightningElement {
     //Track search filter
     @track searchKey;
 
-    @track searchKey;
+    //Track edit form
+    @track editForm = false;
+    @track editContactId;
 
     // Track if renderedCallback was executed
     isRendered = false;
@@ -114,9 +116,32 @@ export default class Soi_athleteList extends LightningElement {
             console.log('Refreshing athelete list');
             return refreshApex(this.wiredContactResult);
         });
+        const editForm =  this.template.querySelector('.editForm');
+        editForm.addEventListener('triggerModel', ()=>{
+            if(this.editForm){
+                this.editForm = false;
+                console.log('this.editForm = false');
+            }else{
+                this.editForm = true;
+                console.log('this.editForm = true');
+            }
+        });
 
     }
 
+    /**
+     *  Triggered when edit button is clicked, opens edit modal
+     */
+    openEdit(row){
+        const editForm =  this.template.querySelector('.editForm');
+        this.editContactId = row.Id;
+        editForm.currentSports = row.SOI_mySports__c;
+        if(editForm.openmodel){
+            editForm.openmodel = false;
+        }else{
+            editForm.openmodel = true;
+        }
+    }
  
 
     /**
@@ -144,6 +169,7 @@ export default class Soi_athleteList extends LightningElement {
                 this.deleteHandler(row);
                 break;
             case 'view_details':
+                this.openEdit(row);
                 break;
             default:
         }

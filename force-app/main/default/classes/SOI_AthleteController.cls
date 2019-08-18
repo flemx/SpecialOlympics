@@ -22,7 +22,7 @@ public with sharing class SOI_AthleteController {
         List<Contact> newAthletes = new List<Contact>();
         for(Contact con: [select AccountId, Account.Name, SOI_ClubName__c, SOI_ConsID__c, 
                                     Name, Birthdate, SOI_Medical_Expiry__c, SOI_Membership_Card__c, 
-                                    (select Name from Sports__r), SOI_Status__c, SOI_mySports__c,
+                                    (select Name,SOI_Status__c from Sports__r where SOI_Status__c != 'Deleted'), SOI_Status__c, SOI_mySports__c,
                                     SOI_ActionLabel__c from Contact where RecordTypeId IN 
                                     (select Id FROM RecordType where Name = 'Athlete')]){
             String mySports = '';
@@ -66,6 +66,52 @@ public with sharing class SOI_AthleteController {
                 newSports.add(newSport);
             }
             insert newSports;
+    }
+
+     /**
+     *  editSports method
+     *  Edit sports, add newly added and mak as deleted
+     *  (DML & SOQL are used in loops deliberately as the lists are very small)
+     */
+    @AuraEnabled
+    public static void editSports(List<List<String>> sportList, String contactId){
+            List<SOI_Sport__c> newSports = new List<SOI_Sport__c>();
+            List<SOI_Sport__c> duplicates = [select Name, SOI_Status__c from SOI_Sport__c where SOI_Athlete__c=:contactId and SOI_Status__c='Deleted' and Name in :sportList[0]];
+            for(String sport: sportList[0]){
+                Boolean noDubble = true;
+                //First check if any of the newly added sports already exist as deleted status
+                if(duplicates.size() > 0){
+                    List<SOI_Sport__c> dubble = [select Name, SOI_Status__c,SOI_NewAdded__c from SOI_Sport__c where SOI_Athlete__c=:contactId and SOI_Status__c='Deleted' and Name = :sport limit 1];
+                    if(dubble.size() > 0){
+                        if(dubble[0].SOI_NewAdded__c){
+                            dubble[0].SOI_Status__c = 'New';
+                        }else{
+                            dubble[0].SOI_Status__c = 'Unchanged';
+                        }
+                        update dubble;
+                        noDubble = false;
+                    }
+                }
+                if(noDubble){
+                    //If no existing deleted dubplicate, create a new sport
+                    SOI_Sport__c newSport = new SOI_Sport__c();
+                    newSport.Name = sport;
+                    newSport.SOI_Athlete__c = contactId;
+                    newSport.SOI_Status__c = 'New';
+                    newSport.SOI_NewAdded__c = true;
+                    newSports.add(newSport);
+                }
+            }
+            insert newSports;
+
+            // Update status of sports to be markes as deleted
+             List<SOI_Sport__c> removeSports = new List<SOI_Sport__c>();
+             for(SOI_Sport__c sport: [select Name, SOI_Status__c from SOI_Sport__c where SOI_Athlete__c=:contactId and Name in :sportList[1]]){
+                 sport.SOI_Status__c = 'Deleted';
+                 removeSports.add(sport);
+             }
+             update removeSports;
+
     }
 
 }

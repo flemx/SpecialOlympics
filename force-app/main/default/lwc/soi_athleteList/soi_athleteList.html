@@ -1,6 +1,6 @@
 <template>
         <div class="app-wrapper">
-
+                        
                 
                 <div class="searchAndNew">
                         <lightning-input
@@ -12,6 +12,12 @@
                         </lightning-input>
                         <!--<lightning-button variant="destructive" label="New Athlete" title="Brand action" onclick={newAthlete} class="newAthlete"></lightning-button>-->
                         <c-soi-new-athlete class="newAthlete" user-account-id={userAccountId}></c-soi-new-athlete>
+                        <c-soi-edit-athlete 
+                                model-open={editForm}
+                                contact-id={editContactId}
+                                class="editForm">
+                        </c-soi-edit-athlete>
+                        
                 </div>
                 
                 <template if:true={data}>
