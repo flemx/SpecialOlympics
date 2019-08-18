@@ -110,8 +110,7 @@ export default class Soi_athleteList extends LightningElement {
         if(!this.isRendered){
             this.isRendered = true;
         }
-        const element = this.template.querySelector('.newAthlete');
-        element.addEventListener('refreshApexEvent', ()=>{
+        this.template.addEventListener('refreshApexEvent', ()=>{
             console.log('Received refreshApexEvent event');
             console.log('Refreshing athelete list');
             return refreshApex(this.wiredContactResult);
