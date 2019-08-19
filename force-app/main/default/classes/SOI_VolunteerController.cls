@@ -1,7 +1,7 @@
 /**
  *   SOI_VolunteerController
  *   Class to handle the actions related to the soi volunteers in the community portal
- *   @ Damien Fleminks
+ *   @ Damien Fleminks 
  *   18-08-2019
  */
 public with sharing class SOI_VolunteerController {
@@ -53,5 +53,23 @@ public with sharing class SOI_VolunteerController {
             update con;
     }
 
+
+     /**
+     *  newRoles method
+     *  Add roles to newly created volunteers
+     */
+    @AuraEnabled
+    public static void newRoles(List<String> roleList, String contactId){
+            List<SOI_Roles__c> newRoles = new List<SOI_Roles__c>();
+            System.debug(roleList);
+            for(String role: roleList){
+                SOI_Roles__c newRole = new SOI_Roles__c();
+                newRole.Name = role;
+                newRole.SOI_Volunteer__c = contactId;
+                newRoles.add(newRole);
+            }
+             System.debug(newRoles);
+            insert newRoles;
+    }
 
 }

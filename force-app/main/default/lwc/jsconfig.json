@@ -23,6 +23,9 @@
             ],
             "c/soiVolunteerList": [
                 "soiVolunteerList/soiVolunteerList.js"
+            ],
+            "c/soiNewVolunteer": [
+                "soiNewVolunteer/soiNewVolunteer.js"
             ]
         }
     },

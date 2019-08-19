@@ -7,11 +7,11 @@
                             type="search"
                             onchange={searchKeyEvent}
                             class="searchbar"
-                            placeholder="Filter  by  Name,  ID  or Status"
+                            placeholder="Filter  by  Name,  ID,  Status  or  Role"
                             value={searchKey}>
                     </lightning-input>
                     <!--<lightning-button variant="destructive" label="New Athlete" title="Brand action" onclick={newAthlete} class="newAthlete"></lightning-button>-->
-                    <c-soi-new-athlete class="newAthlete" user-account-id={userAccountId}></c-soi-new-athlete>
+                    <c-soi-new-volunteer class="newAthlete" user-account-id={userAccountId} volunteer-type={volunteerType}></c-soi-new-volunteer>
                     <c-soi-edit-athlete 
                             model-open={editForm}
                             contact-id={editContactId}
