@@ -84,6 +84,7 @@ export default class SoiEditVolunteer extends LightningElement {
         successHandle(event){
             let isChanged = false;
             console.log('EXECUTE successHandle');
+            console.log(this.currentRoles);
             // Get array of newly added roles
             let newRoles = this._selected.filter(
                 (role)=>{

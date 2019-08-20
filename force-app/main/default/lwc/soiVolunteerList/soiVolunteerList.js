@@ -147,7 +147,7 @@ export default class SoiVolunteerList extends LightningElement {
     openEdit(row){
         const editForm =  this.template.querySelector('.editForm');
         this.editContactId = row.Id;
-        editForm.currentSports = row.SOI_mySports__c;
+        editForm.currentRoles = row.SOI_myRoles__c;
         if(editForm.openmodel){
             editForm.openmodel = false;
         }else{

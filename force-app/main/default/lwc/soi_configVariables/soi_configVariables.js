@@ -41,6 +41,7 @@ const roleOptions =  [
     { label: 'Manager', value: 'Manager' },
     { label: 'Coach1', value: 'Coach1' },
     { label: 'Coach2', value: 'Coach2' },
+    { label: 'Basketball Coach', value: 'Basketball Coach' },
     { label: 'Assistant', value: 'Assistant' },
     { label: 'collector', value: 'collector' },
     { label: 'teacher', value: 'teacher' },
