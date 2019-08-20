@@ -63,6 +63,8 @@ public with sharing class SOI_AthleteController {
                 SOI_Sport__c newSport = new SOI_Sport__c();
                 newSport.Name = sport;
                 newSport.SOI_Athlete__c = contactId;
+                newSport.SOI_Status__c = 'New';
+                newSport.SOI_NewAdded__c = true;
                 newSports.add(newSport);
             }
             insert newSports;

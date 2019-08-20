@@ -62,13 +62,16 @@ public with sharing class SOI_VolunteerController {
     public static void newRoles(List<String> roleList, String contactId){
             List<SOI_Roles__c> newRoles = new List<SOI_Roles__c>();
             System.debug(roleList);
+            System.debug(contactId);
             for(String role: roleList){
                 SOI_Roles__c newRole = new SOI_Roles__c();
                 newRole.Name = role;
                 newRole.SOI_Volunteer__c = contactId;
+                newRole.SOI_Status__c = 'New';
+                newRole.SOI_NewAdded__c = true;
                 newRoles.add(newRole);
             }
-             System.debug(newRoles);
+            System.debug(newRoles);
             insert newRoles;
     }
 

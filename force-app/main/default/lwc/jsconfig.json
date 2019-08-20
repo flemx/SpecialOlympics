@@ -15,17 +15,17 @@
             "c/soiNewAthlete": [
                 "soiNewAthlete/soiNewAthlete.js"
             ],
+            "c/soiNewVolunteer": [
+                "soiNewVolunteer/soiNewVolunteer.js"
+            ],
+            "c/soiVolunteerList": [
+                "soiVolunteerList/soiVolunteerList.js"
+            ],
             "c/soi_athleteList": [
                 "soi_athleteList/soi_athleteList.js"
             ],
             "c/soi_configVariables": [
                 "soi_configVariables/soi_configVariables.js"
-            ],
-            "c/soiVolunteerList": [
-                "soiVolunteerList/soiVolunteerList.js"
-            ],
-            "c/soiNewVolunteer": [
-                "soiNewVolunteer/soiNewVolunteer.js"
             ]
         }
     },

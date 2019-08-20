@@ -85,11 +85,12 @@ export default class SoiNewVolunteer extends LightningElement {
     successHandle(event){
         console.log('EXECUTE successHandle');
         console.log(event.detail.id);
-        
+        console.log("this.selected: ");
+        console.log(this.selected);
         if(this.selected){
-            console.log('his.selected) true');
+            console.log('This.selected true');
             console.log('event.detail.Id: ' + event.detail.id);
-            addRoles({ sportList: this.selected, contactId: event.detail.id})
+            addRoles({ roleList: this.selected, contactId: event.detail.id})
                 .then(result => {
                     console.log('event.detail successful');
                     let toastInfo = {
