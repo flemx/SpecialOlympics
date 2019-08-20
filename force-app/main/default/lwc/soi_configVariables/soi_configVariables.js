@@ -35,5 +35,16 @@ const volunteerColumns = [
             }
 ];
 
+// Volunteer Sport and Role options
+const roleOptions =  [
+    { label: 'Chairperson', value: 'Chairperson' },
+    { label: 'Manager', value: 'Manager' },
+    { label: 'Coach1', value: 'Coach1' },
+    { label: 'Coach2', value: 'Coach2' },
+    { label: 'Assistant', value: 'Assistant' },
+    { label: 'collector', value: 'collector' },
+    { label: 'teacher', value: 'teacher' },
+    { label: 'Treasurer', value: 'Treasurer' }        ];
 
-export { profileSettings, athleteColumns, volunteerColumns };
+
+export { profileSettings, athleteColumns, volunteerColumns, roleOptions };

@@ -13,6 +13,7 @@ import LASTNAME_FIELD from '@salesforce/schema/Contact.LastName';
 import COMMENTS from '@salesforce/schema/Contact.SOI_Comments__c';
 import CONS_ID from '@salesforce/schema/Contact.SOI_ConsID__c';
 import ACCOUNT from '@salesforce/schema/Contact.AccountId';
+import { roleOptions } from 'c/soi_configVariables';
 
 
 export default class SoiNewVolunteer extends LightningElement {
@@ -24,7 +25,7 @@ export default class SoiNewVolunteer extends LightningElement {
      firstName = FIRSTNAME_FIELD;
      lastName = LASTNAME_FIELD;
      comments = COMMENTS;
-     athleteId = CONS_ID;
+     volunteerId = CONS_ID;
      accountId =  ACCOUNT;
      
      @track submitDisabled = false;
@@ -46,19 +47,9 @@ export default class SoiNewVolunteer extends LightningElement {
         return Object.keys(rtis).find(rti => rtis[rti].name === 'Volunteer');
     }
 
+    //All the available and selected options
     @track _selected = [];
-
-    get options() {
-        return [
-            { label: 'Chairperson', value: 'Chairperson' },
-            { label: 'Manager', value: 'Manager' },
-            { label: 'Coach1', value: 'Coach1' },
-            { label: 'Coach2', value: 'Coach2' },
-            { label: 'Assistant', value: 'Assistant' },
-            { label: 'collector', value: 'collector' },
-            { label: 'teacher', value: 'teacher' },
-            { label: 'Treasurer', value: 'Treasurer' }        ];
-    }
+    options = roleOptions;
 
     get selected() {
         return this._selected.length ? this._selected : false;

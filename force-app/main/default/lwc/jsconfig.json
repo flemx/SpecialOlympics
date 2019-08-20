@@ -26,6 +26,9 @@
             ],
             "c/soi_configVariables": [
                 "soi_configVariables/soi_configVariables.js"
+            ],
+            "c/soiEditVolunteer": [
+                "soiEditVolunteer/soiEditVolunteer.js"
             ]
         }
     },

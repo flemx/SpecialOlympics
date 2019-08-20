@@ -75,4 +75,51 @@ public with sharing class SOI_VolunteerController {
             insert newRoles;
     }
 
+
+     /**
+     *  editRoles method
+     *  Edit roles, add newly added and mak as deleted
+     *  (DML & SOQL are used in loops deliberately as the lists are very small)
+     */
+    @AuraEnabled
+    public static void editRoles(List<List<String>> rolesList, String contactId){
+            List<SOI_Roles__c> newRoles = new List<SOI_Roles__c>();
+            List<SOI_Roles__c> duplicates = [select Name, SOI_Status__c from SOI_Roles__c where SOI_Volunteer__c=:contactId and SOI_Status__c='Deleted' and Name in :rolesList[0]];
+            for(String role: rolesList[0]){
+                Boolean noDubble = true;
+                //First check if any of the newly added roles already exist as deleted status
+                if(duplicates.size() > 0){
+                    List<SOI_Roles__c> dubble = [select Name, SOI_Status__c,SOI_NewAdded__c from SOI_Roles__c where SOI_Volunteer__c=:contactId and SOI_Status__c='Deleted' and Name = :role limit 1];
+                    if(dubble.size() > 0){
+                        if(dubble[0].SOI_NewAdded__c){
+                            dubble[0].SOI_Status__c = 'New';
+                        }else{
+                            dubble[0].SOI_Status__c = 'Unchanged';
+                        }
+                        update dubble;
+                        noDubble = false;
+                    }
+                }
+                if(noDubble){
+                    //If no existing deleted dubplicate, create a new role
+                    SOI_Roles__c newRole = new SOI_Roles__c();
+                    newRole.Name = role;
+                    newRole.SOI_Volunteer__c = contactId;
+                    newRole.SOI_Status__c = 'New';
+                    newRole.SOI_NewAdded__c = true;
+                    newRoles.add(newRole);
+                }
+            }
+            insert newRoles;
+
+            // Update status of roles to be markes as deleted
+             List<SOI_Roles__c> removeRoles = new List<SOI_Roles__c>();
+             for(SOI_Roles__c role: [select Name, SOI_Status__c from SOI_Roles__c where SOI_Volunteer__c=:contactId and Name in :rolesList[1]]){
+                 role.SOI_Status__c = 'Deleted';
+                 removeRoles.add(role);
+             }
+             update removeRoles;
+
+    }
+
 }
