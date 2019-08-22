@@ -35,6 +35,20 @@ const volunteerColumns = [
             }
 ];
 
+// Venues
+const venuColumns =  [
+    { label: 'Name', fieldName: 'Name', type: 'text', sortable : 'true' },
+    { label: 'City', fieldName: 'ShippingCity', type: 'text', sortable : 'true'},
+    { label: 'Sports', fieldName: 'SOI_venueSports__c', type: 'text'},
+    { label: 'Status', fieldName: 'SOI_Status__c', type: 'text' , sortable : 'true', cellAttributes:{ class: {fieldName:"SOI_Status__c"} }},
+    //{ label: 'Club', fieldName: 'SOI_ClubName__c', type: 'text' , sortable : 'true'},
+    { label: 'Actions', type: 'button', initialWidth: 110, typeAttributes: { label: 'Edit', name: 'view_details', title: 'Click to View Details'}},
+    {label: '', type: 'button', initialWidth: 110, typeAttributes:
+                { label: { fieldName: 'SOI_ActionLabel__c'}, title: 'Click to Edit', name: 'delete-record', class: 'btn_next'}
+            }   
+];
+
+
 // Volunteer Sport and Role options
 const roleOptions =  [
     { label: 'Chairperson', value: 'Chairperson' },
@@ -45,7 +59,10 @@ const roleOptions =  [
     { label: 'Assistant', value: 'Assistant' },
     { label: 'collector', value: 'collector' },
     { label: 'teacher', value: 'teacher' },
-    { label: 'Treasurer', value: 'Treasurer' }        ];
+    { label: 'Treasurer', value: 'Treasurer' }        
+];
 
 
-export { profileSettings, athleteColumns, volunteerColumns, roleOptions };
+
+
+export { profileSettings, athleteColumns, volunteerColumns, roleOptions, venuColumns };
