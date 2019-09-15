@@ -32,6 +32,9 @@
             ],
             "c/soi_configVariables": [
                 "soi_configVariables/soi_configVariables.js"
+            ],
+            "c/soiVenueTimetableList": [
+                "soiVenueTimetableList/soiVenueTimetableList.js"
             ]
         }
     },

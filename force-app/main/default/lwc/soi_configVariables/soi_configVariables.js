@@ -38,7 +38,7 @@ const volunteerColumns = [
 // Venues
 const venuColumns =  [
     { label: 'Name', fieldName: 'Name', type: 'text', sortable : 'true' },
-    { label: 'City', fieldName: 'ShippingCity', type: 'text', sortable : 'true'},
+    { label: 'City', fieldName: 'SOI_City__c', type: 'text', sortable : 'true'},
     { label: 'Sports', fieldName: 'SOI_venueSports__c', type: 'text'},
     { label: 'Status', fieldName: 'SOI_Status__c', type: 'text' , sortable : 'true', cellAttributes:{ class: {fieldName:"SOI_Status__c"} }},
     //{ label: 'Club', fieldName: 'SOI_ClubName__c', type: 'text' , sortable : 'true'},

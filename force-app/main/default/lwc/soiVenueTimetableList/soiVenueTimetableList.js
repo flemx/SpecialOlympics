@@ -1,41 +1,28 @@
 /**
- * SoiVolunteerList
- * @ Damien Fleminks
- * 18-08-2019
+ *  soiVenueTimetableList
+ *  @ Damien Fleminks
+ *  
  */
-import { LightningElement, track, wire, api } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import volunteerList from '@salesforce/apex/SOI_VolunteerController.getVolunteers';
-import deleteVol from '@salesforce/apex/SOI_VolunteerController.deleteVolunteer';
+import venuelist from '@salesforce/apex/SOI_VenueController.getVenues';
+import deleteVen from '@salesforce/apex/SOI_VenueController.deleteVenue';
 import { refreshApex } from '@salesforce/apex';
 import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 //import { profileSettings } from 'c/soi_configVariables';
-import { volunteerColumns } from 'c/soi_configVariables';
+import { venuColumns } from 'c/soi_configVariables';
 
 
-export default class SoiVolunteerList extends LightningElement {
+export default class SoiVenueTimetableList extends LightningElement {
 
     // Used to keep track of data sorting
     @track sortedBy;
     @track sortedDirection;
 
     // Variableds used to store the data, columns and error message used for the data table
-    @track columns = volunteerColumns;
+    @track columns = venuColumns;
     @track data;
     @track error;
-
-    //Type of volunteer
-    @api volunteerType;
-    /*
-    @api get volunteerType(){
-        return this.typeVolunteer;
-    }
-    set volunteerType(value){
-        //this.typeVolunteer = value;
-    }
-    */
-
-    typeVolunteer = 'general';
 
     //Track search filter
     @track searchKey;
@@ -51,23 +38,21 @@ export default class SoiVolunteerList extends LightningElement {
     rawData;
 
     // Keep track of wiredAthletes result for refreshApex to work
-    wiredContactResult;
+    wiredVenueResult;
 
     // Store the user record
     userRecord;
 
     // Keep track of the user's accountId
     @track userAccountId;
-
-
     
     /** 
      *  Wired function to get the athlete list and reset the search field
      * @param {*} result 
      */
-    @wire(volunteerList, {volunteerType : '$volunteerType'})
-    wiredVolunteers(result) {
-        this.wiredContactResult = result;
+    @wire(venuelist)
+    wiredAthletes(result) {
+        this.wiredVenueResult = result;
         if(result.data) {
             this.data = result.data;
             this.sortData('Name', 'asc');
@@ -76,19 +61,18 @@ export default class SoiVolunteerList extends LightningElement {
                 this.data = this.fiterData(this.searchKey);
             }
             this.error = undefined;
-            console.log(this.data);
+            //this.template.querySelector('.searchbar').value = '';
         }
         else{
-            console.log(result);
-            console.log(' volunteerList error');
+            console.log(' venuelist error');
             //console.log(result.error);
             let toastInfo = {
-                "myTitle" : "Error loading volunteers",
+                "myTitle" : "Error loading athletes",
                 "myMessage" : `Please reload or contact the administrator.`,
                 "variant" : "error"
             };
             this.triggerToast(toastInfo);
-            this.error = "Error loading volunteers, please try to load the page again or contact the administrator if that does not resolve the problem.";
+            this.error = "Error loading athletes, please try to load the page again or contact the administrator if that does not resolve the problem.";
         }
     }
 
@@ -128,7 +112,7 @@ export default class SoiVolunteerList extends LightningElement {
         this.template.addEventListener('refreshApexEvent', ()=>{
             console.log('Received refreshApexEvent event');
             console.log('Refreshing athelete list');
-            return refreshApex(this.wiredContactResult);
+            return refreshApex(this.wiredVenueResult);
         });
         const editForm =  this.template.querySelector('.editForm');
         editForm.addEventListener('triggerModel', ()=>{
@@ -149,7 +133,7 @@ export default class SoiVolunteerList extends LightningElement {
     openEdit(row){
         const editForm =  this.template.querySelector('.editForm');
         this.editContactId = row.Id;
-        editForm.currentRoles = row.SOI_myRoles__c;
+        editForm.currentSports = row.SOI_mySports__c;
         if(editForm.openmodel){
             editForm.openmodel = false;
         }else{
@@ -171,7 +155,7 @@ export default class SoiVolunteerList extends LightningElement {
         this.dispatchEvent(evt);
     }
 
-      /**
+    /**
      *  Event listener for table action buttons
      * @param {*} event 
      */
@@ -197,19 +181,19 @@ export default class SoiVolunteerList extends LightningElement {
         console.log(`actionLabel is: ${row.SOI_ActionLabel__c}`);
         if(row.SOI_ActionLabel__c === 'Undelete'){
             let toastInfo = {
-                "myTitle" : `Volunteer succesfully Undeleted`,
-                "myMessage" : `Volunteer is not marked to be deleted anymore`,
+                "myTitle" : `Athlete succesfully Undeleted`,
+                "myMessage" : `Athlete is not marked to be deleted anymore`,
                 "variant" : "success"
             };
-            this.deleteVolunteer(row, 'Edited', toastInfo);
+            this.deleteVenue(row, 'Edited', toastInfo);
         }
         if(row.SOI_ActionLabel__c === 'Delete'){
             let toastInfo = {
-                "myTitle" : `Volunteer succesfully Deleted`,
-                "myMessage" : `Volunteer is marked as deleted, to undo this action, press the undelete buttton`,
+                "myTitle" : `Athlete succesfully Deleted`,
+                "myMessage" : `Athlete is marked as deleted, to undo this action, press the undelete buttton`,
                 "variant" : "success"
             };
-            this.deleteVolunteer(row, 'Deleted',toastInfo);
+            this.deleteVenue(row, 'Deleted',toastInfo);
         }
     }
 
@@ -219,22 +203,24 @@ export default class SoiVolunteerList extends LightningElement {
      * @param {*} row 
      * @param {*} newStatus 
      */
-    deleteVolunteer(row, newStatus, toastInfo){
-        //console.log(row.Id);
-        deleteVol({ Id: row.Id, status: newStatus, AccId: row.AccountId})
+    deleteVenue(row, newStatus, toastInfo){
+        console.log(row.Id);
+        console.log(newStatus);
+        console.log(row.ParentId);
+        deleteVen({ Id: row.Id, status: newStatus, AccId: row.ParentId})
             .then(result => {
-                console.log('deleteVolunteer successful');
+                console.log('deleteVenue successful');
                 this.triggerToast(toastInfo);
-                return refreshApex(this.wiredContactResult);
+                return refreshApex(this.wiredVenueResult);
             })
             .catch(error => {
                 let toastInfo = {
-                    "myTitle" : `Error deleting volunteer`,
-                    "myMessage" : `Unable to delete the volunteer, please try again or contact the admin`,
+                    "myTitle" : `Error deleting athletes`,
+                    "myMessage" : `Unable to delete the athlete, please try again or contact the admin`,
                     "variant" : "error"
                 };
                 this.triggerToast(toastInfo);
-                console.log('ERROR on deleteVolunteer' + error);
+                console.log('ERROR on deleteVenue' + error);
             });
     }
 
@@ -293,7 +279,7 @@ export default class SoiVolunteerList extends LightningElement {
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(searchKey.toLowerCase()) ||
             el.SOI_ConsID__c.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_myRoles__c.toLowerCase().includes(searchKey.toLowerCase()) ||
+            el.SOI_mySports__c.toLowerCase().includes(searchKey.toLowerCase()) ||
             el.SOI_Status__c.toLowerCase().includes(searchKey.toLowerCase()) ){
                 return true;
             }

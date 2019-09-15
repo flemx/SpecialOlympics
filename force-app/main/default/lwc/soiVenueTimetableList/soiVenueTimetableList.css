@@ -1,0 +1,30 @@
+.app-wrapper{
+    height: 100%;
+    margin: 0;
+}
+
+.searchbar{
+    margin-bottom: 4%;
+    width: 50%;
+    margin-left: 22%;
+}
+
+.searchAndNew{
+    display: flex;
+    flex-direction: row;
+}
+.table-container{
+    height: 70vh;
+}
+
+.newAthlete{
+    margin-top: 1.6%;
+    margin-left: 10%;
+}
+
+
+@media only screen and (min-width: 2000px) {
+    .newAthlete{
+        margin-top: 1.2%;
+    }
+  }

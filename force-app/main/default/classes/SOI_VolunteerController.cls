@@ -41,7 +41,6 @@ public with sharing class SOI_VolunteerController {
         return newVolunteers;
     }
 
-
     /**
      *  updateStatus method
      *  Updates the status of the volunteer record
