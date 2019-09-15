@@ -6,7 +6,9 @@
     <columns>CONTACT.PHONE1</columns>
     <columns>CONTACT.EMAIL</columns>
     <columns>CONTACT.TITLE</columns>
-    <columns>CORE.USERS.ALIAS</columns>
+    <columns>SOI_ConsID__c</columns>
+    <columns>SOI_VolunteerType__c</columns>
+    <columns>SOI_Status__c</columns>
     <filterScope>Mine</filterScope>
     <filters>
         <field>CONTACT.RECORDTYPE</field>

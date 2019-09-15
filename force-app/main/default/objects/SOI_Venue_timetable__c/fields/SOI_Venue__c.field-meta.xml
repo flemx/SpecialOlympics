@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>SOI_Volunteer__c</fullName>
+    <fullName>SOI_Venue__c</fullName>
     <externalId>false</externalId>
-    <label>SOI_Volunteer</label>
-    <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Volunteer_Roles</relationshipLabel>
-    <relationshipName>Volunteer_Roles</relationshipName>
+    <label>SOI_Venue</label>
+    <referenceTo>SOI_Venue__c</referenceTo>
+    <relationshipLabel>Venue_timetables</relationshipLabel>
+    <relationshipName>Venue_timetables</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackHistory>false</trackHistory>

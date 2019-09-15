@@ -206,11 +206,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>SOI_Roles__c.SOI_Volunteer__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>SOI_Sport__c.SOI_NewAdded__c</field>
         <readable>false</readable>
@@ -221,8 +216,28 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SOI_Venue__c.SOI_ActionLabel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
-        <field>SOI_Venue_timetable__c.SOI_Club__c</field>
+        <field>SOI_Venue__c.SOI_City__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SOI_Venue__c.SOI_Club__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SOI_Venue__c.SOI_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SOI_Venue__c.SOI_venueSports__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -259,6 +274,9 @@
         <layout>SOI_Sport__c-Sport Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>SOI_Venue__c-SOI_Venue Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>SOI_Venue_timetable__c-Venue_timetable Layout</layout>
     </layoutAssignments>
     <objectPermissions>
@@ -277,6 +295,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>SOI_Sport__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>SOI_Venue__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -403,6 +430,10 @@
     <tabVisibilities>
         <tab>SOI_Sport__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>SOI_Venue__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>SOI_Venue_timetable__c</tab>
