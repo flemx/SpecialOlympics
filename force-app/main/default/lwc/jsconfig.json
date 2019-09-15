@@ -21,6 +21,9 @@
             "c/soiNewVolunteer": [
                 "soiNewVolunteer/soiNewVolunteer.js"
             ],
+            "c/soiVenueList": [
+                "soiVenueList/soiVenueList.js"
+            ],
             "c/soiVolunteerList": [
                 "soiVolunteerList/soiVolunteerList.js"
             ],
@@ -29,9 +32,6 @@
             ],
             "c/soi_configVariables": [
                 "soi_configVariables/soi_configVariables.js"
-            ],
-            "c/soiVenueList": [
-                "soiVenueList/soiVenueList.js"
             ]
         }
     },

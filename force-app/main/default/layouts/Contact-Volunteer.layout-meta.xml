@@ -64,6 +64,14 @@
                 <behavior>Edit</behavior>
                 <field>SOI_myRoles__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_Certificate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_VolunteerType__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
@@ -93,8 +101,7 @@
     </relatedContent>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>SOI_Status__c</fields>
-        <relatedList>SOI_Sport__c.SOI_Athlete__c</relatedList>
+        <relatedList>SOI_Roles__c.SOI_Volunteer__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -103,7 +110,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000000KW22</masterLabel>
+        <masterLabel>00h1X000000L3KQ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

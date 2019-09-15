@@ -2,23 +2,15 @@
 <SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <accessMappings>
         <accessLevel>Edit</accessLevel>
-        <object>Account</object>
-        <objectField>Id</objectField>
-        <userField>Contact.Account</userField>
+        <object>SOI_Roles__c</object>
+        <objectField>SOI_Volunteer__c.Account</objectField>
+        <userField>Account</userField>
     </accessMappings>
     <accessMappings>
         <accessLevel>Edit</accessLevel>
-        <object>Contact</object>
-        <objectField>Account</objectField>
+        <object>SOI_Venue_timetable__c</object>
+        <objectField>SOI_Club__c</objectField>
         <userField>Contact.Account</userField>
     </accessMappings>
-    <accessMappings>
-        <accessLevel>Edit</accessLevel>
-        <object>SOI_Sport__c</object>
-        <objectField>SOI_Athlete__c.Account</objectField>
-        <userField>Contact.Account</userField>
-    </accessMappings>
-    <name>SOI Sharing</name>
-    <profiles>customer community login user</profiles>
-    <profiles>customer community user</profiles>
+    <name>SOI_Sharing</name>
 </SharingSet>

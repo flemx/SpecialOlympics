@@ -22,8 +22,9 @@ public with sharing class SOI_VolunteerController {
         List<Contact> newVolunteers = new List<Contact>();
         for(Contact con: [select AccountId, Account.Name, SOI_ClubName__c, SOI_ConsID__c, 
                                     Name, SOI_Membership_Card__c,SOI_Certificate__c,
-                                    (select Name,SOI_Status__c from Volunteer_Roles__r where SOI_Status__c != 'Deleted'), SOI_Status__c, SOI_myRoles__c,
-                                    SOI_ActionLabel__c from Contact where SOI_VolunteerType__c includes (:volunteerType) and RecordTypeId IN 
+                                    SOI_Status__c, SOI_myRoles__c,SOI_ActionLabel__c,
+                                    (select Name,SOI_Status__c from Volunteer_Roles__r where SOI_Status__c != 'Deleted')
+                                    from Contact where SOI_VolunteerType__c includes (:volunteerType) and RecordTypeId IN 
                                     (select Id FROM RecordType where Name = 'Volunteer')]){
             String myRoless = '';
             for(Integer i = 0; i < con.Volunteer_Roles__r.size(); i++){

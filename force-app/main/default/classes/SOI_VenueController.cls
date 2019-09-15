@@ -19,7 +19,7 @@ public with sharing class SOI_VenueController {
     @AuraEnabled(cacheable=true)
     public static List<Account> getVenues(){
         List<Account> newVenues= new List<Account>();
-        for(Account acc: [select Name, Parent.Name, ShippingCity, SOI_venueSports__c, 
+        for(Account acc: [select Name, Parent.Name, ParentId, ShippingCity, SOI_venueSports__c, 
                                     SOI_Status__c, SOI_ActionLabel__c,
                                     (select Name,SOI_Status__c from Venue_timetables__r where SOI_Status__c != 'Deleted') 
                                     from Account where RecordTypeId IN 
@@ -37,6 +37,18 @@ public with sharing class SOI_VenueController {
             newVenues.add(acc);    
         }
         return newVenues;
+    }
+
+
+    /**
+     *  updateStatus method
+     *  Updates the status of the venue record
+     */
+    @AuraEnabled
+    public static void deleteVenue(String Id, String status, String AccId){
+            Account acc = [select SOI_Status__c from Account where  Id = :Id and ParentId = :AccId limit 1];
+            acc.SOI_Status__c = status;
+            update acc;
     }
 
 }

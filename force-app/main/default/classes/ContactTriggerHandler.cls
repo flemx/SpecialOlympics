@@ -12,7 +12,7 @@ public class ContactTriggerHandler {
     public static void changeOwner(List<Contact> contacts){
     	if(UserInfo.getUserType().equals('CspLitePortal')){
              for(Contact con: contacts){
-         	 	con.OwnerId = '0051x000001q6zzAAA';
+         	 	con.OwnerId = '0051X000001obS9QAI';
          	  }
         }
     }	

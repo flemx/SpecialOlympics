@@ -5,8 +5,8 @@
  */
 import { LightningElement, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import athleteList from '@salesforce/apex/SOI_VenueController.getVenues';
-import deleteAth from '@salesforce/apex/SOI_AthleteController.deleteAthlete';
+import venuelist from '@salesforce/apex/SOI_VenueController.getVenues';
+import deleteVen from '@salesforce/apex/SOI_VenueController.deleteVenue';
 import { refreshApex } from '@salesforce/apex';
 import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 //import { profileSettings } from 'c/soi_configVariables';
@@ -39,7 +39,7 @@ export default class SoiVenueList extends LightningElement {
     rawData;
 
     // Keep track of wiredAthletes result for refreshApex to work
-    wiredAthletesResult;
+    wiredVenueResult;
 
     // Store the user record
     userRecord;
@@ -51,9 +51,9 @@ export default class SoiVenueList extends LightningElement {
      *  Wired function to get the athlete list and reset the search field
      * @param {*} result 
      */
-    @wire(athleteList)
+    @wire(venuelist)
     wiredAthletes(result) {
-        this.wiredContactResult = result;
+        this.wiredVenueResult = result;
         if(result.data) {
             this.data = result.data;
             this.sortData('Name', 'asc');
@@ -65,7 +65,7 @@ export default class SoiVenueList extends LightningElement {
             //this.template.querySelector('.searchbar').value = '';
         }
         else{
-            console.log(' athleteList error');
+            console.log(' venuelist error');
             //console.log(result.error);
             let toastInfo = {
                 "myTitle" : "Error loading athletes",
@@ -113,7 +113,7 @@ export default class SoiVenueList extends LightningElement {
         this.template.addEventListener('refreshApexEvent', ()=>{
             console.log('Received refreshApexEvent event');
             console.log('Refreshing athelete list');
-            return refreshApex(this.wiredContactResult);
+            return refreshApex(this.wiredVenueResult);
         });
         const editForm =  this.template.querySelector('.editForm');
         editForm.addEventListener('triggerModel', ()=>{
@@ -156,7 +156,7 @@ export default class SoiVenueList extends LightningElement {
         this.dispatchEvent(evt);
     }
 
-      /**
+    /**
      *  Event listener for table action buttons
      * @param {*} event 
      */
@@ -186,7 +186,7 @@ export default class SoiVenueList extends LightningElement {
                 "myMessage" : `Athlete is not marked to be deleted anymore`,
                 "variant" : "success"
             };
-            this.deleteAthlete(row, 'Edited', toastInfo);
+            this.deleteVenue(row, 'Edited', toastInfo);
         }
         if(row.SOI_ActionLabel__c === 'Delete'){
             let toastInfo = {
@@ -194,7 +194,7 @@ export default class SoiVenueList extends LightningElement {
                 "myMessage" : `Athlete is marked as deleted, to undo this action, press the undelete buttton`,
                 "variant" : "success"
             };
-            this.deleteAthlete(row, 'Deleted',toastInfo);
+            this.deleteVenue(row, 'Deleted',toastInfo);
         }
     }
 
@@ -204,13 +204,15 @@ export default class SoiVenueList extends LightningElement {
      * @param {*} row 
      * @param {*} newStatus 
      */
-    deleteAthlete(row, newStatus, toastInfo){
-        //console.log(row.Id);
-        deleteAth({ Id: row.Id, status: newStatus, AccId: row.AccountId})
+    deleteVenue(row, newStatus, toastInfo){
+        console.log(row.Id);
+        console.log(newStatus);
+        console.log(row.ParentId);
+        deleteVen({ Id: row.Id, status: newStatus, AccId: row.ParentId})
             .then(result => {
-                console.log('deleteAthlete successful');
+                console.log('deleteVenue successful');
                 this.triggerToast(toastInfo);
-                return refreshApex(this.wiredContactResult);
+                return refreshApex(this.wiredVenueResult);
             })
             .catch(error => {
                 let toastInfo = {
@@ -219,7 +221,7 @@ export default class SoiVenueList extends LightningElement {
                     "variant" : "error"
                 };
                 this.triggerToast(toastInfo);
-                console.log('ERROR on deleteAthlete' + error);
+                console.log('ERROR on deleteVenue' + error);
             });
     }
 
