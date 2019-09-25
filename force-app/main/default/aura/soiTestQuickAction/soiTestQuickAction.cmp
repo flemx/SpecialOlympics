@@ -1,0 +1,5 @@
+<aura:component implements="lightning:isUrlAddressable,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId" access="global" >
+	<aura:attribute name="recordId" type="String" default="0031X00000J3jenQAB"/>
+    <aura:attribute name="model" type="Boolean" default="true"/>
+	<c:soiEditVolunteer contactId="{!v.recordId}" openmodel="{!v.model}" />
+</aura:component>

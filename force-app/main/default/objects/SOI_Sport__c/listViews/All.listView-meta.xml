@@ -3,6 +3,13 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>SOI_Athlete__c</columns>
+    <columns>SOI_Status__c</columns>
+    <columns>SOI_NewAdded__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>SOI_Status__c</field>
+        <operation>equals</operation>
+        <value>New</value>
+    </filters>
     <label>All</label>
 </ListView>

@@ -4,6 +4,29 @@
     <active>true</active>
     <label>Athlete</label>
     <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Inquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased List</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Name</picklist>
         <values>
             <fullName>Dr%2E</fullName>
@@ -42,6 +65,21 @@
         </values>
         <values>
             <fullName>Unchanged</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SOI_VolunteerType__c</picklist>
+        <values>
+            <fullName>coach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>general</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>management</fullName>
             <default>false</default>
         </values>
     </picklistValues>

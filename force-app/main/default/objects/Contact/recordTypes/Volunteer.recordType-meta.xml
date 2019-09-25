@@ -68,4 +68,19 @@
             <default>false</default>
         </values>
     </picklistValues>
+    <picklistValues>
+        <picklist>SOI_VolunteerType__c</picklist>
+        <values>
+            <fullName>coach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>general</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>management</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>

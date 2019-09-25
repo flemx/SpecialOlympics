@@ -15,5 +15,10 @@
         <operation>equals</operation>
         <value>Contact.Volunteer</value>
     </filters>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>equals</operation>
+        <value>Cabinteely Special Olympics Club</value>
+    </filters>
     <label>Volunteers</label>
 </ListView>
