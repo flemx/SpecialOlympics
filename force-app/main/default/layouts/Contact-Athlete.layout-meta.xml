@@ -73,6 +73,10 @@
                 <behavior>Edit</behavior>
                 <field>SOI_IRLink__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_ClubConsID__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>

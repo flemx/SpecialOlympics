@@ -53,6 +53,14 @@
                 <behavior>Readonly</behavior>
                 <field>SOI_ActionLabel__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_Club_ConsID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_AddrImpID__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -268,7 +276,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>SOI_Venue_timetable__c.SOI_Club__c</relatedList>
+        <relatedList>SOI_Venue__c.SOI_Club__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
