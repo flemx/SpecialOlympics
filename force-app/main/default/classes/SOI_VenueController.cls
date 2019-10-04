@@ -46,7 +46,7 @@ public with sharing class SOI_VenueController {
      */
     @AuraEnabled
     public static void deleteVenue(String Id, String status, String AccId){
-            SOI_Venue__c ven = [select SOI_Status__c from SOI_Venue__c where  Id = :Id and SOI_Club__c = :AccId limit 1];
+            SOI_Venue__c ven = [select SOI_Status__c from SOI_Venue__c where  Id = :Id limit 1];
             ven.SOI_Status__c = status;
             update ven;
     }

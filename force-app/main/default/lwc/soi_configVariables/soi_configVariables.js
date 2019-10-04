@@ -39,8 +39,35 @@ const volunteerColumns = [
 const venuColumns =  [
     { label: 'Name', fieldName: 'Name', type: 'text', sortable : 'true' },
     { label: 'City', fieldName: 'SOI_City__c', type: 'text', sortable : 'true'},
+    { label: 'Sports', fieldName: 'SOI_venueSports__c', type: 'text'}
+];
+/*
+const venuColumns =  [
+    { label: 'Name', fieldName: 'Name', type: 'text', sortable : 'true' },
+    { label: 'City', fieldName: 'SOI_City__c', type: 'text', sortable : 'true'},
     { label: 'Sports', fieldName: 'SOI_venueSports__c', type: 'text'},
     { label: 'Status', fieldName: 'SOI_Status__c', type: 'text' , sortable : 'true', cellAttributes:{ class: {fieldName:"SOI_Status__c"} }},
+    //{ label: 'Club', fieldName: 'SOI_ClubName__c', type: 'text' , sortable : 'true'},
+    { label: 'Actions', type: 'button', initialWidth: 110, typeAttributes: { label: 'Edit', name: 'view_details', title: 'Click to View Details'}},
+    {label: '', type: 'button', initialWidth: 110, typeAttributes:
+                { label: { fieldName: 'SOI_ActionLabel__c'}, title: 'Click to Edit', name: 'delete-record', class: 'btn_next'}
+            }   
+];
+*/
+
+
+// Venue Timetables
+const timetableColumns = [
+    { label: 'Venue', fieldName: 'Venue_Name__c', type: 'text', sortable : 'true' },
+    { label: 'Sport', fieldName: 'Name', type: 'text', sortable : 'true'},
+    { label: 'Mon', fieldName: 'MON__c', type: 'text'},
+    { label: 'Tue', fieldName: 'TUE__c', type: 'text'},
+    { label: 'Wed', fieldName: 'WED__c', type: 'text'},
+    { label: 'Thu', fieldName: 'THU__c', type: 'text'},
+    { label: 'Fri', fieldName: 'FRI__c', type: 'text'},
+    { label: 'Sat', fieldName: 'SAT__c', type: 'text'},
+    { label: 'Sun', fieldName: 'SUN__c', type: 'text'},
+    { label: 'Status', fieldName: 'SOI_Status__c', initialWidth: 90, type: 'text' , sortable : 'true', cellAttributes:{ class: {fieldName:"SOI_Status__c"} }},
     //{ label: 'Club', fieldName: 'SOI_ClubName__c', type: 'text' , sortable : 'true'},
     { label: 'Actions', type: 'button', initialWidth: 110, typeAttributes: { label: 'Edit', name: 'view_details', title: 'Click to View Details'}},
     {label: '', type: 'button', initialWidth: 110, typeAttributes:
@@ -65,4 +92,4 @@ const roleOptions =  [
 
 
 
-export { profileSettings, athleteColumns, volunteerColumns, roleOptions, venuColumns };
+export { profileSettings, athleteColumns, volunteerColumns, roleOptions, venuColumns, timetableColumns };

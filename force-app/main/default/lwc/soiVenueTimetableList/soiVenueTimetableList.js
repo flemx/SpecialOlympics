@@ -5,12 +5,12 @@
  */
 import { LightningElement, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import venuelist from '@salesforce/apex/SOI_VenueController.getVenues';
-import deleteVen from '@salesforce/apex/SOI_VenueController.deleteVenue';
+import venuelist from '@salesforce/apex/SOI_VenueTimetableController.getVenues';
+import deleteVen from '@salesforce/apex/SOI_VenueTimetableController.deleteVenue';
 import { refreshApex } from '@salesforce/apex';
 import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 //import { profileSettings } from 'c/soi_configVariables';
-import { venuColumns } from 'c/soi_configVariables';
+import { timetableColumns } from 'c/soi_configVariables';
 
 
 export default class SoiVenueTimetableList extends LightningElement {
@@ -20,7 +20,7 @@ export default class SoiVenueTimetableList extends LightningElement {
     @track sortedDirection;
 
     // Variableds used to store the data, columns and error message used for the data table
-    @track columns = venuColumns;
+    @track columns = timetableColumns;
     @track data;
     @track error;
 
