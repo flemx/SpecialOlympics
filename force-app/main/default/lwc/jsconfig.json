@@ -38,6 +38,9 @@
             ],
             "c/soiEditTimetable": [
                 "soiEditTimetable/soiEditTimetable.js"
+            ],
+            "c/soiTestForm": [
+                "soiTestForm/soiTestForm.js"
             ]
         }
     },

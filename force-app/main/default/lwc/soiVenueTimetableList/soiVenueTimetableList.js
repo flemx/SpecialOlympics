@@ -3,7 +3,7 @@
  *  @ Damien Fleminks
  *  
  */
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track, wire, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import venuelist from '@salesforce/apex/SOI_VenueTimetableController.getVenues';
 import deleteVen from '@salesforce/apex/SOI_VenueTimetableController.deleteVenue';
@@ -46,6 +46,16 @@ export default class SoiVenueTimetableList extends LightningElement {
     // Keep track of the user's accountId
     @track userAccountId;
     
+    @api get triggerRefresh(){
+        return this.triggerRefresh;
+    }
+    set triggerRefresh(value){
+        if(value == 'isTrigger'){
+            console.log('triggerRefresh triggered');
+            refreshApex(this.wiredVenueResult);
+        }
+    }
+
     /** 
      *  Wired function to get the athlete list and reset the search field
      * @param {*} result 
@@ -131,14 +141,23 @@ export default class SoiVenueTimetableList extends LightningElement {
      *  Triggered when edit button is clicked, opens edit modal
      */
     openEdit(row){
-        const editForm =  this.template.querySelector('.editForm');
-        this.editContactId = row.Id;
+        //const editForm =  this.template.querySelector('.editForm');
+        let recordId = row.Id;
+        let myRecord = {"record" : recordId};
+        console.log('RTecord id from lwc is: ' + recordId);
+        const editFormEvent = new CustomEvent('editFormEvent', {
+            detail: myRecord,
+        });
+        // Fire the custom event
+        this.dispatchEvent(editFormEvent);
+        /*
         editForm.currentSports = row.SOI_mySports__c;
         if(editForm.openmodel){
             editForm.openmodel = false;
         }else{
             editForm.openmodel = true;
         }
+        */
     }
  
 
