@@ -295,6 +295,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SOI_Venue_timetable__c.SOI_ActionLabel__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SOI_Venue_timetable__c.SOI_Sport__c</field>
         <readable>true</readable>
@@ -342,6 +347,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SOI_Venue_timetable__c.Venue_ImportID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SOI_Venue_timetable__c.Venue_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

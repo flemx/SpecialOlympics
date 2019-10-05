@@ -55,7 +55,7 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Venue_timetable</label>
     <nameField>
-        <label>Venue_timetables Name</label>
+        <label>Sport Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
