@@ -8,5 +8,18 @@
     handleSaveEvent:  function(component, event, helper) {
         console.log('handleSaveEvent triggered: ');
         component.find('venueList').set("v.triggerRefresh", 'isTrigger');
-    }
+    },
+    handleNewEvent : function(component, event, helper) {
+        console.log('handleNewEvent triggered: ');
+        var windowHash = window.location.hash;
+        var createEvent = $A.get("e.force:createRecord");
+        createEvent.setParams({
+            "navigationLocation" : "LOOKUP",
+            "entityApiName": "SOI_Venue_timetable__c",
+            "panelOnDestroyCallback": function(event) {
+                window.location.hash = windowHash;
+            }
+        });
+        createEvent.fire();
+        }
 })

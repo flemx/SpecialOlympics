@@ -1,0 +1,101 @@
+<template>
+
+        <lightning-button variant="destructive" label="Add Timetable" title="Brand action" onclick={openmodal} class="newAthlete"></lightning-button>
+        
+        
+        <!--
+        <template if:true={openmodel}>
+
+                <div style="height:640px">
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                          <div class="slds-modal__container">
+                              <lightning-record-edit-form object-api-name={timetableObject} onsuccess={successHandle} onsubmit={handleSubmit}>
+                                  <header class="slds-modal__header">
+                                      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                          <lightning-icon icon-name="utility:close" size="medium" class="close-icon"></lightning-icon>
+                                      <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 class="slds-text-heading_medium slds-hyphenate">Create new Athlete</h2>
+                                  </header>
+                                  <div class="slds-modal__content slds-p-around_medium">
+                                      <lightning-messages></lightning-messages>
+                                       <div class="slds-grid fields-container  add-border">
+                                          <div class="slds-col slds-size_1-of-2">
+                                              <lightning-input-field  field-name={sportName} ></lightning-input-field>
+                                          </div>
+                                          <div class="slds-col slds-size_2-of-2">
+                                              <lightning-input-field field-name={venue} ></lightning-input-field>
+                                          </div>
+                                       </div>
+                                       <div class="slds-grid fields-container">
+                                          <div class="slds-col slds-size_1-of-2">
+                                              <lightning-input-field type="time" field-name={monS} style="display:none"></lightning-input-field>
+                                              <lightning-input type="time"  label="MON Start" onblur={moStart}></lightning-input>
+                                          </div>
+                                          <div class="slds-col slds-size_2-of-2">
+                                              <lightning-input-field  type="time" field-name={monE} style="display:none"></lightning-input-field>
+                                              <lightning-input type="time"  label="MON End" ></lightning-input>
+                                          </div>
+                                       </div>
+                                       <div class="slds-grid fields-container">
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <lightning-input-field field-name={tueS} ></lightning-input-field>
+                                            </div>
+                                            <div class="slds-col slds-size_2-of-2">
+                                                <lightning-input-field field-name={tueE} ></lightning-input-field>
+                                            </div>
+                                         </div>
+                                         <div class="slds-grid fields-container">
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <lightning-input-field field-name={wedS} ></lightning-input-field>
+                                            </div>
+                                            <div class="slds-col slds-size_2-of-2">
+                                                <lightning-input-field field-name={wedE} ></lightning-input-field>
+                                            </div>
+                                            </div>
+                                             <div class="slds-grid fields-container">
+                                                <div class="slds-col slds-size_1-of-2">
+                                                    <lightning-input-field field-name={thuS} ></lightning-input-field>
+                                                </div>
+                                                <div class="slds-col slds-size_2-of-2">
+                                                    <lightning-input-field field-name={thuE} ></lightning-input-field>
+                                                </div>
+                                            </div>
+                                            <div class="slds-grid fields-container">
+                                                <div class="slds-col slds-size_1-of-2">
+                                                    <lightning-input-field field-name={friS} ></lightning-input-field>
+                                                </div>
+                                                <div class="slds-col slds-size_2-of-2">
+                                                    <lightning-input-field field-name={friE} ></lightning-input-field>
+                                                </div>
+                                            </div>
+                                            <div class="slds-grid fields-container">
+                                                <div class="slds-col slds-size_1-of-2">
+                                                    <lightning-input-field field-name={satS} ></lightning-input-field>
+                                                </div>
+                                                <div class="slds-col slds-size_2-of-2">
+                                                    <lightning-input-field field-name={satE} ></lightning-input-field>
+                                                </div>
+                                            </div>
+                                            <div class="slds-grid fields-container">
+                                                <div class="slds-col slds-size_1-of-2">
+                                                    <lightning-input-field field-name={sunS} ></lightning-input-field>
+                                                </div>
+                                                <div class="slds-col slds-size_2-of-2">
+                                                    <lightning-input-field field-name={sunE} ></lightning-input-field>
+                                                </div>
+                                            </div>
+                                    </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <lightning-button  type="submit" label="Save" variant="brand" disabled={submitDisabled}></lightning-button>
+                        </footer>
+                              </lightning-record-edit-form>
+                          </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                      </div>
+        </template>
+        -->
+    
+</template>

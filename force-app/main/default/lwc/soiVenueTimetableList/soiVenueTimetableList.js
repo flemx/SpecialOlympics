@@ -159,6 +159,16 @@ export default class SoiVenueTimetableList extends LightningElement {
         }
         */
     }
+
+     /**
+     *  Triggered when new button is clicked, opens edit modal
+     */
+    openNew(){
+        const editFormEvent = new CustomEvent('newFormEvent');
+        // Fire the custom event
+        this.dispatchEvent(editFormEvent);
+  
+    }
  
 
     /**
@@ -283,7 +293,7 @@ export default class SoiVenueTimetableList extends LightningElement {
 
 
     /**
-     *  Function to filter table based on name & SOI_ConsID__c and SOI_mySports__c input
+     *  Function to filter table based on name, Venue or status
      * @param {*} event 
      */
     searchKeyEvent(event){
@@ -297,8 +307,7 @@ export default class SoiVenueTimetableList extends LightningElement {
         console.log('fValue is: ' + searchKey);
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_ConsID__c.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_mySports__c.toLowerCase().includes(searchKey.toLowerCase()) ||
+            el.Venue_Name__c.toLowerCase().includes(searchKey.toLowerCase())||
             el.SOI_Status__c.toLowerCase().includes(searchKey.toLowerCase()) ){
                 return true;
             }

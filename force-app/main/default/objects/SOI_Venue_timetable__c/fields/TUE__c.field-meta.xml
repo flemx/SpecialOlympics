@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>TUE__c</fullName>
     <externalId>false</externalId>
-    <formula>TEXT(HOUR( monStart__c ))+ &#39;:&#39; + IF(MINUTE( monStart__c )&lt;10, &#39;0&#39; + TEXT(MINUTE( monStart__c )), TEXT(MINUTE( monStart__c )))
+    <formula>TEXT(HOUR( TueStart__c ))+ &#39;:&#39; + IF(MINUTE( TueStart__c )&lt;10, &#39;0&#39; + TEXT(MINUTE( TueStart__c )), TEXT(MINUTE( TueStart__c )))
 + &#39;-&#39; +
-TEXT(HOUR( monEnd__c )) + &#39;:&#39; + IF(MINUTE( monEnd__c )&lt;10, &#39;0&#39; + TEXT(MINUTE( monEnd__c )), TEXT(MINUTE( monEnd__c )))</formula>
+TEXT(HOUR( TueEnd__c )) + &#39;:&#39; + IF(MINUTE( TueEnd__c )&lt;10, &#39;0&#39; + TEXT(MINUTE( TueEnd__c )), TEXT(MINUTE( TueEnd__c )))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>TUE</label>
     <required>false</required>

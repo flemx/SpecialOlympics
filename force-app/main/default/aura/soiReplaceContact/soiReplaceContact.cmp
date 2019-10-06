@@ -1,0 +1,23 @@
+<aura:component  implements="flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="showModal" type="Boolean" default="false"></aura:attribute>
+    <aura:attribute name="flow" type="Object"></aura:attribute>
+    <aura:handler event="force:showToast" action="{!c.handleToast}"/>
+  
+
+    <div class="{! v.showModal ? 'slds-show' : 'slds-hide' }">
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header slds-modal__header_empty"></header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning:flow aura:id="flowData" onstatuschange="{!c.handleStatusChange}"/>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+
+    <lightning:button name="Change_Club_Contact"
+                      label="Replace Club Contact"
+                      onclick="{! c.runFlow }"/>
+
+</aura:component>

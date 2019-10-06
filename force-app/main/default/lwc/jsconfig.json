@@ -12,14 +12,23 @@
             "c/soiEditAthlete": [
                 "soiEditAthlete/soiEditAthlete.js"
             ],
+            "c/soiEditTimetable": [
+                "soiEditTimetable/soiEditTimetable.js"
+            ],
             "c/soiEditVolunteer": [
                 "soiEditVolunteer/soiEditVolunteer.js"
             ],
             "c/soiNewAthlete": [
                 "soiNewAthlete/soiNewAthlete.js"
             ],
+            "c/soiNewTimetable": [
+                "soiNewTimetable/soiNewTimetable.js"
+            ],
             "c/soiNewVolunteer": [
                 "soiNewVolunteer/soiNewVolunteer.js"
+            ],
+            "c/soiTestForm": [
+                "soiTestForm/soiTestForm.js"
             ],
             "c/soiVenueList": [
                 "soiVenueList/soiVenueList.js"
@@ -35,12 +44,6 @@
             ],
             "c/soi_configVariables": [
                 "soi_configVariables/soi_configVariables.js"
-            ],
-            "c/soiEditTimetable": [
-                "soiEditTimetable/soiEditTimetable.js"
-            ],
-            "c/soiTestForm": [
-                "soiTestForm/soiTestForm.js"
             ]
         }
     },
