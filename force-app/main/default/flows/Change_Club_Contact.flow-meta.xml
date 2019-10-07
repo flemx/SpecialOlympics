@@ -3,40 +3,17 @@
     <assignments>
         <name>Change_contact</name>
         <label>Change contact</label>
-        <locationX>553</locationX>
-        <locationY>421</locationY>
+        <locationX>609</locationX>
+        <locationY>200</locationY>
         <assignmentItems>
             <assignToReference>AccounRecord.Contact__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Volunteer_RecordId</elementReference>
+                <elementReference>volunteerRecord.Id</elementReference>
             </value>
         </assignmentItems>
         <connector>
             <targetReference>Update_CLub</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_contact</name>
-        <label>Update contact</label>
-        <locationX>836</locationX>
-        <locationY>201</locationY>
-        <assignmentItems>
-            <assignToReference>volunteerRecord.Email</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Email</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>volunteerRecord.Phone</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Phone</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Update_contact_record</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -60,8 +37,8 @@
     <decisions>
         <name>New_or_existing_volunteer</name>
         <label>New or existing volunteer</label>
-        <locationX>245</locationX>
-        <locationY>548</locationY>
+        <locationX>284</locationX>
+        <locationY>452</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Use_existing_vol</name>
@@ -88,6 +65,9 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>CompletedNew</targetReference>
+            </connector>
             <label>Create new vol</label>
         </rules>
     </decisions>
@@ -114,8 +94,8 @@
     <recordLookups>
         <name>Get_Account</name>
         <label>Get Account</label>
-        <locationX>118</locationX>
-        <locationY>291</locationY>
+        <locationX>141</locationX>
+        <locationY>188</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>test_screen</targetReference>
@@ -135,8 +115,8 @@
     <recordLookups>
         <name>Get_User_Contact</name>
         <label>Get User Contact</label>
-        <locationX>217</locationX>
-        <locationY>52</locationY>
+        <locationX>146</locationX>
+        <locationY>50</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Account</targetReference>
@@ -156,14 +136,14 @@
     <recordLookups>
         <name>get_volunteer</name>
         <label>get volunteer</label>
-        <locationX>498</locationX>
-        <locationY>200</locationY>
+        <locationX>294</locationX>
+        <locationY>60</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Confirm_Contact_details</targetReference>
         </connector>
         <filters>
-            <field>Id</field>
+            <field>SOI_ConsID__c</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>Volunteer_RecordId</elementReference>
@@ -174,54 +154,215 @@
         <queriedFields>Id</queriedFields>
         <queriedFields>Email</queriedFields>
         <queriedFields>Phone</queriedFields>
+        <queriedFields>FirstName</queriedFields>
+        <queriedFields>LastName</queriedFields>
+        <queriedFields>SOI_AlternativeEmail__c</queriedFields>
+        <queriedFields>OtherPhone</queriedFields>
+        <queriedFields>SOI_Comments__c</queriedFields>
+        <queriedFields>SOI_ConsID__c</queriedFields>
     </recordLookups>
     <recordUpdates>
         <name>Update_CLub</name>
         <label>Update CLub</label>
-        <locationX>822</locationX>
-        <locationY>527</locationY>
+        <locationX>785</locationX>
+        <locationY>199</locationY>
+        <connector>
+            <targetReference>CompletedExisting</targetReference>
+        </connector>
         <inputReference>AccounRecord</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Update_contact_record</name>
         <label>Update Volunteer record</label>
-        <locationX>835</locationX>
-        <locationY>346</locationY>
+        <locationX>450</locationX>
+        <locationY>200</locationY>
         <connector>
             <targetReference>Change_contact</targetReference>
         </connector>
         <inputReference>volunteerRecord</inputReference>
     </recordUpdates>
     <screens>
+        <name>CompletedExisting</name>
+        <label>Completed</label>
+        <locationX>785</locationX>
+        <locationY>375</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>confirmationCompleted</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;color: rgb(43, 134, 60); font-size: 22px;&quot;&gt;Successfully updated the club contact!&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>CompletedNew</name>
+        <label>Completed</label>
+        <locationX>497</locationX>
+        <locationY>452</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>notBuiltYet</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;font-size: 20px; color: rgb(255, 53, 53);&quot;&gt; THIS PART IS NOT BUILT OUT YET&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>Confirm_Contact_details</name>
         <label>Confirm Contact details</label>
-        <locationX>658</locationX>
-        <locationY>199</locationY>
+        <locationX>450</locationX>
+        <locationY>60</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Update_contact</targetReference>
+            <targetReference>Update_contact_record</targetReference>
         </connector>
         <fields>
-            <name>Email</name>
-            <dataType>String</dataType>
-            <defaultValue>
-                <elementReference>volunteerRecord.Email</elementReference>
-            </defaultValue>
-            <fieldText>Email</fieldText>
-            <fieldType>InputField</fieldType>
+            <name>existingConName</name>
+            <extensionName>flowruntime:name</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>readonly</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>salutation</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>firstName</name>
+                <value>
+                    <elementReference>volunteerRecord.FirstName</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>lastName</name>
+                <value>
+                    <elementReference>volunteerRecord.LastName</elementReference>
+                </value>
+            </inputParameters>
             <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>volunteerRecord.FirstName</assignToReference>
+                <name>firstName</name>
+            </outputParameters>
         </fields>
         <fields>
-            <name>Phone</name>
-            <dataType>String</dataType>
-            <defaultValue>
-                <elementReference>volunteerRecord.Phone</elementReference>
-            </defaultValue>
-            <fieldText>Phone</fieldText>
-            <fieldType>InputField</fieldType>
+            <name>existingVolEmail</name>
+            <extensionName>flowruntime:email</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>value</name>
+                <value>
+                    <elementReference>volunteerRecord.Email</elementReference>
+                </value>
+            </inputParameters>
             <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>volunteerRecord.Email</assignToReference>
+                <name>value</name>
+            </outputParameters>
+        </fields>
+        <fields>
+            <name>existingVolEmail2</name>
+            <extensionName>flowruntime:email</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Alternative Email</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>value</name>
+                <value>
+                    <elementReference>volunteerRecord.SOI_AlternativeEmail__c</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>volunteerRecord.SOI_AlternativeEmail__c</assignToReference>
+                <name>value</name>
+            </outputParameters>
+        </fields>
+        <fields>
+            <name>existingVolPhone</name>
+            <extensionName>flowruntime:phone</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>readonly</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>value</name>
+                <value>
+                    <elementReference>volunteerRecord.Phone</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>volunteerRecord.Phone</assignToReference>
+                <name>value</name>
+            </outputParameters>
+        </fields>
+        <fields>
+            <name>existingVolPhone2</name>
+            <extensionName>flowruntime:phone</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Alternative Phone</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>readonly</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>value</name>
+                <value>
+                    <elementReference>volunteerRecord.OtherPhone</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>volunteerRecord.OtherPhone</assignToReference>
+                <name>value</name>
+            </outputParameters>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -229,8 +370,8 @@
     <screens>
         <name>Select_the_volunteer</name>
         <label>Select the volunteer</label>
-        <locationX>354</locationX>
-        <locationY>200</locationY>
+        <locationX>293</locationX>
+        <locationY>194</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -238,12 +379,14 @@
             <targetReference>get_volunteer</targetReference>
         </connector>
         <fields>
+            <name>TemporarilyText</name>
+            <fieldText>&lt;p&gt;Please add the ID of the volunteer you would like to use as Club Contact&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Volunteer_RecordId</name>
             <dataType>String</dataType>
-            <defaultValue>
-                <stringValue>0031x00000NxizjAAB</stringValue>
-            </defaultValue>
-            <fieldText>Volunteer RecordId</fieldText>
+            <fieldText>Volunteer ID</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
         </fields>
@@ -253,8 +396,8 @@
     <screens>
         <name>test_screen</name>
         <label>test_screen</label>
-        <locationX>119</locationX>
-        <locationY>463</locationY>
+        <locationX>140</locationX>
+        <locationY>329</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>

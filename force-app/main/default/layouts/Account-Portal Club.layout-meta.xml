@@ -23,6 +23,10 @@
                 <behavior>Readonly</behavior>
                 <field>SOI_Email__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SOI_Waiting_list__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
