@@ -39,6 +39,14 @@
                                         
                                         
                                         <div class="slds-col slds-size_1-of-1">
+                                            
+                                                <lightning-radio-group name="radioGroup"
+                                                label="Filter by type"
+                                                options={radioOptions}
+                                                value={radioValue}
+                                                type="radio"
+                                                onchange={handleRadioChange}></lightning-radio-group>
+                                                
                                             <lightning-dual-listbox name="languages"
                                             label="Add roles"
                                             source-label="Available"
@@ -50,7 +58,14 @@
                                             value={selected}
                                             remove-button-label="Remove"
                                             size=5
-                                            add-button-label="Assign"></lightning-dual-listbox>
+                                            add-button-label="Assign">
+                                            <lightning-radio-group name="radioGroup"
+                                            label="Filter by type"
+                                            options={radioOptions}
+                                            value={radioValue}
+                                            type="radio"
+                                            onchange={handleRadioChange}></lightning-radio-group>
+                                        </lightning-dual-listbox>
                                         </div>
                                         
                         

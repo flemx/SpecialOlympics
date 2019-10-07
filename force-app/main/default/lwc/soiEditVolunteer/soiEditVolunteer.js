@@ -14,7 +14,7 @@ import CONS_ID from '@salesforce/schema/Contact.SOI_ConsID__c';
 import ACCOUNT from '@salesforce/schema/Contact.AccountId';
 import CERT_ID from '@salesforce/schema/Contact.SOI_Certificate__c';
 import MEM_CARD from '@salesforce/schema/Contact.SOI_Membership_Card__c';
-import { roleOptions } from 'c/soi_configVariables';
+import { roleList } from 'c/soi_configVariables';
 
 
 export default class SoiEditVolunteer extends LightningElement {
@@ -40,7 +40,8 @@ export default class SoiEditVolunteer extends LightningElement {
     
         //All the available and selected options
         @track _selected = [];
-        options = roleOptions;
+        @track options = [];
+        allRoles = roleList;
        
     
         get selected() {
@@ -56,6 +57,57 @@ export default class SoiEditVolunteer extends LightningElement {
             this._selected = [];
             this._currentRoles = value.split(',').map(Function.prototype.call, String.prototype.trim);
             this._selected.push(...this._currentRoles);
+        }
+
+        @track
+        radioOptions = [
+            {'label': 'All', 'value': 'All'},
+            {'label': 'General', 'value': 'General'},
+            {'label': 'Management', 'value': 'Management'},
+            {'label': 'Coach', 'value': 'Coach'}
+        ];
+    
+        // Select option1 by default
+        @track
+        radioValue = 'All';
+    
+        handleRadioChange(event) {
+            const filterType = event.detail.value;
+            console.log(`Option selected with value: ${filterType}`);
+            this.options = [];
+            let tempList = [];
+            if(filterType !== 'All'){
+                tempList =  this.allRoles.filter(function(role) {
+                    return role.Type === filterType;
+                });
+            }else{
+                tempList = this.allRoles;
+            }
+            for(let role of tempList){
+                this.options.push({ label: role.Name, value: role.Name})
+            } 
+        }
+
+        filterRoles(filterType){
+            this.options = [];
+            let tempList = [];
+            if(filterType !== 'All'){
+                tempList =  this.allRoles.filter(function(role) {
+                    return role.Type === filterType;
+                });
+            }else{
+                tempList = this.allRoles;
+            }
+            for(let role of tempList){
+                this.options.push({ label: role.Name, value: role.Name})
+            } 
+        }
+
+        constructor(){
+            super();
+            for(let role of this.allRoles){
+                this.options.push({ label: role.Name, value: role.Name})
+            }
         }
     
         handleChange(e) {
