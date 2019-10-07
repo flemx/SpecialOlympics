@@ -31,11 +31,21 @@ export default class SoiEditAthlete extends LightningElement {
     // Track newly added sport
     newSports;
 
+    @api get testvar(){
+        
+    }
+
+    set testvar(value){
+        console.log("testvar");
+        console.log(value);
+    }
+
+
     //All the available and selected options
     @track _selected = [];
 
-    get options() {
-        return [
+    get options(){
+     return [
             { label: 'Football', value: 'Football' },
             { label: 'Swimming', value: 'Swimming' },
             { label: 'Basketball', value: 'Basketball' },
@@ -46,6 +56,43 @@ export default class SoiEditAthlete extends LightningElement {
             { label: 'Rugbey', value: 'Rugbey' }
         ];
     }
+
+    @api get optionsInit() {
+        return this.testOptions;
+        
+    }
+
+    testOptions = [];
+
+    set optionsInit(value){
+        console.log('optionsInit triggered, value: ');
+        this.testOptions = value;
+        console.log(value);
+        
+    }
+
+     /* Add functionality later  */
+    /*
+    @track options = [];
+    @track sportsReady = false;
+    @api get optionsInit() {
+        return this.options;
+        
+    }
+
+   
+    set optionsInit(value){
+        console.log('optionsInit triggered');
+        
+        let sporList = value.split(';');
+        for(let sport of sporList){
+            this.options.push({label: sport, value: sport });
+        }
+        this.sportsReady = true
+        console.log(this.options);
+    }
+    */
+
     get selected() {
         return this._selected.length ? this._selected : false;
     }

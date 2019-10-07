@@ -34,12 +34,26 @@ export default class Soi_athleteList extends LightningElement {
 
     // Track if renderedCallback was executed
     isRendered = false;
+
+    @track theSports = [];
     
     // Raw data for filtering
     rawData;
 
     // Keep track of wiredAthletes result for refreshApex to work
     wiredAthletesResult;
+
+    // Store Clubs sports
+    @track clubSports = [
+        { label: 'Football', value: 'Football' },
+        { label: 'Swimming', value: 'Swimming' },
+        { label: 'Basketball', value: 'Basketball' },
+        { label: 'Running', value: 'Running' },
+        { label: 'Golf', value: 'Golf' },
+        { label: 'Boxing', value: 'Boxing' },
+        { label: 'Hockey', value: 'Hockey' },
+        { label: 'Rugbey', value: 'Rugbey' }
+    ];
 
     // Store the user record
     userRecord;
@@ -88,6 +102,14 @@ export default class Soi_athleteList extends LightningElement {
                 console.log(result);
                 if(result.Contact){
                     this.userRecord = result;
+                    let newSports = [];
+                    let sportList =  result.Contact.Account.SOI_venueSports__c.split(';');
+                    for(let sport of sportList){
+                        newSports.push({label: sport, value: sport });
+                    }
+                    //this.theSports = ['one','two'];
+                    console.log('clubSports: ');
+                    //console.log(this.theSports);
                     this.userAccountId = result.Contact.AccountId;
                 }
             })

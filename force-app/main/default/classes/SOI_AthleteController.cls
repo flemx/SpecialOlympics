@@ -10,7 +10,7 @@ public with sharing class SOI_AthleteController {
     @AuraEnabled
     public static User getUser(){
         Id userId = UserInfo.getUserId();
-        return [select ContactId, Contact.AccountId, Name, Profile.Name from User where Id = :userId limit 1];
+        return [select ContactId, Contact.AccountId, Contact.Account.SOI_venueSports__c, Name, Profile.Name from User where Id = :userId limit 1];
     }
 
     /**

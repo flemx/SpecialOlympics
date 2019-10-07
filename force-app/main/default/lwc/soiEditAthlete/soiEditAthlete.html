@@ -42,7 +42,9 @@
   
                                          <div class="slds-grid fields-container sports-container">
                                             
-                                            
+                                            <template if:true={sportsReady}>
+
+                                          
                                             <div class="slds-col slds-size_1-of-1">
                                                 <lightning-dual-listbox name="languages"
                                                 label="Add sports"
@@ -57,7 +59,7 @@
                                                 size=5
                                                 add-button-label="Assign"></lightning-dual-listbox>
                                             </div>
-                                            
+                                        </template> 
                             
                                          </div>
     
