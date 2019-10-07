@@ -1,6 +1,7 @@
 import { LightningElement, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import updateSports from '@salesforce/apex/SOI_AthleteController.editSports';
+import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 import CONTACT_OBJECT from '@salesforce/schema/Contact';
 import FIRSTNAME_FIELD from '@salesforce/schema/Contact.FirstName';
 import LASTNAME_FIELD from '@salesforce/schema/Contact.LastName';
@@ -45,6 +46,8 @@ export default class SoiEditAthlete extends LightningElement {
     @track _selected = [];
 
     get options(){
+        return this.testOptions;
+        /*
      return [
             { label: 'Football', value: 'Football' },
             { label: 'Swimming', value: 'Swimming' },
@@ -55,6 +58,7 @@ export default class SoiEditAthlete extends LightningElement {
             { label: 'Hockey', value: 'Hockey' },
             { label: 'Rugbey', value: 'Rugbey' }
         ];
+        */
     }
 
     @api get optionsInit() {
@@ -62,14 +66,9 @@ export default class SoiEditAthlete extends LightningElement {
         
     }
 
-    testOptions = [];
+    @track testOptions = [];
 
-    set optionsInit(value){
-        console.log('optionsInit triggered, value: ');
-        this.testOptions = value;
-        console.log(value);
-        
-    }
+    @track sportsReady = false;
 
      /* Add functionality later  */
     /*
@@ -106,6 +105,42 @@ export default class SoiEditAthlete extends LightningElement {
         this._selected = [];
         this._currentSports = value.split(',').map(Function.prototype.call, String.prototype.trim);
         this._selected.push(...this._currentSports);
+    }
+
+       /**
+     *  Get the current user record 
+     */
+    constructor(){
+        super();
+        theUser()
+            .then(result => {
+                console.log('User returned');
+                console.log(result);
+                if(result.Contact){
+                    this.userRecord = result;
+                    let newSports = [];
+                    let sportList =  result.Contact.Account.SOI_venueSports__c.split(';');
+                    for(let sport of sportList){
+                        newSports.push({label: sport, value: sport });
+                    }
+                    this.testOptions = newSports;
+                    console.log('clubSports: ');
+                    console.log(this.testOptions);
+                  
+                }
+            })
+            .catch(error => {
+                console.log('ERROR on theUser()');
+                console.log(error);
+                let toastInfo = {
+                    "myTitle" : "Error getting user details",
+                    "myMessage" : `Unbale to get user, please try to load again or contact the administrator. Error message: ${error}`,
+                    "variant" : "error"
+                };
+            });
+
+        
+
     }
 
     handleChange(e) {

@@ -48,9 +48,15 @@ public with sharing class SOI_VolunteerController {
     @AuraEnabled
 
     public static void deleteVolunteer(String Id, String status, String AccId){
-            Contact con = [select SOI_Status__c from Contact where  Id = :Id and AccountId = :AccId limit 1];
-            con.SOI_Status__c = status;
-            update con;
+            Contact con = [select SOI_Status__c, SOI_IsNew__c from Contact where  Id = :Id and AccountId = :AccId limit 1];
+             if(con.SOI_IsNew__c && con.SOI_Status__c.equals('Deleted')){
+               con.SOI_Status__c = 'New';
+                update con;
+            }
+            else{
+                con.SOI_Status__c = status;
+                update con;
+            }
     }
 
 
@@ -119,6 +125,12 @@ public with sharing class SOI_VolunteerController {
                  removeRoles.add(role);
              }
              update removeRoles;
+
+            Contact con = [select SOI_Status__c, SOI_IsNew__c from Contact where  Id = :contactId limit 1];
+             if(!con.SOI_IsNew__c){
+                con.SOI_Status__c = 'Edited';
+                update con;
+             }
 
     }
 

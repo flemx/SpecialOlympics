@@ -20,7 +20,7 @@ public with sharing class SOI_AthleteController {
     @AuraEnabled(cacheable=true)
     public static List<Contact> getAthletes(){
         List<Contact> newAthletes = new List<Contact>();
-        for(Contact con: [select AccountId, Account.Name, SOI_ClubName__c, SOI_ConsID__c, 
+        for(Contact con: [select AccountId, Account.Name, SOI_IsNew__c, SOI_ClubName__c, SOI_ConsID__c, 
                                     Name, Birthdate, SOI_Medical_Expiry__c, SOI_Membership_Card__c, 
                                     (select Name,SOI_Status__c from Sports__r where SOI_Status__c != 'Deleted'), SOI_Status__c, SOI_mySports__c,
                                     SOI_ActionLabel__c from Contact where RecordTypeId IN 
@@ -46,9 +46,16 @@ public with sharing class SOI_AthleteController {
      */
     @AuraEnabled
     public static void deleteAthlete(String Id, String status, String AccId){
-            Contact con = [select SOI_Status__c from Contact where  Id = :Id and AccountId = :AccId limit 1];
-            con.SOI_Status__c = status;
-            update con;
+            Contact con = [select SOI_Status__c, SOI_IsNew__c from Contact where  Id = :Id and AccountId = :AccId limit 1];
+            
+            if(con.SOI_IsNew__c && con.SOI_Status__c.equals('Deleted')){
+               con.SOI_Status__c = 'New';
+                update con;
+            }
+            else{
+                con.SOI_Status__c = status;
+                update con;
+            }
     }
 
      /**
@@ -113,6 +120,12 @@ public with sharing class SOI_AthleteController {
                  removeSports.add(sport);
              }
              update removeSports;
+
+             Contact con = [select SOI_Status__c, SOI_IsNew__c from Contact where  Id = :contactId limit 1];
+             if(!con.SOI_IsNew__c){
+                con.SOI_Status__c = 'Edited';
+                update con;
+             }
 
     }
 

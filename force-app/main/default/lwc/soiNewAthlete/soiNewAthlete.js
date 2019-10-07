@@ -6,6 +6,7 @@
 import { LightningElement,track,wire,api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import addSports from '@salesforce/apex/SOI_AthleteController.newSports';
+import theUser from '@salesforce/apex/SOI_AthleteController.getUser';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import CONTACT_OBJECT from '@salesforce/schema/Contact';
 import FIRSTNAME_FIELD from '@salesforce/schema/Contact.FirstName';
@@ -50,22 +51,41 @@ export default class Soi_newAthlete extends LightningElement {
 
     @track _selected = [];
 
-    get options() {
-        return [
-            { label: 'Football', value: 'Football' },
-            { label: 'Swimming', value: 'Swimming' },
-            { label: 'Basketball', value: 'Basketball' },
-            { label: 'Running', value: 'Running' },
-            { label: 'Golf', value: 'Golf' },
-            { label: 'Boxing', value: 'Boxing' },
-            { label: 'Hockey', value: 'Hockey' },
-            { label: 'Rugbey', value: 'Rugbey' }
-        ];
-    }
+    @track options = [];
 
     get selected() {
         return this._selected.length ? this._selected : false;
     }
+
+    constructor(){
+        super();
+        theUser()
+            .then(result => {
+                console.log('User returned');
+                console.log(result);
+                if(result.Contact){
+                    this.userRecord = result;
+                    let newSports = [];
+                    let sportList =  result.Contact.Account.SOI_venueSports__c.split(';');
+                    for(let sport of sportList){
+                        newSports.push({label: sport, value: sport });
+                    }
+                    this.options = newSports;
+                    console.log('clubSports: ');
+                    console.log(this.options);
+                  
+                }
+            })
+            .catch(error => {
+                console.log('ERROR on theUser()');
+                console.log(error);
+                let toastInfo = {
+                    "myTitle" : "Error getting user details",
+                    "myMessage" : `Unbale to get user, please try to load again or contact the administrator. Error message: ${error}`,
+                    "variant" : "error"
+                };
+            })
+        }
 
     handleChange(e) {
         this._selected = e.detail.value;
@@ -76,6 +96,7 @@ export default class Soi_newAthlete extends LightningElement {
         event.preventDefault();       // stop the form from submitting
         const fields = event.detail.fields;
         fields.AccountId = this.userAccountId;
+        fields.SOI_IsNew__c = true;
         this.template.querySelector('lightning-record-edit-form').submit(fields);
      }
 

@@ -25,10 +25,15 @@ public with sharing class SOI_VenueTimetableController {
      */
     @AuraEnabled
     public static void deleteVenue(String Id, String status, String AccId){
-            SOI_Venue_timetable__c tim = [select SOI_Status__c from SOI_Venue_timetable__c where  Id = :Id limit 1];
-            tim.SOI_Status__c = status;
-            update tim;
-    }
-    
+            SOI_Venue_timetable__c tim = [select SOI_Status__c, SOI_IsNew__c from SOI_Venue_timetable__c where  Id = :Id limit 1];
 
+            if(tim.SOI_IsNew__c && tim.SOI_Status__c.equals('Deleted')){
+               tim.SOI_Status__c = 'New';
+                update tim;
+            }
+            else{
+                tim.SOI_Status__c = status;
+                update tim;
+            }
+    }
 }

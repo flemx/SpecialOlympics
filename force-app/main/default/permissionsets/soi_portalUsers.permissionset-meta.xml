@@ -31,11 +31,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.SOI_Waiting_list__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Account.SOI_venueSports__c</field>
         <readable>true</readable>
@@ -186,9 +181,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Contact.SOI_IsNew__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -308,6 +303,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SOI_Venue_timetable__c.SOI_ActionLabel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SOI_Venue_timetable__c.SOI_IsNew__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

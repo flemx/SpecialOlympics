@@ -64,6 +64,7 @@ export default class SoiNewVolunteer extends LightningElement {
         event.preventDefault();       // stop the form from submitting
         const fields = event.detail.fields;
         fields.AccountId = this.userAccountId;
+        fields.SOI_IsNew__c = true;
         fields.SOI_VolunteerType__c = this.volunteerType;
         this.template.querySelector('lightning-record-edit-form').submit(fields);
      }
