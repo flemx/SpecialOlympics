@@ -3,6 +3,7 @@
         <aura:attribute name="recordId" type="Id" />
         <aura:attribute name="isOpen" type="Boolean" default="true"/>
         <aura:handler name="saveEvent" event="c:soiTimetableSaved" action="{!c.handleSaveEvent}"/>
+        <aura:handler event="force:showToast" action="{!c.handleToast}"/>s
 
    <!-- <c:soiEditVenueTimetable theBoolean="{v.theBoolean}" recordId="{v.recordId}"/>-->
     <c:soiEditVenueTimetable recordId="{v.recordId}" aura:id="editForm" theBoolean="false"/>

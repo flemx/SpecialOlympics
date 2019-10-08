@@ -9,6 +9,10 @@
         console.log('handleSaveEvent triggered: ');
         component.find('venueList').set("v.triggerRefresh", 'isTrigger');
     },
+    handleToast : function(component, event, helper){
+        console.log('handleToast triggered');
+        //component.find('venueList').set("v.triggerRefresh", 'isTrigger');
+    },
     handleNewEvent : function(component, event, helper) {
         console.log('handleNewEvent triggered: ');
         var windowHash = window.location.hash;
@@ -18,9 +22,10 @@
             "entityApiName": "SOI_Venue_timetable__c",
             "panelOnDestroyCallback": function(event) {
                 window.location.hash = windowHash;
+                console.log('handleToast triggered');
+                component.find('venueList').set("v.triggerRefresh", 'isTrigger');
             }
         });
         createEvent.fire();
-        component.find('venueList').set("v.triggerRefresh", 'isTrigger');
         }
 })
