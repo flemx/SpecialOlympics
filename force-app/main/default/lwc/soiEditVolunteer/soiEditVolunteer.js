@@ -74,6 +74,8 @@ export default class SoiEditVolunteer extends LightningElement {
         handleRadioChange(event) {
             const filterType = event.detail.value;
             console.log(`Option selected with value: ${filterType}`);
+            let selected = this.selected;
+            console.log(selected);
             this.options = [];
             let tempList = [];
             if(filterType !== 'All'){
@@ -85,23 +87,13 @@ export default class SoiEditVolunteer extends LightningElement {
             }
             for(let role of tempList){
                 this.options.push({ label: role.Name, value: role.Name})
-            } 
+            }
+            for(let role of selected){
+                this.options.push({ label: role, value: role})
+            }
+            
         }
 
-        filterRoles(filterType){
-            this.options = [];
-            let tempList = [];
-            if(filterType !== 'All'){
-                tempList =  this.allRoles.filter(function(role) {
-                    return role.Type === filterType;
-                });
-            }else{
-                tempList = this.allRoles;
-            }
-            for(let role of tempList){
-                this.options.push({ label: role.Name, value: role.Name})
-            } 
-        }
 
         constructor(){
             super();

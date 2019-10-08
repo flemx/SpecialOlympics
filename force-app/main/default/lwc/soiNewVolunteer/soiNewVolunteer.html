@@ -42,6 +42,15 @@
                                    <div class="slds-grid fields-container sports-container">
 
                                       <div class="slds-col slds-size_1-of-1">
+                                            <lightning-radio-group 
+                                            class="radio-group"
+                                            name="radioGroup"
+                                            label="Filter by type"
+                                            options={radioOptions}
+                                            value={radioValue}
+                                            type="radio"
+                                            onchange={handleRadioChange}></lightning-radio-group>
+                                            
                                           <lightning-dual-listbox name="languages"
                                           label="Add roles"
                                           source-label="Available"

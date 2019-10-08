@@ -21,5 +21,6 @@
             }
         });
         createEvent.fire();
+        component.find('venueList').set("v.triggerRefresh", 'isTrigger');
         }
 })

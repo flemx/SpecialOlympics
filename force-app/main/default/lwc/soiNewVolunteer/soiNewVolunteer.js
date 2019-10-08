@@ -13,7 +13,7 @@ import LASTNAME_FIELD from '@salesforce/schema/Contact.LastName';
 import COMMENTS from '@salesforce/schema/Contact.SOI_Comments__c';
 import CONS_ID from '@salesforce/schema/Contact.SOI_ConsID__c';
 import ACCOUNT from '@salesforce/schema/Contact.AccountId';
-import { roleOptions } from 'c/soi_configVariables';
+import { roleList } from 'c/soi_configVariables';
 
 
 export default class SoiNewVolunteer extends LightningElement {
@@ -49,11 +49,57 @@ export default class SoiNewVolunteer extends LightningElement {
 
     //All the available and selected options
     @track _selected = [];
-    options = roleOptions;
+    @track options = [];
+    allRoles = roleList;
 
     get selected() {
         return this._selected.length ? this._selected : false;
     }
+
+    @track
+    radioOptions = [
+        {'label': 'All', 'value': 'All'},
+        {'label': 'General', 'value': 'General'},
+        {'label': 'Management', 'value': 'Management'},
+        {'label': 'Coach', 'value': 'Coach'}
+    ];
+
+    // Select option1 by default
+    @track
+    radioValue = 'All';
+
+    handleRadioChange(event) {
+        const filterType = event.detail.value;
+        console.log(`Option selected with value: ${filterType}`);
+        let selected = this.selected;
+        console.log(selected);
+        this.options = [];
+        let tempList = [];
+        if(filterType !== 'All'){
+            tempList =  this.allRoles.filter(function(role) {
+                return role.Type === filterType;
+            });
+        }else{
+            tempList = this.allRoles;
+        }
+        for(let role of tempList){
+            this.options.push({ label: role.Name, value: role.Name})
+        }
+        for(let role of selected){
+            this.options.push({ label: role, value: role})
+        }
+        
+    }
+
+
+    constructor(){
+        super();
+        for(let role of this.allRoles){
+            this.options.push({ label: role.Name, value: role.Name})
+        }
+    }
+
+
 
     handleChange(e) {
         this._selected = e.detail.value;
