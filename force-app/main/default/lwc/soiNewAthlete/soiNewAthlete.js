@@ -66,7 +66,7 @@ export default class Soi_newAthlete extends LightningElement {
                 if(result.Contact){
                     this.userRecord = result;
                     let newSports = [];
-                    let sportList =  result.Contact.Account.SOI_venueSports__c.split(';');
+                    let sportList =  result.Contact.Account.SOI_venueSports__c.split(',');
                     for(let sport of sportList){
                         newSports.push({label: sport, value: sport });
                     }

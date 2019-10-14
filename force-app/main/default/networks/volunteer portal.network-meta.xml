@@ -37,7 +37,6 @@
     <networkMemberGroups>
         <permissionSet>soi_portalUsers</permissionSet>
         <profile>Admin</profile>
-        <profile>customer community user</profile>
         <profile>customer community login user</profile>
     </networkMemberGroups>
     <networkPageOverrides>

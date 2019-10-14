@@ -75,9 +75,17 @@
   </types>
   <types>
     <name>Layout</name>
+    <members>Account-Account %28Marketing%29 Layout</members>
+    <members>Account-Account %28Sales%29 Layout</members>
+    <members>Account-Account %28Support%29 Layout</members>
+    <members>Account-Account Layout</members>
     <members>Account-Club</members>
     <members>Account-Portal Club</members>
     <members>Contact-Athlete</members>
+    <members>Contact-Contact %28Marketing%29 Layout</members>
+    <members>Contact-Contact %28Sales%29 Layout</members>
+    <members>Contact-Contact %28Support%29 Layout</members>
+    <members>Contact-Contact Layout</members>
     <members>Contact-Volunteer</members>
     <members>SOI_Roles__c-Volunteer_Role Layout</members>
     <members>SOI_Sport__c-Sport Layout</members>
@@ -111,6 +119,11 @@
     <members>volunteer portal</members>
   </types>
   <types>
+    <name>CustomObjectTranslation</name>
+    <members>Account-en_US</members>
+    <members>SOI_Roles__c-en_US</members>
+  </types>
+  <types>
     <name>CustomObject</name>
     <members>Account</members>
     <members>Contact</members>
@@ -126,7 +139,32 @@
   </types>
   <types>
     <name>CustomField</name>
+    <members>Account.AccountNumber</members>
+    <members>Account.AccountSource</members>
+    <members>Account.AnnualRevenue</members>
+    <members>Account.BillingAddress</members>
+    <members>Account.ChannelProgramLevelName</members>
+    <members>Account.ChannelProgramName</members>
+    <members>Account.CleanStatus</members>
     <members>Account.Contact__c</members>
+    <members>Account.DandbCompanyId</members>
+    <members>Account.Description</members>
+    <members>Account.DunsNumber</members>
+    <members>Account.Fax</members>
+    <members>Account.Industry</members>
+    <members>Account.IsCustomerPortal</members>
+    <members>Account.IsPartner</members>
+    <members>Account.Jigsaw</members>
+    <members>Account.NaicsCode</members>
+    <members>Account.NaicsDesc</members>
+    <members>Account.Name</members>
+    <members>Account.NumberOfEmployees</members>
+    <members>Account.OperatingHoursId</members>
+    <members>Account.OwnerId</members>
+    <members>Account.Ownership</members>
+    <members>Account.ParentId</members>
+    <members>Account.Phone</members>
+    <members>Account.Rating</members>
     <members>Account.SOI_ActionLabel__c</members>
     <members>Account.SOI_AddrImpID__c</members>
     <members>Account.SOI_Alternative_Email__c</members>
@@ -138,6 +176,39 @@
     <members>Account.SOI_Status__c</members>
     <members>Account.SOI_Waiting_list__c</members>
     <members>Account.SOI_venueSports__c</members>
+    <members>Account.ShippingAddress</members>
+    <members>Account.Sic</members>
+    <members>Account.SicDesc</members>
+    <members>Account.Site</members>
+    <members>Account.TickerSymbol</members>
+    <members>Account.Tradestyle</members>
+    <members>Account.Type</members>
+    <members>Account.Website</members>
+    <members>Account.YearStarted</members>
+    <members>Contact.AccountId</members>
+    <members>Contact.AssistantName</members>
+    <members>Contact.AssistantPhone</members>
+    <members>Contact.Birthdate</members>
+    <members>Contact.Department</members>
+    <members>Contact.Description</members>
+    <members>Contact.DoNotCall</members>
+    <members>Contact.Email</members>
+    <members>Contact.Fax</members>
+    <members>Contact.HasOptedOutOfEmail</members>
+    <members>Contact.HasOptedOutOfFax</members>
+    <members>Contact.HomePhone</members>
+    <members>Contact.IndividualId</members>
+    <members>Contact.Jigsaw</members>
+    <members>Contact.LastCURequestDate</members>
+    <members>Contact.LastCUUpdateDate</members>
+    <members>Contact.MailingAddress</members>
+    <members>Contact.MobilePhone</members>
+    <members>Contact.Name</members>
+    <members>Contact.OtherAddress</members>
+    <members>Contact.OtherPhone</members>
+    <members>Contact.OwnerId</members>
+    <members>Contact.Phone</members>
+    <members>Contact.ReportsToId</members>
     <members>Contact.SOI_ActionLabel__c</members>
     <members>Contact.SOI_AlternativeEmail__c</members>
     <members>Contact.SOI_Certificate__c</members>
@@ -159,6 +230,7 @@
     <members>Contact.SOI_clubID_volID__c</members>
     <members>Contact.SOI_myRoles__c</members>
     <members>Contact.SOI_mySports__c</members>
+    <members>Contact.Title</members>
     <members>SOI_AdminProfile__c.ProfileName__c</members>
     <members>SOI_Roles__c.SOI_NewAdded__c</members>
     <members>SOI_Roles__c.SOI_Status__c</members>
@@ -265,6 +337,13 @@
     <members>soi_portalUsers</members>
   </types>
   <types>
+    <name>Profile</name>
+    <members>Admin</members>
+    <members>Custom%3A Marketing Profile</members>
+    <members>Custom%3A Sales Profile</members>
+    <members>Custom%3A Support Profile</members>
+  </types>
+  <types>
     <name>QuickAction</name>
     <members>Contact.soiTestAction</members>
     <members>Contact.testUpdate</members>
@@ -272,6 +351,11 @@
   <types>
     <name>Role</name>
     <members>myRole</members>
+  </types>
+  <types>
+    <name>Settings</name>
+    <members>Account</members>
+    <members>Security</members>
   </types>
   <types>
     <name>SharingSet</name>
@@ -305,6 +389,34 @@
   <types>
     <name>Workflow</name>
     <members>Contact</members>
+  </types>
+  <types>
+    <name>WorkflowFieldUpdate</name>
+    <members>*</members>
+  </types>
+  <types>
+    <name>WorkflowKnowledgePublish</name>
+    <members>*</members>
+  </types>
+  <types>
+    <name>WorkflowTask</name>
+    <members>*</members>
+  </types>
+  <types>
+    <name>WorkflowAlert</name>
+    <members>*</members>
+  </types>
+  <types>
+    <name>WorkflowSend</name>
+    <members>*</members>
+  </types>
+  <types>
+    <name>WorkflowOutboundMessage</name>
+    <members>*</members>
+  </types>
+  <types>
+    <name>WorkflowRule</name>
+    <members>*</members>
   </types>
   <version>45.0</version>
 </Package>

@@ -59,12 +59,17 @@ export default class SoiVolunteerList extends LightningElement {
     // Keep track of the user's accountId
     @track userAccountId;
 
+    generalRoles = ['General Volunteer', 
+    'Golf Partner', 
+    'Health Promotion Facilitator'
+    ];
 
     
     /** 
      *  Wired function to get the athlete list and reset the search field
      * @param {*} result 
      */
+    //@wire(volunteerList, {volunteerType : '$volunteerType', roleList : '$generalRoles'})
     @wire(volunteerList, {volunteerType : '$volunteerType'})
     wiredVolunteers(result) {
         this.wiredContactResult = result;
