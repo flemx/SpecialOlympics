@@ -3,7 +3,7 @@
     <fullName>SOI_Status__c</fullName>
     <defaultValue>&quot;New&quot;</defaultValue>
     <externalId>false</externalId>
-    <label>Status</label>
+    <label>SOI_Status</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Picklist</type>

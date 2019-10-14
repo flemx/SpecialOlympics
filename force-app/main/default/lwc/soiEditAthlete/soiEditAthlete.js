@@ -7,6 +7,7 @@ import FIRSTNAME_FIELD from '@salesforce/schema/Contact.FirstName';
 import LASTNAME_FIELD from '@salesforce/schema/Contact.LastName';
 import DOB from '@salesforce/schema/Contact.Birthdate';
 import COMMENTS from '@salesforce/schema/Contact.SOI_Comments__c';
+import SOI_STATUS from '@salesforce/schema/Contact.SOI_MarkInactive__c';
 import CONS_ID from '@salesforce/schema/Contact.SOI_ConsID__c';
 import ACCOUNT from '@salesforce/schema/Contact.AccountId';
 
@@ -16,6 +17,7 @@ export default class SoiEditAthlete extends LightningElement {
     // Track if modal is open or not
     @api openmodel = false;
     @api contactId;
+    @api isActive = false;
 
     // Object and field variables for submit form
     contactObject = CONTACT_OBJECT;
@@ -25,7 +27,7 @@ export default class SoiEditAthlete extends LightningElement {
     comments = COMMENTS;
     athleteId = CONS_ID;
     accountId =  ACCOUNT;
-
+    deleteStatus = SOI_STATUS;
     //Disable submit button
     @track submitDisabled = false;
 
@@ -143,6 +145,7 @@ export default class SoiEditAthlete extends LightningElement {
 
     }
 
+
     handleChange(e) {
         this._selected = e.detail.value;
     }
@@ -156,9 +159,8 @@ export default class SoiEditAthlete extends LightningElement {
 
 
     handleSubmit(){
-        this.submitDisabled = true;
         //event.preventDefault();       // stop the form from submitting
-
+        this.submitDisabled = true;
      }
 
 

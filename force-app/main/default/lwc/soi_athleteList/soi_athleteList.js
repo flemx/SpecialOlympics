@@ -31,6 +31,7 @@ export default class Soi_athleteList extends LightningElement {
     //Track edit form
     @track editForm = false;
     @track editContactId;
+    @track isActive = false;
 
     // Track if renderedCallback was executed
     isRendered = false;
@@ -148,6 +149,7 @@ export default class Soi_athleteList extends LightningElement {
     openEdit(row){
         const editForm =  this.template.querySelector('.editForm');
         this.editContactId = row.Id;
+        this.isActive = row.SOI_IsActive__c;
         editForm.currentSports = row.SOI_mySports__c;
         if(editForm.openmodel){
             editForm.openmodel = false;
@@ -170,10 +172,21 @@ export default class Soi_athleteList extends LightningElement {
         this.dispatchEvent(evt);
     }
 
-      /**
+    /**
      *  Event listener for table action buttons
      * @param {*} event 
      */
+    handleRowAction(event) {
+        const actionName = event.detail.action.name;
+        const row = event.detail.row;
+        switch (actionName) {
+            case 'view_details':
+                this.openEdit(row);
+                break;
+            default:
+        }
+    }
+   /*
     handleRowAction(event) {
         const actionName = event.detail.action.name;
         const row = event.detail.row;
@@ -187,11 +200,11 @@ export default class Soi_athleteList extends LightningElement {
             default:
         }
     }
-
+  */
     /**
      *   Function to decide which delete action to execute
      * @param {*} row 
-     */
+     
     deleteHandler(row){
         console.log(`actionLabel is: ${row.SOI_ActionLabel__c}`);
         if(row.SOI_ActionLabel__c === 'Undelete'){
@@ -211,13 +224,13 @@ export default class Soi_athleteList extends LightningElement {
             this.deleteAthlete(row, 'Deleted',toastInfo);
         }
     }
-
+*/
 
     /**
      *  Function to update athlete status as Deleted
      * @param {*} row 
      * @param {*} newStatus 
-     */
+    
     deleteAthlete(row, newStatus, toastInfo){
         //console.log(row.Id);
         deleteAth({ Id: row.Id, status: newStatus, AccId: row.AccountId})
@@ -236,7 +249,7 @@ export default class Soi_athleteList extends LightningElement {
                 console.log('ERROR on deleteAthlete' + error);
             });
     }
-
+     */
 
 
     /**
