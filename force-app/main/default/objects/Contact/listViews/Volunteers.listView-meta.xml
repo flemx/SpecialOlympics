@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Volunteers</fullName>
-    <columns>FULL_NAME</columns>
-    <columns>ACCOUNT.NAME</columns>
-    <columns>CONTACT.PHONE1</columns>
-    <columns>CONTACT.EMAIL</columns>
-    <columns>CONTACT.TITLE</columns>
     <columns>SOI_ConsID__c</columns>
-    <columns>SOI_VolunteerType__c</columns>
-    <columns>SOI_Status__c</columns>
-    <filterScope>Mine</filterScope>
+    <columns>FULL_NAME</columns>
+    <columns>SOI_Membership_Card__c</columns>
+    <columns>SOI_myRoles__c</columns>
+    <columns>SOI_Certificate__c</columns>
+    <columns>SOI_MarkInactive__c</columns>
+    <filterScope>Everything</filterScope>
     <filters>
         <field>CONTACT.RECORDTYPE</field>
         <operation>equals</operation>
         <value>Contact.Volunteer</value>
-    </filters>
-    <filters>
-        <field>ACCOUNT.NAME</field>
-        <operation>equals</operation>
-        <value>Cabinteely Special Olympics Club</value>
     </filters>
     <label>Volunteers</label>
 </ListView>

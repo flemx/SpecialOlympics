@@ -87,8 +87,8 @@ export default class SoiNewTimetable extends LightningElement {
     successHandle(event){
         console.log('EXECUTE successHandle');
         let toastInfo = {
-            "myTitle" : "Succesfully created Athlete",
-            "myMessage" : `Athelete is created and sports have been added`,
+            "myTitle" : "Succesfully created timetable",
+            "myMessage" : `Timetable is created`,
             "variant" : "success"
         };
         this.submitDisabled = false;

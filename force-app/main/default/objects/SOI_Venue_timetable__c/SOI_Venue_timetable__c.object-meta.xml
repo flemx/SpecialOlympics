@@ -53,7 +53,7 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Venue_timetable</label>
+    <label>Timetable</label>
     <nameField>
         <label>Sport Name</label>
         <trackHistory>false</trackHistory>

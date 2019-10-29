@@ -4,7 +4,6 @@
     <externalId>false</externalId>
     <label>SOI_Venue</label>
     <referenceTo>SOI_Venue__c</referenceTo>
-    <relationshipLabel>Venue_timetables</relationshipLabel>
     <relationshipName>Venue_timetables</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>

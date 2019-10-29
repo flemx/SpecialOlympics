@@ -21,7 +21,7 @@ public with sharing class SOI_AthleteController {
     public static List<Contact> getAthletes(){
         List<Contact> newAthletes = new List<Contact>();
         for(Contact con: [select AccountId, Account.Name, SOI_IsNew__c, SOI_ClubName__c, SOI_ConsID__c, 
-                                    Name, Birthdate, SOI_Medical_Expiry__c, SOI_Membership_Card__c, 
+                                    Name, Birthdate, SOI_Medical_Expiry__c, SOI_Membership_Card__c,  SOI_MarkInactive__c,
                                     (select Name,SOI_Status__c from Sports__r where SOI_Status__c != 'Deleted'), SOI_Status__c, SOI_mySports__c,
                                     SOI_ActionLabel__c from Contact where RecordTypeId IN 
                                     (select Id FROM RecordType where Name = 'Athlete')]){

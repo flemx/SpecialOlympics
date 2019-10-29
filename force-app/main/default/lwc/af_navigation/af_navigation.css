@@ -1,8 +1,8 @@
 .navbar-item{
     display: flex;
     padding: 10%;
+    padding-top: 15%;
     margin: 0;
-    margin-top: 5%;
 }
 
 .navbar-item img{

@@ -1,12 +1,12 @@
 <template>  
 
         <template if:true={openmodel}>
-                <div style="height:640px">
+                
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
                           <div class="slds-modal__container">
 
 
-                              <lightning-record-edit-form object-api-name={contactObject}  onsubmit={handleSubmit} record-id={contactId} onsuccess={successHandle}>
+                              
                                   <header class="slds-modal__header">
                                       <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
                                           <lightning-icon icon-name="utility:close" size="medium" class="close-icon"></lightning-icon>
@@ -15,6 +15,7 @@
                                     <h2 class="slds-text-heading_medium slds-hyphenate">Edit Athlete</h2>
                                   </header>
                                   <div class="slds-modal__content slds-p-around_medium">
+                                        <lightning-record-edit-form object-api-name={contactObject}  onsubmit={handleSubmit} record-id={contactId} onsuccess={successHandle} onerror={handleError}> 
                                         <lightning-messages></lightning-messages>
                                         <div class="slds-grid fields-container">
                                             
@@ -48,39 +49,49 @@
                                             
 
                                                 <div class="slds-col slds-size_1-of-1">
+
+
+                                      <!--
+                                                        <lightning-checkbox-group name="languages"
+                                                        label="Add sports"
+                                                        field-level-help="Click on the checkboxes to add or remove a sport"
+                                                        options={options}
+                                                        onchange={handleChange}
+                                                        value={selected}></lightning-checkbox-group>
+                                        -->
+                                                   
                                                     <lightning-dual-listbox name="languages"
-                                                    label="Add sports"
-                                                    source-label="Available"
-                                                    selected-label="Assigned"
-                                                    field-level-help="Assign the athlete's sports from the available sports"
+                                                    label="Edit sports"
+                                                    source-label="Not assigned sports"
+                                                    selected-label="Current assigned sports"
+                                                    field-level-help="select the sport and press the remove or assign button"
                                                     options={options}
                                                     onchange={handleChange}
                                                     disable-reordering
                                                     value={selected}
-                                                    remove-button-label="Remove"
+                                                    remove-button-label="Remove selected sport"
                                                     size=5
-                                                    add-button-label="Assign"></lightning-dual-listbox>
-                                                </div>
-                                            
-                            
+                                                    add-button-label="Assign selected sport"></lightning-dual-listbox>
+                                               
+                                            </div>
+                                                <lightning-button  class="hidden-submit" type="submit" variant="brand" style="display:none"></lightning-button>
                                          </div>
-    
+                                        </lightning-record-edit-form>
                                     </div>
 
 
                             <footer class="slds-modal__footer">
                                 <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <lightning-button  type="submit" label="Save" variant="brand" disabled={submitDisabled}></lightning-button>
+                                <lightning-button  label="Save" variant="brand" disabled={submitDisabled}  onclick={submitForm}></lightning-button>
                         </footer>
 
                                
-                              </lightning-record-edit-form>
+                              
 
 
                           </div>
                         </section>
                         <div class="slds-backdrop slds-backdrop_open"></div>
-                      </div>
         </template>
 
     <!--

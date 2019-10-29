@@ -91,6 +91,7 @@ export default class Soi_newAthlete extends LightningElement {
         this._selected = e.detail.value;
     }
 
+
     handleSubmit(event){
         this.submitDisabled = true;
         event.preventDefault();       // stop the form from submitting
@@ -156,6 +157,13 @@ export default class Soi_newAthlete extends LightningElement {
 
     }
     
+    submitForm(){
+        this.template.querySelector('.hidden-submit').click();
+    }
+
+    handleError(){
+        this.submitDisabled = false;
+    }
 
 
     openmodal() {

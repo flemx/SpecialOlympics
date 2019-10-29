@@ -28,5 +28,9 @@
         //onst saveEvent = new CustomEvent('onsaveEvent');
         // Fire the custom event
         //this.dispatchEvent(saveEvent);
+    },
+    editSubmission : function(component, event, helper){
+        let bool = component.get('v.theBoolean');
+        component.set('v.theBoolean', false);
     }
 })

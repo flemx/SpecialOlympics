@@ -297,16 +297,17 @@ export default class Soi_athleteList extends LightningElement {
         console.log('searchKeyEvent executed');
         this.searchKey = event.target.value;
         this.data = this.fiterData(this.searchKey);
+        
     }
 
     fiterData(searchKey){
         console.log('fiterData executed');
+       
         console.log('fValue is: ' + searchKey);
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(searchKey.toLowerCase()) ||
             el.SOI_ConsID__c.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_mySports__c.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_Status__c.toLowerCase().includes(searchKey.toLowerCase()) ){
+            el.SOI_mySports__c.toLowerCase().includes(searchKey.toLowerCase())){
                 return true;
             }
             return false;

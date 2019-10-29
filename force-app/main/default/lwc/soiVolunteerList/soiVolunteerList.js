@@ -33,10 +33,10 @@ export default class SoiVolunteerList extends LightningElement {
     set volunteerType(value){
         //this.typeVolunteer = value;
     }
-    */
+   
 
     typeVolunteer = 'general';
-
+ */
     //Track search filter
     @track searchKey;
 
@@ -70,7 +70,7 @@ export default class SoiVolunteerList extends LightningElement {
      * @param {*} result 
      */
     //@wire(volunteerList, {volunteerType : '$volunteerType', roleList : '$generalRoles'})
-    @wire(volunteerList, {volunteerType : '$volunteerType'})
+    @wire(volunteerList)
     wiredVolunteers(result) {
         this.wiredContactResult = result;
         if(result.data) {
@@ -298,8 +298,7 @@ export default class SoiVolunteerList extends LightningElement {
         let newArray = this.rawData.filter(function (el) {
             if(el.Name.toLowerCase().includes(searchKey.toLowerCase()) ||
             el.SOI_ConsID__c.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_myRoles__c.toLowerCase().includes(searchKey.toLowerCase()) ||
-            el.SOI_Status__c.toLowerCase().includes(searchKey.toLowerCase()) ){
+            el.SOI_myRoles__c.toLowerCase().includes(searchKey.toLowerCase()) ){
                 return true;
             }
             return false;

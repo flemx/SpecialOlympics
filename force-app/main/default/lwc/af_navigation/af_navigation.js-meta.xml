@@ -12,6 +12,7 @@
     <targetConfigs>
       <targetConfig targets="lightningCommunity__Default">
           <property label="Selected Page" name="pagenum" datasource="home,athletes,volunteers,venues,club,submit" default="home" type="String" />
+          <property label="AccountId" name="accountId"  default="{!CurrentUser.accountId}" type="String" />
       </targetConfig>
   </targetConfigs>
      

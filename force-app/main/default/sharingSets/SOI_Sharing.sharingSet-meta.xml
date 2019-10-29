@@ -19,5 +19,6 @@
         <userField>Contact.Account</userField>
     </accessMappings>
     <name>SOI_Sharing</name>
+    <profiles>SOI portal user</profiles>
     <profiles>customer community login user</profiles>
 </SharingSet>

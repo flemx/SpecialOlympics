@@ -1,12 +1,12 @@
 <template>
 
-        <lightning-button variant="brand" label="Add Timetable" title="Brand action" onclick={openmodal} class="newAthlete"></lightning-button>
+        <lightning-button variant="brand" label="Add New Timetable" title="Brand action" onclick={openmodal} class="newAthlete"></lightning-button>
         
         
-        <!--
+      
         <template if:true={openmodel}>
 
-                <div style="height:640px">
+           
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
                           <div class="slds-modal__container">
                               <lightning-record-edit-form object-api-name={timetableObject} onsuccess={successHandle} onsubmit={handleSubmit}>
@@ -39,7 +39,7 @@
                                        </div>
                                        <div class="slds-grid fields-container">
                                             <div class="slds-col slds-size_1-of-2">
-                                                <lightning-input-field field-name={tueS} ></lightning-input-field>
+                                                <lightning-input-field field-name={tueS} type="time" ></lightning-input-field>
                                             </div>
                                             <div class="slds-col slds-size_2-of-2">
                                                 <lightning-input-field field-name={tueE} ></lightning-input-field>
@@ -94,8 +94,8 @@
                           </div>
                         </section>
                         <div class="slds-backdrop slds-backdrop_open"></div>
-                      </div>
+               
         </template>
-        -->
+        
     
 </template>

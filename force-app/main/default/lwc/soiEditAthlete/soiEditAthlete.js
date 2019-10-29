@@ -34,65 +34,17 @@ export default class SoiEditAthlete extends LightningElement {
     // Track newly added sport
     newSports;
 
-    @api get testvar(){
-        
-    }
-
-    set testvar(value){
-        console.log("testvar");
-        console.log(value);
-    }
 
 
     //All the available and selected options
-    @track _selected = [];
+    @track _selected;
 
     get options(){
-        return this.testOptions;
-        /*
-     return [
-            { label: 'Football', value: 'Football' },
-            { label: 'Swimming', value: 'Swimming' },
-            { label: 'Basketball', value: 'Basketball' },
-            { label: 'Running', value: 'Running' },
-            { label: 'Golf', value: 'Golf' },
-            { label: 'Boxing', value: 'Boxing' },
-            { label: 'Hockey', value: 'Hockey' },
-            { label: 'Rugbey', value: 'Rugbey' }
-        ];
-        */
+        return this._options;
     }
+    _options = [];
+    @track allOptionsList = [];
 
-    @api get optionsInit() {
-        return this.testOptions;
-        
-    }
-
-    @track testOptions = [];
-
-    @track sportsReady = false;
-
-     /* Add functionality later  */
-    /*
-    @track options = [];
-    @track sportsReady = false;
-    @api get optionsInit() {
-        return this.options;
-        
-    }
-
-   
-    set optionsInit(value){
-        console.log('optionsInit triggered');
-        
-        let sporList = value.split(';');
-        for(let sport of sporList){
-            this.options.push({label: sport, value: sport });
-        }
-        this.sportsReady = true
-        console.log(this.options);
-    }
-    */
 
     get selected() {
         return this._selected.length ? this._selected : false;
@@ -107,6 +59,14 @@ export default class SoiEditAthlete extends LightningElement {
         this._selected = [];
         this._currentSports = value.split(',').map(Function.prototype.call, String.prototype.trim);
         this._selected.push(...this._currentSports);
+        //Checks for any selected values that are not part of the available options
+        for(let selected of this._selected){
+            if(!this.allOptionsList.includes(selected)){
+                this._options.push({label: selected, value: selected });
+            }
+         
+        } 
+   
     }
 
        /**
@@ -121,13 +81,14 @@ export default class SoiEditAthlete extends LightningElement {
                 if(result.Contact){
                     this.userRecord = result;
                     let newSports = [];
-                    let sportList =  result.Contact.Account.SOI_venueSports__c.split(',');
+                    let sportList =  result.Contact.Account.SOI_venueSports__c.split(',').map(Function.prototype.call, String.prototype.trim);
                     for(let sport of sportList){
                         newSports.push({label: sport, value: sport });
+                        this.allOptionsList.push(sport);
                     }
-                    this.testOptions = newSports;
+                    this._options = newSports;
                     console.log('clubSports: ');
-                    console.log(this.testOptions);
+                    console.log(this._options);
                   
                 }
             })
@@ -148,6 +109,7 @@ export default class SoiEditAthlete extends LightningElement {
 
     handleChange(e) {
         this._selected = e.detail.value;
+        console.log(this._selected);
     }
 
     openmodal() {
@@ -156,6 +118,14 @@ export default class SoiEditAthlete extends LightningElement {
     closeModal() {
         this.openmodel = false
     } 
+
+    handleError(){
+        this.submitDisabled = false;
+    }
+
+    submitForm(){
+        this.template.querySelector('.hidden-submit').click();
+    }
 
 
     handleSubmit(){

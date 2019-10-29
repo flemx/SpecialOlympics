@@ -5,7 +5,7 @@
  */
  
 trigger ContactTrigger on Contact (before insert) {
-
+	
   
     if(trigger.isInsert & trigger.isBefore){
       	List<Contact> contacts = Trigger.New;

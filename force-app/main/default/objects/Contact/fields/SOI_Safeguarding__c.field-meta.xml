@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SOI_Safeguarding__c</fullName>
     <externalId>false</externalId>
-    <label>SOI_ Safeguarding</label>
+    <label>SOI_Safeguarding</label>
     <length>100</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>

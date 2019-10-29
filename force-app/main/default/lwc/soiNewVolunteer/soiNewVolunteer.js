@@ -115,6 +115,13 @@ export default class SoiNewVolunteer extends LightningElement {
         this.template.querySelector('lightning-record-edit-form').submit(fields);
      }
 
+     submitForm(){
+        this.template.querySelector('.hidden-submit').click();
+    }
+
+    handleError(){
+        this.submitDisabled = false;
+    }
 
      /**
       *  After form for new athlete is submitted, use the contactId of the newly created record to associate the assigned sports as related records 

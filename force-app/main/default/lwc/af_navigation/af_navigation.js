@@ -4,6 +4,7 @@ import ASSETS from '@salesforce/resourceUrl/AF_assets';
 
 export default class af_navigation extends NavigationMixin(LightningElement) {
     @api pagenum
+    @api accountId;
 
     /* Icons used for nav manu */
     @track myIcons = {
@@ -14,6 +15,19 @@ export default class af_navigation extends NavigationMixin(LightningElement) {
         "submit" : ASSETS + '/icons/submit.png',
         "volunteers" : ASSETS + '/icons/volunteer.png'
     };
+
+    /* Open account page */
+    openClub(){
+        console.log(this.accountId);
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                //recordId: '0013E0000163bj2QAA',
+                recordId: this.accountId,
+                actionName: 'view'
+            }
+        });
+    }
 
     /* Open page in community */
     openPage(event){

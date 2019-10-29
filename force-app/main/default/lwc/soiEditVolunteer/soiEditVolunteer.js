@@ -11,6 +11,7 @@ import CONTACT_OBJECT from '@salesforce/schema/Contact';
 import FULLNAME from '@salesforce/schema/Contact.Name';
 import COMMENTS from '@salesforce/schema/Contact.SOI_Comments__c';
 import CONS_ID from '@salesforce/schema/Contact.SOI_ConsID__c';
+import SOI_STATUS from '@salesforce/schema/Contact.SOI_MarkInactive__c';
 import ACCOUNT from '@salesforce/schema/Contact.AccountId';
 import CERT_ID from '@salesforce/schema/Contact.SOI_Certificate__c';
 import MEM_CARD from '@salesforce/schema/Contact.SOI_Membership_Card__c';
@@ -31,7 +32,7 @@ export default class SoiEditVolunteer extends LightningElement {
         volunteerId = CONS_ID;
         accountId =  ACCOUNT;
         membershipCard = MEM_CARD;
-    
+        deleteStatus = SOI_STATUS;
         //Disable submit button
         @track submitDisabled = false;
     
@@ -42,7 +43,7 @@ export default class SoiEditVolunteer extends LightningElement {
         @track _selected = [];
         @track options = [];
         allRoles = roleList;
-       
+        @track allOptionsList = [];
     
         get selected() {
             return this._selected.length ? this._selected : false;
@@ -55,8 +56,21 @@ export default class SoiEditVolunteer extends LightningElement {
         }
         set currentRoles(value){
             this._selected = [];
+            console.log(value);
             this._currentRoles = value.split(',').map(Function.prototype.call, String.prototype.trim);
             this._selected.push(...this._currentRoles);
+
+            
+            console.log(this.allOptionsList);
+            //Checks for any selected values that are not part of the available options
+            for(let selected of this._selected){
+                if(!this.allOptionsList.includes(selected)){
+                    console.log('selected not in list');
+                    console.log(selected);
+                    this.options.push({label: selected, value: selected });
+                }            
+            }
+           
         }
 
         @track
@@ -99,7 +113,16 @@ export default class SoiEditVolunteer extends LightningElement {
             super();
             for(let role of this.allRoles){
                 this.options.push({ label: role.Name, value: role.Name})
+                this.allOptionsList.push(role.Name);
             }
+        }
+
+        submitForm(){
+            this.template.querySelector('.hidden-submit').click();
+        }
+    
+        handleError(){
+            this.submitDisabled = false;
         }
     
         handleChange(e) {

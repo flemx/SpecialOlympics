@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SOI_submission_completed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checkbox is ticked if final document is uploaded from the Submit tab in the portal</description>
+    <externalId>false</externalId>
+    <label>Submission Completed</label>
+    <type>Checkbox</type>
+</CustomField>

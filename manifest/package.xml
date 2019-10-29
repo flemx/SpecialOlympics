@@ -71,7 +71,7 @@
   <types>
     <name>Flow</name>
     <members>Change_Club_Contact</members>
-    <members>setContactOwner</members>
+    <members>Instructions_upload_file</members>
   </types>
   <types>
     <name>Layout</name>
@@ -79,6 +79,7 @@
     <members>Account-Portal Club</members>
     <members>Contact-Athlete</members>
     <members>Contact-Volunteer</members>
+    <members>Contact-Volunteer Portal</members>
     <members>SOI_Roles__c-Volunteer_Role Layout</members>
     <members>SOI_Sport__c-Sport Layout</members>
     <members>SOI_Venue__c-SOI_Venue Layout</members>
@@ -129,15 +130,41 @@
     <members>Account.Contact__c</members>
     <members>Account.SOI_ActionLabel__c</members>
     <members>Account.SOI_AddrImpID__c</members>
-    <members>Account.SOI_Alternative_Email__c</members>
-    <members>Account.SOI_Alternative_Phone__c</members>
     <members>Account.SOI_Club_ConsID__c</members>
-    <members>Account.SOI_Contact_Name__c</members>
+    <members>Account.SOI_Club_Contact_ID__c</members>
     <members>Account.SOI_Email__c</members>
-    <members>Account.SOI_Phone__c</members>
     <members>Account.SOI_Status__c</members>
     <members>Account.SOI_Waiting_list__c</members>
+    <members>Account.SOI_alternative_email__c</members>
+    <members>Account.SOI_first_name__c</members>
+    <members>Account.SOI_last_name__c</members>
+    <members>Account.SOI_submission_completed__c</members>
     <members>Account.SOI_venueSports__c</members>
+    <members>Contact.AccountId</members>
+    <members>Contact.AssistantName</members>
+    <members>Contact.AssistantPhone</members>
+    <members>Contact.Birthdate</members>
+    <members>Contact.Department</members>
+    <members>Contact.Description</members>
+    <members>Contact.DoNotCall</members>
+    <members>Contact.Email</members>
+    <members>Contact.Fax</members>
+    <members>Contact.Full_Name__c</members>
+    <members>Contact.HasOptedOutOfEmail</members>
+    <members>Contact.HasOptedOutOfFax</members>
+    <members>Contact.HomePhone</members>
+    <members>Contact.IndividualId</members>
+    <members>Contact.Jigsaw</members>
+    <members>Contact.LastCURequestDate</members>
+    <members>Contact.LastCUUpdateDate</members>
+    <members>Contact.MailingAddress</members>
+    <members>Contact.MobilePhone</members>
+    <members>Contact.Name</members>
+    <members>Contact.OtherAddress</members>
+    <members>Contact.OtherPhone</members>
+    <members>Contact.OwnerId</members>
+    <members>Contact.Phone</members>
+    <members>Contact.ReportsToId</members>
     <members>Contact.SOI_ActionLabel__c</members>
     <members>Contact.SOI_AlternativeEmail__c</members>
     <members>Contact.SOI_Certificate__c</members>
@@ -149,6 +176,7 @@
     <members>Contact.SOI_IRImpID__c</members>
     <members>Contact.SOI_IRLink__c</members>
     <members>Contact.SOI_IsNew__c</members>
+    <members>Contact.SOI_MarkInactive__c</members>
     <members>Contact.SOI_Medical_Expiry__c</members>
     <members>Contact.SOI_Membership_Card__c</members>
     <members>Contact.SOI_Safeguarding__c</members>
@@ -159,10 +187,12 @@
     <members>Contact.SOI_clubID_volID__c</members>
     <members>Contact.SOI_myRoles__c</members>
     <members>Contact.SOI_mySports__c</members>
+    <members>Contact.Title</members>
     <members>SOI_AdminProfile__c.ProfileName__c</members>
     <members>SOI_Roles__c.SOI_NewAdded__c</members>
     <members>SOI_Roles__c.SOI_Status__c</members>
     <members>SOI_Roles__c.SOI_Volunteer__c</members>
+    <members>SOI_Roles__c.VJAJobImpID__c</members>
     <members>SOI_Sport__c.SOI_Athlete__c</members>
     <members>SOI_Sport__c.SOI_IRAttrIRImpID__c</members>
     <members>SOI_Sport__c.SOI_IRAttrImpID__c</members>
@@ -184,6 +214,7 @@
     <members>SOI_Venue_timetable__c.SAT__c</members>
     <members>SOI_Venue_timetable__c.SOI_ActionLabel__c</members>
     <members>SOI_Venue_timetable__c.SOI_IsNew__c</members>
+    <members>SOI_Venue_timetable__c.SOI_MarkInactive__c</members>
     <members>SOI_Venue_timetable__c.SOI_Sport__c</members>
     <members>SOI_Venue_timetable__c.SOI_Status__c</members>
     <members>SOI_Venue_timetable__c.SOI_Venue__c</members>
@@ -265,13 +296,23 @@
     <members>soi_portalUsers</members>
   </types>
   <types>
-    <name>QuickAction</name>
-    <members>Contact.soiTestAction</members>
-    <members>Contact.testUpdate</members>
+    <name>ProfilePasswordPolicy</name>
+    <members>SOI_portal_user_profilePasswordPolicy1572264584640</members>
   </types>
   <types>
-    <name>Role</name>
-    <members>myRole</members>
+    <name>ProfileSessionSetting</name>
+    <members>SOI_portal_user_profileSessionSetting1572264584880</members>
+  </types>
+  <types>
+    <name>Profile</name>
+    <members>SOI portal user</members>
+  </types>
+  <types>
+    <name>QuickAction</name>
+    <members>Contact.Create_new_Volunteer</members>
+    <members>Contact.soiTestAction</members>
+    <members>Contact.testUpdate</members>
+    <members>Create_new_Volunteer</members>
   </types>
   <types>
     <name>SharingSet</name>
@@ -301,10 +342,7 @@
     <name>ApexTrigger</name>
     <members>ContactTrigger</members>
     <members>SOI_TimetableTrigger</members>
-  </types>
-  <types>
-    <name>Workflow</name>
-    <members>Contact</members>
+    <members>SoiTimetableTrigger</members>
   </types>
   <version>45.0</version>
 </Package>

@@ -6,6 +6,7 @@
     <columns>CONTACT.BIRTHDATE</columns>
     <columns>SOI_ConsID__c</columns>
     <columns>SOI_Medical_Expiry__c</columns>
+    <columns>SOI_MarkInactive__c</columns>
     <columns>SOI_Membership_Card__c</columns>
     <columns>SOI_Status__c</columns>
     <columns>CONTACT.RECORDTYPE</columns>

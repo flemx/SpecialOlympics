@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ThuStart__c</fullName>
     <externalId>false</externalId>
-    <label>ThuStart</label>
+    <label>Thursday Start</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

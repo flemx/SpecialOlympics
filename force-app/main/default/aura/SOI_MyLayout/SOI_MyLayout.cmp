@@ -12,7 +12,7 @@
                 <div class="menu">  
                     {!v.menu}
                 </div>
-                <div class="content">
+                <div class="soiLayoutContent">
                     <div class="innercontent">
                         {!v.content}
                     </div>

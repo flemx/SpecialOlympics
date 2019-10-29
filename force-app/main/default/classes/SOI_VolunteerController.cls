@@ -19,11 +19,10 @@ public with sharing class SOI_VolunteerController {
      *  Get all the volunteers the user has access to and format the SOI_myRoles__c related list into a single string field
      */
     @AuraEnabled(cacheable=true)
-    public static List<Contact> getVolunteers(String volunteerType){
-        System.debug(volunteerType);
+    public static List<Contact> getVolunteers(){
         List<Contact> newVolunteers = new List<Contact>();
         for(Contact con: [select AccountId, Account.Name, SOI_ClubName__c, SOI_ConsID__c, 
-                                    Name, SOI_Membership_Card__c,SOI_Certificate__c,
+                                    Name, SOI_Membership_Card__c,SOI_Certificate__c, SOI_MarkInactive__c,
                                     SOI_Status__c, SOI_myRoles__c,SOI_ActionLabel__c,
                                     (select Name,SOI_Status__c from Volunteer_Roles__r where SOI_Status__c != 'Deleted')
                                     from Contact where RecordTypeId IN 
