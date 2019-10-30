@@ -55,9 +55,10 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Timetable</label>
     <nameField>
-        <label>Sport Name</label>
+        <displayFormat>A-{00000}</displayFormat>
+        <label>Timetable Number</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Venue_timetables</pluralLabel>
     <searchLayouts/>

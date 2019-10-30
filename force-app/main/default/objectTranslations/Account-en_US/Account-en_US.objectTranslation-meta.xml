@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Club</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Clubs</value>
+    </caseValues>
+    <layouts>
+        <layout>Club</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Portal Club</layout>
+        <sections>
+            <label><!-- Club Contact details --></label>
+            <section>Club Contact details</section>
+        </sections>
+        <sections>
+            <label><!-- Club Information --></label>
+            <section>Club Information</section>
+        </sections>
+        <sections>
+            <label><!-- edut --></label>
+            <section>edut</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Club --></label>
+        <name>Club</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- Edit_waiting_list --></label>
+        <name>Edit_waiting_list</name>
+    </webLinks>
+</CustomObjectTranslation>

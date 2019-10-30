@@ -59,7 +59,7 @@ const venuColumns =  [
 // Venue Timetables
 const timetableColumns = [
     { label: 'Venue', fieldName: 'Venue_Name__c', type: 'text', sortable : 'true' },
-    { label: 'Sport', fieldName: 'Name', type: 'text', sortable : 'true'},
+    { label: 'Sport', fieldName: 'Sport_Name__c', type: 'text', sortable : 'true'},
     { label: 'Mon', fieldName: 'MON__c', type: 'text'},
     { label: 'Tue', fieldName: 'TUE__c', type: 'text'},
     { label: 'Wed', fieldName: 'WED__c', type: 'text'},

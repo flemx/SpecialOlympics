@@ -44,6 +44,7 @@
     <members>SOI_Athlete</members>
     <members>SOI_AthleteController</members>
     <members>SOI_AthleteList</members>
+    <members>SOI_ClubTrigger</members>
     <members>SOI_User</members>
     <members>SOI_VenueController</members>
     <members>SOI_VenueTimetableController</members>
@@ -72,6 +73,7 @@
     <name>Flow</name>
     <members>Change_Club_Contact</members>
     <members>Instructions_upload_file</members>
+    <members>soiClubChanged</members>
   </types>
   <types>
     <name>Layout</name>
@@ -140,6 +142,7 @@
     <members>Account.SOI_AddrImpID__c</members>
     <members>Account.SOI_Club_ConsID__c</members>
     <members>Account.SOI_Club_Contact_ID__c</members>
+    <members>Account.SOI_ContactReplaced__c</members>
     <members>Account.SOI_Email__c</members>
     <members>Account.SOI_Status__c</members>
     <members>Account.SOI_Waiting_list__c</members>
@@ -314,9 +317,6 @@
   <types>
     <name>Profile</name>
     <members>Admin</members>
-    <members>Custom%3A Marketing Profile</members>
-    <members>Custom%3A Sales Profile</members>
-    <members>Custom%3A Support Profile</members>
     <members>SOI portal user</members>
   </types>
   <types>
@@ -363,6 +363,7 @@
     <name>ApexTrigger</name>
     <members>ContactTrigger</members>
     <members>SOI_TimetableTrigger</members>
+    <members>SoiCLubTrigger</members>
     <members>SoiTimetableTrigger</members>
   </types>
   <types>

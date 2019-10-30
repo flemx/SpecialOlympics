@@ -8,8 +8,8 @@
         <label>Fields</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Name</field>
+                <behavior>Edit</behavior>
+                <field>Sport_Name__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

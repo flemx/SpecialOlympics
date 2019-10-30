@@ -13,7 +13,7 @@ public with sharing class SOI_VenueTimetableController {
      */
     @AuraEnabled(cacheable=true)
     public static List<SOI_Venue_timetable__c> getVenues(){
-        List<SOI_Venue_timetable__c> venueTimetables = [select Name, City__c, Venue_Name__c, MON__c, TUE__c, WED__c, THU__c, FRI__c, SAT__c, SUN__c,
+        List<SOI_Venue_timetable__c> venueTimetables = [select Name, Sport_Name__c, City__c, Venue_Name__c, MON__c, TUE__c, WED__c, THU__c, FRI__c, SAT__c, SUN__c,
                                     SOI_Venue__c, SOI_Status__c, SOI_Sport__c, SOI_ActionLabel__c from SOI_Venue_timetable__c];
         return venueTimetables;
     }
