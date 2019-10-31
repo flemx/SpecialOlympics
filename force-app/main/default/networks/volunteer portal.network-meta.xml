@@ -10,7 +10,7 @@
     <enableCustomVFErrorPageOverrides>false</enableCustomVFErrorPageOverrides>
     <enableDirectMessages>true</enableDirectMessages>
     <enableGuestChatter>false</enableGuestChatter>
-    <enableGuestFileAccess>false</enableGuestFileAccess>
+    <enableGuestFileAccess>true</enableGuestFileAccess>
     <enableInvitation>false</enableInvitation>
     <enableKnowledgeable>false</enableKnowledgeable>
     <enableMemberVisibility>true</enableMemberVisibility>
@@ -33,11 +33,46 @@
             <target>ShowMoreTopics</target>
             <type>NavigationalTopic</type>
         </navigationMenuItem>
+        <navigationMenuItem>
+            <label>Help videos</label>
+            <position>2</position>
+            <publiclyAvailable>false</publiclyAvailable>
+            <target>/error</target>
+            <type>InternalLink</type>
+        </navigationMenuItem>
+        <navigationMenuItem>
+            <label>Troubleshoot</label>
+            <position>3</position>
+            <publiclyAvailable>false</publiclyAvailable>
+            <target>/error</target>
+            <type>InternalLink</type>
+        </navigationMenuItem>
+        <navigationMenuItem>
+            <label>New menu item</label>
+            <position>4</position>
+            <publiclyAvailable>false</publiclyAvailable>
+            <target>/error</target>
+            <type>InternalLink</type>
+        </navigationMenuItem>
+        <navigationMenuItem>
+            <label>New menu item</label>
+            <position>5</position>
+            <publiclyAvailable>false</publiclyAvailable>
+            <target>/error</target>
+            <type>InternalLink</type>
+        </navigationMenuItem>
+        <navigationMenuItem>
+            <label>New menu item</label>
+            <position>6</position>
+            <publiclyAvailable>false</publiclyAvailable>
+            <target>/error</target>
+            <type>InternalLink</type>
+        </navigationMenuItem>
     </navigationLinkSet>
     <networkMemberGroups>
         <permissionSet>soi_portalUsers</permissionSet>
         <profile>Admin</profile>
-        <profile>customer community login user</profile>
+        <profile>SOI portal user</profile>
     </networkMemberGroups>
     <networkPageOverrides>
         <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>

@@ -2,8 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SOI_Venue__c</fullName>
     <externalId>false</externalId>
-    <label>SOI_Venue</label>
+    <inlineHelpText>Choose a venue the timetable is for, make sure to search by the venue name</inlineHelpText>
+    <label>Venue Name</label>
     <referenceTo>SOI_Venue__c</referenceTo>
+    <relationshipLabel>Venue_timetables</relationshipLabel>
     <relationshipName>Venue_timetables</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>

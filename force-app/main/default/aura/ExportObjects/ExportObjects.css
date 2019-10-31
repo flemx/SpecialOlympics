@@ -1,0 +1,8 @@
+.THIS .marginClass{
+    margin-top: 10px !important;
+    width: 400px;
+}
+.THIS .exportedMessage{
+    background: rgba(139, 195, 74, 0.71);
+    color: white;
+}

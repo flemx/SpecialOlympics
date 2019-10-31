@@ -44,6 +44,12 @@
             ],
             "c/soi_configVariables": [
                 "soi_configVariables/soi_configVariables.js"
+            ],
+            "c/af_header_blank": [
+                "af_header_blank/af_header_blank.js"
+            ],
+            "c/soiHomeScreen": [
+                "soiHomeScreen/soiHomeScreen.js"
             ]
         }
     },

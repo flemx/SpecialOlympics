@@ -8,23 +8,109 @@
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
-    <valueSet>
+<valueSet>
+        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
+            <value>
+                <fullName>Alpine Skiing</fullName>
+                <default>false</default>
+                <label>Alpine Skiing</label>
+            </value>
+            <value>
+                <fullName>Athletics</fullName>
+                <default>false</default>
+                <label>Athletics</label>
+            </value>
+            <value>
+                <fullName>Badminton</fullName>
+                <default>false</default>
+                <label>Badminton</label>
+            </value>
             <value>
                 <fullName>Basketball</fullName>
                 <default>false</default>
                 <label>Basketball</label>
             </value>
             <value>
-                <fullName>Soccer</fullName>
+                <fullName>Bocce</fullName>
                 <default>false</default>
-                <label>Soccer</label>
+                <label>Bocce</label>
             </value>
             <value>
-                <fullName>Football</fullName>
+                <fullName>Equestrian</fullName>
                 <default>false</default>
-                <label>Football</label>
+                <label>Equestrian</label>
+            </value>
+            <value>
+                <fullName>Floorball</fullName>
+                <default>false</default>
+                <label>Floorball</label>
+            </value>
+            <value>
+                <fullName>Football 7</fullName>
+                <default>false</default>
+                <label>Football 7</label>
+            </value>
+            <value>
+                <fullName>Golf</fullName>
+                <default>false</default>
+                <label>Golf</label>
+            </value>
+            <value>
+                <fullName>Gymnastics Artistic</fullName>
+                <default>false</default>
+                <label>Gymnastics Artistic</label>
+            </value>
+            <value>
+                <fullName>Gymnastics Rhythmic</fullName>
+                <default>false</default>
+                <label>Gymnastics Rhythmic</label>
+            </value>
+            <value>
+                <fullName>Kayaking</fullName>
+                <default>false</default>
+                <label>Kayaking</label>
+            </value>
+            <value>
+                <fullName>MATP</fullName>
+                <default>false</default>
+                <label>MATP</label>
+            </value>
+            <value>
+                <fullName>Pitch &amp; Putt</fullName>
+                <default>false</default>
+                <label>Pitch &amp; Putt</label>
+            </value>
+            <value>
+                <fullName>Pitch and Putt</fullName>
+                <default>false</default>
+                <label>Pitch and Putt</label>
+            </value>
+            <value>
+                <fullName>Swimming</fullName>
+                <default>false</default>
+                <label>Swimming</label>
+            </value>
+            <value>
+                <fullName>Table Tennis</fullName>
+                <default>false</default>
+                <label>Table Tennis</label>
+            </value>
+            <value>
+                <fullName>Tennis</fullName>
+                <default>false</default>
+                <label>Tennis</label>
+            </value>
+            <value>
+                <fullName>Tenpin Bowling</fullName>
+                <default>false</default>
+                <label>Tenpin Bowling</label>
+            </value>
+            <value>
+                <fullName>Young Athletes</fullName>
+                <default>false</default>
+                <label>Young Athletes</label>
             </value>
         </valueSetDefinition>
     </valueSet>

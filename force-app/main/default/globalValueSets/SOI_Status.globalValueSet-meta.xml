@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Unchanged</fullName>
+        <default>false</default>
+        <label>Unchanged</label>
+    </customValue>
+    <customValue>
+        <fullName>Edited</fullName>
+        <default>false</default>
+        <label>Edited</label>
+    </customValue>
+    <customValue>
+        <fullName>Deleted</fullName>
+        <default>false</default>
+        <label>Deleted</label>
+    </customValue>
+    <customValue>
+        <fullName>New</fullName>
+        <default>false</default>
+        <label>New</label>
+    </customValue>
+    <masterLabel>SOI_Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	  <aura:attribute name="objectList" type="String[]"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="selectedObj" type="String"/>
+    <aura:attribute name="Objectdata" type="String" />
+    <aura:attribute name="dataExported" type="Boolean" default="false" />
+    
+    <center>
+        <aura:if isTrue="{!v.dataExported}">
+        	<div class="exportedMessage">
+            	Data exported for the selected object. 
+            </div>
+        </aura:if>
+        <ui:inputSelect class="marginClass" aura:id="objId" label="Select Object to Export ">
+            <aura:iteration items="{!v.objectList}" var="objectName">
+                <ui:inputSelectOption text="{!objectName}" label="{!objectName}"/>
+            </aura:iteration>
+        </ui:inputSelect>
+        <lightning:button class="marginClass" variant="brand" label="Export" iconName="utility:download" iconPosition="left" onclick="{! c.export }" />
+    </center>
+</aura:component>

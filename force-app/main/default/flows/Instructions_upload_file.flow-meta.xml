@@ -47,7 +47,7 @@
         <expression>{!$User.Id}</expression>
     </formulas>
     <interviewLabel>Instructions upload file {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Instructions upload file</label>
+    <label>Submission Steps</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -149,7 +149,7 @@
         </connector>
         <fields>
             <name>submit_complete1</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 14pt;&quot;&gt;Thank You!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;You have successfully submitted your clubs affiliation to Special Olympics Ireland.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;Your Regional Development Officer will be in touch shortly.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;[LOGOUT BUTTON]&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;You have already submitted your files.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11pt; background-color: rgb(255, 255, 255);&quot;&gt;Please click &quot;Logout&quot; in &lt;/span&gt;&lt;span style=&quot;font-size: 14.6667px; background-color: rgb(255, 255, 255);&quot;&gt;the&lt;/span&gt;&lt;span style=&quot;font-size: 11pt; background-color: rgb(255, 255, 255);&quot;&gt; top right hand corner to exit the system.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;If your require help please click on the &quot;Help&quot; button in the top right hand corner to find your Regional Office contact details.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -158,7 +158,7 @@
     <screens>
         <name>Final_screen</name>
         <label>Final_screen</label>
-        <locationX>940</locationX>
+        <locationX>942</locationX>
         <locationY>583</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -168,7 +168,7 @@
         </connector>
         <fields>
             <name>Confirmation_of_completion</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 14pt;&quot;&gt;Confirmation of Completion&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;b&gt;Step 3 of 3:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 14pt;&quot;&gt;Confirmation of Completion&lt;/b&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -177,7 +177,7 @@
             <defaultValue>
                 <elementReference>AccountRecord.SOI_submission_completed__c</elementReference>
             </defaultValue>
-            <fieldText>By checking this box I confirm that I have completed my club&#39;s affiliation.  I understand that once I have checked this box and clicked on Finish, my club&#39;s submission will be done.</fieldText>
+            <fieldText>By checking this box I confirm that I have completed my club&#39;s affiliation.</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
         </fields>
@@ -187,8 +187,8 @@
     <screens>
         <name>OPTIONAL_Upload_Safe_Guarding_Certificate</name>
         <label>OPTIONAL: Upload Safe Guarding Certificate</label>
-        <locationX>785</locationX>
-        <locationY>457</locationY>
+        <locationX>786</locationX>
+        <locationY>460</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -197,7 +197,7 @@
         </connector>
         <fields>
             <name>safe_guarding_upload1</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Safeguarding Certificate &lt;/b&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(255, 0, 0); background-color: transparent;&quot;&gt;[OPTIONAL]&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Description:&lt;/b&gt;&lt;span style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt; If your Safeguarding Officer’s Level 2 certification has expired since last year please upload a copy of the new certificate. If not click “Next” to continue to the final screen.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Instructions:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Upload or email the file&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Attach a copy of the certificate by clicking on the “Upload Files” button or&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Email the certificate to &lt;/span&gt;&lt;a href=&quot;mailto:affiliation@specialolympics.ie&quot; target=&quot;_blank&quot; style=&quot;font-size: 11pt; background-color: transparent; color: rgb(17, 85, 204);&quot;&gt;&lt;u&gt;affiliation@specialolympics.ie&lt;/u&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;u style=&quot;font-size: 11pt; background-color: transparent; color: rgb(17, 85, 204);&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/u&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Click Next to go to the next step&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;b&gt;Step 2 of 3:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 14pt;&quot;&gt;Upload Safeguarding Certificate &lt;/b&gt;&lt;b style=&quot;background-color: transparent; color: rgb(255, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;[OPTIONAL]&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;Description:&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt; If your Safeguarding Officer has not already submitted their Safeguarding 2 / Designated Safeguarding Children&#39;s Officer (DSCO) (NI) certification, please upload a copy of the new certificate.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;Otherwise click “Next” to continue to the final screen.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;Instructions:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-size: 11pt;&quot;&gt;Upload or email the file&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-size: 11pt;&quot;&gt;Attach a copy of the certificate by clicking on the “Upload Files” button or&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-size: 11pt;&quot;&gt;Email the certificate to &lt;/span&gt;&lt;a href=&quot;mailto:affiliation@specialolympics.ie&quot; target=&quot;_blank&quot; style=&quot;background-color: transparent; font-size: 11pt; color: rgb(17, 85, 204);&quot;&gt;&lt;u&gt;affiliation@specialolympics.ie&lt;/u&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;u style=&quot;color: rgb(17, 85, 204); background-color: transparent; font-size: 11pt;&quot;&gt;﻿&lt;/u&gt;&lt;span style=&quot;background-color: transparent; font-size: 11pt;&quot;&gt;Click Next to go to the next step&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -234,7 +234,7 @@
         </connector>
         <fields>
             <name>instructions1</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;2019 Application for Affiliation Form &lt;/b&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(255, 0, 0); background-color: transparent;&quot;&gt;[REQUIRED]&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Description:&lt;/b&gt;&lt;span style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt; This form should be signed by your chairperson as confirmation that your club intends affiliating with Special Olympics Ireland for the upcoming year.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Instructions:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Download the 2019 Application for Affiliation document by &lt;/span&gt;&lt;a href=&quot;https://ruby-connect-5811-dev-ed.cs82.my.salesforce.com/sfc/p/3E00000018Rn/a/3E00000009xp/9oa_QhgHTfr9Do_WSEFoY3eG3LU.j3rNaCFgBAqSJbU&quot; target=&quot;_blank&quot; style=&quot;font-size: 11pt; background-color: transparent; color: rgb(17, 85, 204);&quot;&gt;clicking here&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Print, complete and sign the form&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Scan or Take a photo of the form&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Upload or email the file&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Attach the file by clicking on the “Upload Files” button or&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;email the file to &lt;/span&gt;&lt;a href=&quot;mailto:affiliation@specialolympics.ie&quot; target=&quot;_blank&quot; style=&quot;font-size: 11pt; background-color: transparent; color: rgb(17, 85, 204);&quot;&gt;&lt;u&gt;affiliation@specialolympics.ie&lt;/u&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-size: 11pt;&quot;&gt;Click Next to go to the next step&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;b&gt;Step 1 of 3:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 14pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Upload the &quot;2019 Application for Affiliation&quot; Form &lt;/b&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(255, 0, 0); background-color: transparent;&quot;&gt;[REQUIRED]&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Description:&lt;/b&gt;&lt;span style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt; This form should be signed by your chairperson as confirmation that your club intends affiliating with Special Olympics Ireland for the upcoming year.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Instructions:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Download the 2019 Application for Affiliation document by &lt;/span&gt;&lt;a href=&quot;https://ruby-connect-5811-dev-ed.cs82.my.salesforce.com/sfc/p/3E00000018Rn/a/3E00000009xp/9oa_QhgHTfr9Do_WSEFoY3eG3LU.j3rNaCFgBAqSJbU&quot; target=&quot;_blank&quot; style=&quot;font-size: 11pt; background-color: transparent; color: rgb(17, 85, 204);&quot;&gt;clicking here&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Print, complete and sign the form&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Scan or Take a photo of the form&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Upload or email the file&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;Attach the file by clicking on the “Upload Files” button or&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11pt; background-color: transparent;&quot;&gt;email the file to &lt;/span&gt;&lt;a href=&quot;mailto:affiliation@specialolympics.ie&quot; target=&quot;_blank&quot; style=&quot;font-size: 11pt; background-color: transparent; color: rgb(17, 85, 204);&quot;&gt;&lt;u&gt;affiliation@specialolympics.ie&lt;/u&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; font-size: 11pt;&quot;&gt;Click Next to go to the next step&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -261,14 +261,14 @@
     <screens>
         <name>Success_screen</name>
         <label>Success screen</label>
-        <locationX>331</locationX>
+        <locationX>330</locationX>
         <locationY>563</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
             <name>Success_message</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 14pt;&quot;&gt;Thank You!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;You have successfully submitted your clubs affiliation to Special Olympics Ireland.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;Your Regional Development Officer will be in touch shortly.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;[LOGOUT BUTTON]&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14pt; font-family: Arial; color: rgb(4, 144, 102); background-color: transparent;&quot;&gt;﻿&lt;/b&gt;&lt;b style=&quot;font-size: 14pt; font-family: Arial; color: rgb(62, 147, 5); background-color: transparent;&quot;&gt;Thank You!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11pt; font-family: Arial; color: rgb(62, 147, 5); background-color: rgb(255, 255, 255);&quot;&gt;You have successfully submitted your clubs affiliation details.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11pt; font-family: Arial; color: rgb(62, 147, 5); background-color: rgb(255, 255, 255);&quot;&gt;Your Regional Development Officer will be in touch shortly.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11pt; font-family: Arial, sans-serif; color: rgb(62, 147, 5); background-color: white;&quot;&gt;Please click &quot;Logout&quot; in the top right hand corner to exit the system.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11pt; font-family: Arial; color: rgb(62, 147, 5); background-color: rgb(255, 255, 255);&quot;&gt;﻿&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>

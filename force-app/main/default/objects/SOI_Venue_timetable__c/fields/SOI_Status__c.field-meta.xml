@@ -3,35 +3,13 @@
     <fullName>SOI_Status__c</fullName>
     <defaultValue>&quot;New&quot;</defaultValue>
     <externalId>false</externalId>
-    <label>SOI_Status_</label>
+    <label>SOI_Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Unchanged</fullName>
-                <default>false</default>
-                <label>Unchanged</label>
-            </value>
-            <value>
-                <fullName>Edited</fullName>
-                <default>false</default>
-                <label>Edited</label>
-            </value>
-            <value>
-                <fullName>Deleted</fullName>
-                <default>false</default>
-                <label>Deleted</label>
-            </value>
-            <value>
-                <fullName>New</fullName>
-                <default>false</default>
-                <label>New</label>
-            </value>
-        </valueSetDefinition>
+        <valueSetName>SOI_Status</valueSetName>
     </valueSet>
 </CustomField>
